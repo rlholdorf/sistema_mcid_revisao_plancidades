@@ -1,0 +1,218 @@
+
+
+
+.tab_executivo{
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.reltitle H5 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #424242;
+}
+
+#painel {
+	width: 700px;
+	height: 490px;
+	background-image: url("_images/Brasil.jpg");
+	background-color: #EEE;
+	}
+	
+
+#painel_top {
+	width: 700px;
+	height: 60px;
+	background-color: #314450;
+	}
+
+#painel_top h1 {
+	color: white;
+	font-size: 26px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 15px;
+	padding-top: 10px;
+	font-family: 'Open Sans', sans-serif;
+	}
+	
+#painel_top p {
+	color: white;
+	margin-left: 15px;
+	font-size: 12px;
+	}
+
+#painel h2 {
+	color: #08335D;
+	margin-top: 0px;
+	margin-right: 30px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 4px;
+	font-family: 'Handlee', cursive;
+	font-size: 40px;
+	text-align: right;
+	}
+	
+	
+#painel h6 {	
+	margin-top: 20px;
+	margin-right: 30px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #458F41;
+	font-family: 'Handlee', cursive;
+	text-align: right;
+	}
+	
+#painel h3 {
+	color: #08335D;
+	margin-top: 0px;
+	margin-right: 30px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 4px;
+	font-family: 'Handlee', cursive;
+	font-size: 35px;
+	text-align: right;
+	}
+	
+#painel p {
+	margin-left: 15px;
+	font-size: 12px;
+	margin-bottom: 15px;
+	}
+	
+		
+.total {
+	background-color: #93D0CE;	
+	font-size: 60px;
+	font-weight: bold;
+	}
+
+.celulaCorAzul{
+		background-color: lightblue;	
+		font-size:13px;
+		
+		}	
+.celulaCorVerde {
+	background-color: lightgreen;
+	font-size:13px;
+	}		
+
+.totalFaixa {
+	background-color: #BEEDEC;	
+	font-size: 30 px;
+	font-weight: bold;
+}
+
+.tr_recuo{
+	padding-left: 30px;
+}
+
+#totalResumo {
+	background-color: #93D0CE;	
+	font-size: 50px;
+	font-weight: bold;
+	text-align:center;
+	}
+	
+.tituloTotal {
+	font-size: 50 px;
+	font-weight: bold;
+	}
+	
+th {
+	background-color: #555555;
+	color: white;
+	}
+	
+td {
+	font-size:13px;
+	height: 13px;
+	}
+	
+	
+
+\\animate
+
+.animaTabela {
+	opacity: .85;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.animaTabela:hover {
+	opacity: 1;
+	background: #E0E0E0;
+	-webkit-transform: scale(1.006);
+	-moz-transform: scale(1.006);
+	-ms-transform: scale(1.006);
+	transform: scale(1.006);
+	
+}
+
+.animaTabela.ng-enter.ng-enter-active,
+.animaTabela.ng-leave {
+	opacity: 1;
+	overflow:hidden;
+	
+}
+
+.animaTabela.ng-leave.ng-leave-active,
+.animaTabela.ng-enter {
+	opacity: 0;
+	height:0;
+	overflow:hidden;
+	
+}
+
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+	border: 1px solid #000;
+	
+}
+
+.table-bordered>thead>tr>th {
+	text-align:center;
+	vertical-align: middle;
+	font-size:12px;
+}
+
+.tabelaNumero {
+	text-align:right;
+}
+
+.tabelaFaixa {
+	text-align:center;
+}
+
+.tituloFiltro {
+   padding:10px 10px 5px 0px;
+   color: darkgrey;
+   font-size: 24px;
+   font-weight: bold;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   font-family: 'Open Sans', sans-serif; 
+}
+
+.tituloPMCMV {
+   padding:10px 10px 5px 0px;
+   color: black;
+   font-size: 24px;
+   font-weight: bold;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   font-family: 'Open Sans', sans-serif; 
+}
+
+.div_table_full {
+	border: solid;
+	display: inline-block;
+	width: 100%;
+	overflow: auto;
+  }
+

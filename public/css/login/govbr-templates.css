@@ -1,0 +1,587 @@
+@charset "UTF-8";
+@import "govbr-colors.css";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.warn-message {
+  padding: 10px;
+  color: var(--color-gray-7);
+  background: var(--color-warning);
+  border-radius: 6px;
+  width: 100%;
+}
+
+#divMsgLevel .warn-message span {
+  font-size: 14px;
+}
+
+.labelPassword {
+  margin: 20px 0 5px 0;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.level-weak {
+    width: 25%;
+    height: 10px;
+    display: inline-block;
+    background: #8A0303;
+    margin-top: 5px;
+}
+
+.level-good {
+    width: 50%;
+    height: 10px;
+    display: inline-block;
+    background: #cc0000;
+    margin-top: 5px;    
+}
+
+.level-average {
+    width: 75%;
+    height: 10px;
+    display: inline-block;
+    background: orange;
+    margin-top: 5px;    
+}
+
+.level-strong {
+    width: 100%;
+    height: 10px;
+    display: inline-block;
+    background: #68ca6e;
+    margin-top: 5px;    
+}
+.container-vertical {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.cpfChangePassword{
+	display: block;
+    margin: 10px 15px;
+}
+body {
+  margin: 0;
+  font-family: 'rawline', Rawline, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333333;
+  background-color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 20px 0;
+}
+
+a {
+  color: #333333;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+input:focus {
+  background-color: rgba(242, 227, 23, 0.3);
+}
+
+input.is-invalid {
+  border-color: #ff3333;
+  box-shadow: 0 0 0 1px #ff3333;
+  outline: none;
+}
+
+::placeholder {
+  opacity: 1; /* Firefox */
+  font-style: italic;
+  font-size: 90%;
+}
+
+#login-password a,
+#faq a,
+#authorize-info a {
+  color: #1351B4;
+  text-decoration: underline;
+}
+
+#footer-brasil {
+  background-color: #071d41 !important;
+}
+
+#footer-brasil .logo-acesso-footer {
+  background-image: url(../img/acesso-informacao-logo-contraste.png) !important;
+  background-size: contain;
+}
+
+#footer-brasil .logo-governo-federal {
+  background-image: url(../img/governo-federal-contraste.png) !important;
+  background-size: contain;
+}
+
+.contrast #footer-brasil {
+  background-color: black !important;
+}
+
+p {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+label {
+  margin: 0 0 5px 0;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  height: 40px;
+  padding: 0 20px 0 20px;
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  border: 1px solid #888888;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+select {
+  width: auto;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1440px;
+  width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+  min-height: calc(100vh - 254px);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 6px #00000029;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex: 1 0 50%;
+  flex-direction: column;
+}
+
+aside {
+  display: flex;
+  flex: 1 0 50%;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+#acessibilidade a,
+#acessibilidade span {
+  margin: 10px 10px 0 10px;
+}
+
+#acessibilidade div {
+  margin-right: 25px;
+}
+
+#acessibilidade i {
+  margin: 0 0.2em 0 0;
+}
+
+#acessibilidade a {
+  color: #333333;
+  ;
+}
+
+header img {
+  width: 100px;
+  margin: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff 0 0 no-repeat padding-box;
+  box-shadow: 0 2px 4px #00000033;
+  padding: 20px;
+  margin: 20px auto auto auto;
+}
+
+.card span {
+  flex: 1 0 60%;
+}
+
+.card img {
+  /*flex: 1 0 20%;*/
+  max-height: 211px;
+  max-width: 279px;
+}
+
+.card a {
+  flex: 1 1 100%;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+main h5 i {
+  margin: 0 10px 0 20px;
+}
+
+button {
+  border: none;
+  box-shadow: 0 2px 3px #00000029;
+  border-radius: 24px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+aside .button-panel {
+  width: 329px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #EDEDED 0 0 no-repeat padding-box;
+  box-shadow: 0 2px 3px #00000029;
+  border-radius: 40px;
+  margin-top: 40px;
+}
+
+main .button-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 30px 0 25px 0;
+}
+
+.button-create-account {
+  width: 289px;
+  height: 48px;
+  background: #268744 0 0 no-repeat padding-box;
+}
+
+.button-cancel,
+.button-ok {
+  width: 145px;
+  height: 40px;
+}
+
+.button-ok {
+  background: #1351B4 0 0 no-repeat padding-box;
+}
+
+.button-cancel {
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  color: #1351B4 !important;
+  border: 1px solid #1351B4 !important;
+}
+
+.modal-content .button-cancel,
+.modal-content .button-ok {
+  height: 30px;
+}
+
+.title-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.input-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.item-login-signup-ways {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 0 0;
+  cursor: pointer;
+}
+
+.item-login-signup-ways a {
+  margin: 0 0 0 10px;
+}
+
+i {
+  color: #1351B4;
+}
+
+.erro {
+  color: red;
+}
+
+.password-eye {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.password-eye span {
+  flex: 1 0 0;
+  margin-left: -36px;
+}
+
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  padding: 2px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+.alert-danger {
+  color: red;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  padding: 2px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  padding: 2px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+hr {
+  width: 100%;
+  margin: 20px 0 0 0;
+}
+
+.accordion-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-height: none;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+#login-cadastro,
+#login-password-info {
+  box-shadow: none;
+  max-width: 430px;
+  max-height: 553px;
+}
+
+#login-cpf,
+#login-password {
+  align-items: flex-start;
+  width: 384px;
+  min-height: 393px;
+}
+
+#login-password {
+  min-height: auto;
+}
+
+#login-cpf p,
+.modal-content p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 0.8rem;
+}
+
+#modal-cert-nuvem-button-panel, #modal-bancos-credenciados-button-panel {
+  margin: auto;
+}
+
+#faq {
+  box-shadow: none;
+  min-height: auto;
+  align-items: center;
+}
+
+#esqueci-senha {
+  margin: 28px 0 0 0;
+}
+
+#authorize-info,
+#contact-validation {
+  align-items: flex-start;
+  max-width: 70%;
+}
+
+#contact-validation {
+  margin: 20px auto 20px auto;
+}
+
+#contact-validation input {
+  width: 70%;
+  margin: 0 20px 10px 0;
+}
+
+#contact-validation label {
+  margin: 20px 0 0 0;
+}
+
+#email-div,
+#sms-div {
+  width: 100%;
+}
+
+#confirmacao-contato {
+  margin-bottom: 2em;
+}
+
+#email-code,
+#sms-code {
+  width: auto;
+  margin: 0 0 0 10px;
+}
+
+#sms-code-ok,
+#email-code-ok {
+  text-align: center;
+}
+
+#btn-create-account-a {
+  display: block;
+}
+
+#btn-create-account-b {
+  display: none;
+}
+
+#login-button-panel {
+  justify-content: flex-end;
+}
+
+#two-factor {
+  align-items: flex-start;
+  width: 384px;
+  min-height: 270px;
+}
+
+#resendTwoFactorMsg {
+  margin-top: 1.1em;
+}
+
+#resendLink {
+  cursor: pointer;
+  color: blue;
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 0.8rem;
+  }
+  .container {
+    flex-direction: column-reverse;
+  }
+  main {
+    flex: 0 0 100%;
+  }
+  footer {
+    display: none;
+  }
+  [vw] [vw-access-button] .access-button {
+    display: none;
+  }
+  .card {
+    padding: 10px;
+  }
+  #login-button-panel {
+    justify-content: space-evenly;
+  }
+  #login-cadastro,
+  #login-password-info {
+    display: none;
+  }
+  #btn-create-account-a {
+    display: none;
+  }
+  #btn-create-account-b {
+    display: block;
+  }
+  
+  #login-cpf, #login-password, #two-factor {
+    width: 340px;
+  }
+  #acessibilidade a span {
+    display: none;
+  }
+  #acessibilidade a,
+  #acessibilidade span {
+    margin: 0 10px 0 0;
+  }
+  #authorize-info,
+  #contact-validation {
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  #contact-validation input {
+    width: 100%;
+  }
+  #barra-brasil {
+    display: none !important;
+  }
+ #divMsgLevel .warn-message {
+    width: 100%;
+ }
+  
+}
+
+@media (min-width: 998px) {
+  .container {
+    max-width: 992px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1152px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1440px;
+  }
+}
