@@ -32,7 +32,8 @@
         </p>
         
         <hr>
-
+        <form role="form" method="POST" action='{{ route("plancidades.revisao.objetivoEstrategico.salvar") }}'>
+            @csrf
             <edita-revisao-indicador 
             :url="'{{ url('/') }}'"
             :dados-indicador="{{json_encode($dadosIndicador)}}"
@@ -40,6 +41,6 @@
             >
             </edita-revisao-indicador>
             <span class="br-divider sm my-3"></span>
-        
+        </form>
     </div>
 @endsection

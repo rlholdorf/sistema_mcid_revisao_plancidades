@@ -595,11 +595,12 @@ Route::post('/plancidades/monitoramentos/validacao/projeto/{monitoramentoProjeto
 Route::get('/plancidades/revisao/objetivo_estrategico/consulta', 'Mod_plancidades\RevisaoIndicadorController@consultarIndicadores')->name('plancidades.revisao.objetivoEstrategico.consultar');
 Route::get('/plancidades/revisao/objetivo_estrategico/indicadores', 'Mod_plancidades\RevisaoController@listarIndicadores')->name('plancidades.revisao.objetivoEstrategico.listarIndicadores');
 Route::get('/plancidades/revisao/objetivo_estrategico/{indicadorId}/criar', 'Mod_plancidades\RevisaoIndicadorController@create')->name('plancidades.revisao.objetivoEstrategico.iniciarRevisao');
+Route::post('/plancidades/revisao/objetivo_estrategico/salvar', 'Mod_plancidades\RevisaoIndicadorController@teste')->name('plancidades.revisao.objetivoEstrategico.salvar');
 
 // Route::get('/plancidades/monitoramentos/objetivo_estrategico/indicadores/{indicadorId}', 'Mod_plancidades\MonitoramentoIndicadorController@index')->name('plancidades.monitoramentos.objetivoEstrategico.listarMonitoramentos');
 // Route::get('/plancidades/monitoramentos/objetivo_estrategico/exibir/{monitoramentoId}', 'Mod_plancidades\MonitoramentoIndicadorController@show')->name('plancidades.monitoramentos.objetivoEstrategico.show');
 
-// Route::post('/plancidades/monitoramentos/objetivo_estrategico/salvar', 'Mod_plancidades\MonitoramentoIndicadorController@store')->name('plancidades.monitoramentos.objetivoEstrategico.salvar');
+
 // Route::get('/plancidades/monitoramentos/objetivo_estrategico/{monitoramentoId}/editar', 'Mod_plancidades\MonitoramentoIndicadorController@edit')->name('plancidades.monitoramentos.objetivoEstrategico.editar');
 // Route::post('/plancidades/monitoramentos/objetivo_estrategico/{monitoramentoId}/atualizar', 'Mod_plancidades\MonitoramentoIndicadorController@update')->name('plancidades.monitoramentos.objetivoEstrategico.atualizar');
 

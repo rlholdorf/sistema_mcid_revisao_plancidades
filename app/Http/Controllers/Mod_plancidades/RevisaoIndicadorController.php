@@ -65,6 +65,26 @@ class RevisaoIndicadorController extends Controller
     {   
         $dadosIndicador = ViewIndicadoresObjetivosEstrategicosMetas::find($indicadorId);
 
+        switch ($dadosIndicador->unidade_medida_id){
+            case 1:
+                $dadosIndicador->unidade_medida_simbolo = '(R$)';
+                break;
+            case 2:
+                $dadosIndicador->unidade_medida_simbolo = '(%)';
+                break;
+            case 3:
+                $dadosIndicador->unidade_medida_simbolo = '(ADI)';
+                break;
+            case 4:
+                $dadosIndicador->unidade_medida_simbolo = '(m²)';
+                break;
+            case 5:
+                $dadosIndicador->unidade_medida_simbolo = '(UN)';
+                break;
+            default:
+                $dadosIndicador->unidade_medida_simbolo = '';
+        }
+        
         $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
 
         return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao', compact('dadosIndicador', 'dadosRegionalizacao'));
@@ -446,6 +466,9 @@ class RevisaoIndicadorController extends Controller
         }
     }
 
-    
+    public function teste(Request $request)
+    {
+        return ($request);
+    }
 
 }
