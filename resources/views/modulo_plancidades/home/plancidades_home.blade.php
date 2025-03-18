@@ -51,8 +51,8 @@
             <div class="text-center disabled">
                 <a class="br-button primary mt-3" href="{{ route('plancidades.monitoramentos.iniciativa.consultar') }}">Revisão de Iniciativas</a>
             </div>
-            <div class="text-center disabled">
-                <a class="br-button primary mt-3" href="{{ route('plancidades.monitoramentos.projeto.consultar') }}">Revisão de Projetos</a>        
+            <div class="text-center">
+                <a class="br-button primary mt-3" href="{{ route('plancidades.revisao.projeto.consultar') }}">Revisão de Projetos</a>        
             </div>
         </div>
 

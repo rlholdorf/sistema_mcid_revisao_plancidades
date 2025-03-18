@@ -492,6 +492,20 @@ Vue.component(
   require("./components/mod_plancidades/revisao/objetivo_estrategico/EditaRevisaoIndicador.vue")
 );
 
+// Revisão Projeto
+
+Vue.component(
+  "consulta-projeto-revisao",
+  require("./components/mod_plancidades/revisao/projeto/ConsultaProjetoRevisao.vue")
+);
+
+Vue.component(
+  "edita-revisao-projeto",
+  require("./components/mod_plancidades/revisao/projeto/EditaRevisaoProjeto.vue")
+);
+
+
+
 
 
   //Transferegov - Programas

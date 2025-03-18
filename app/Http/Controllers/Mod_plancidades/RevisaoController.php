@@ -14,6 +14,7 @@ use App\Mod_plancidades\RlcMonitoramentoObjEspecificos;
 use App\Mod_plancidades\RlcRestricaoMetaMonitoramentoIndic;
 use App\Mod_plancidades\ViewApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewMonitoramentoIndicadoresObjEstrategicos;
+use App\Mod_plancidades\ViewProjetos;
 use App\Mod_plancidades\ViewResumoApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicos;
 use Illuminate\Support\Facades\DB;
@@ -141,4 +142,38 @@ class RevisaoController extends Controller
             return back();
         }
     }
+
+    public function listarProjetos(Request $request)
+    {   
+        
+        //return ($request);
+
+        $where = [];
+
+        if($request->orgaoResponsavel){
+            $where[] = ['orgao_pei_id', $request->orgaoResponsavel];
+        }
+
+        if($request->objetivoEstrategico){
+            $where[] = ['objetivo_estrategico_pei_id', $request->objetivoEstrategico];
+        }
+
+        if ($request->bln_ppa){
+            $where[] = ['bln_ppa', true];
+        }
+        
+        //return ($where);
+
+        $projetos = ViewProjetos::where($where)->orderBy('projeto_id')->get();
+
+        //return ($projetos);
+
+        if(count($projetos) > 0){
+            return view("modulo_plancidades.revisao.projeto.listar_projetos_revisao", compact('projetos'));
+        }else{
+            flash()->erro("Erro", "Nenhum projeto encontrado...");
+            return back();
+        }
+    }
+
 }
