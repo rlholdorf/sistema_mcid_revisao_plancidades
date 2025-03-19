@@ -69,7 +69,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova identificação de Medida Institucional e Normativa do PPA</label>
                     <select id="bln_ppa_nova" class="form-select br-select" name="bln_ppa_nova"
-                    v-model="boleanoppa">
+                    v-model="boleanoppa"> <!-- É necessário esse v-model? -->
                     <option>Sim</option>
                     <option>Não</option>
                     </select>
@@ -149,7 +149,45 @@
 
             <p class="text-center"><b>Detalhamento das Etapas</b></p>
 
+            <div class="table-responsive mt-3">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome da etapa (Produto)</th>
+                            <th>Marco da entrega</th>
+                            <th class="text-center" style="border-left:1px">Peso relativo</th>
+                            <th class="text-center" style="border-left:1px">Data de Início</th>
+                            <th class="text-center">Data de Conclusão</th>
+                            <th class="text-center" style="border-left:1px">Alterar</th>
+                            <th class="text-center" style="border-left:1px">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item, index) in dadosEtapas">
+                            <td>{{ (index+1) }}</td>
+                            <td>{{ item.dsc_etapa }}</td>
+                            <td>{{ item.dsc_marco }}</td>
+                            <td class="text-center">{{ item.vlr_peso_etapa }}</td>
+                            <td class="text-center">{{ formatarData(item.dte_previsao_inicio_etapa) }}</td>
+                            <td class="text-center">{{ formatarData(item.dte_previsao_conclusao_etapa) }}</td>
+                            <td class="text-center">
+                                <button type="button" class="br-button circle primary small" title="Monitorar etapa" >
+                                    <i class="fa fa-pen"></i>  <!-- Implementar, provavelmente modal -->
+                                </button></td>
+                            <td class="text-center">
+                                <button type="button" class="br-button circle primary small" title="Monitorar etapa" >
+                                    <i class="fa fa-times-circle"></i> <!-- Implementar, provavelmente modal -->
+                                </button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <slot>
             
+                </slot>
+
+            </div>
 
     <!-- Botões Formulário -->
             <div class="row">
@@ -190,6 +228,18 @@ export default {
         }
     },
     methods: {
+        formatarData(data){
+            let dataTemp = data.split("-");
+            let dataFormatada = '';
+            
+            for (let i = (dataTemp.length-1); i >= 0; i--){
+                dataFormatada += String(dataTemp[i]) 
+                if (i > 0){
+                    dataFormatada += '/';
+                }
+            }
+            return dataFormatada;
+        },
         
     },
     mounted() {

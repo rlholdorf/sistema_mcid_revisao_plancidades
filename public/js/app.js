@@ -116820,6 +116820,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['url', 'dadosProjeto', 'dadosEtapas'],
@@ -116843,7 +116881,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    methods: {},
+    methods: {
+        formatarData: function formatarData(data) {
+            var dataTemp = data.split("-");
+            var dataFormatada = '';
+
+            for (var i = dataTemp.length - 1; i >= 0; i--) {
+                dataFormatada += String(dataTemp[i]);
+                if (i > 0) {
+                    dataFormatada += '/';
+                }
+            }
+            return dataFormatada;
+        }
+    },
     mounted: function mounted() {
         var _this = this;
 
@@ -117219,6 +117270,55 @@ var render = function() {
       _vm._v(" "),
       _vm._m(8),
       _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "table-responsive mt-3" },
+        [
+          _c("table", [
+            _vm._m(9),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.dadosEtapas, function(item, index) {
+                return _c("tr", [
+                  _c("td", [_vm._v(_vm._s(index + 1))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.dsc_etapa))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.dsc_marco))]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _vm._v(_vm._s(item.vlr_peso_etapa))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _vm._v(
+                      _vm._s(_vm.formatarData(item.dte_previsao_inicio_etapa))
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-center" }, [
+                    _vm._v(
+                      _vm._s(
+                        _vm.formatarData(item.dte_previsao_conclusao_etapa)
+                      )
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(10, true),
+                  _vm._v(" "),
+                  _vm._m(11, true)
+                ])
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _vm._t("default")
+        ],
+        2
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col col-xs-12 col-sm-12" }, [
           _c("div", { staticClass: "p-3 text-right" }, [
@@ -117398,6 +117498,76 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-center" }, [
       _c("b", [_vm._v("Detalhamento das Etapas")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nome da etapa (Produto)")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Marco da entrega")]),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { "border-left": "1px" } },
+          [_vm._v("Peso relativo")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { "border-left": "1px" } },
+          [_vm._v("Data de Início")]
+        ),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("Data de Conclusão")]),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { "border-left": "1px" } },
+          [_vm._v("Alterar")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "text-center", staticStyle: { "border-left": "1px" } },
+          [_vm._v("Excluir")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "br-button circle primary small",
+          attrs: { type: "button", title: "Monitorar etapa" }
+        },
+        [_c("i", { staticClass: "fa fa-pen" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "br-button circle primary small",
+          attrs: { type: "button", title: "Monitorar etapa" }
+        },
+        [_c("i", { staticClass: "fa fa-times-circle" })]
+      )
     ])
   }
 ]
