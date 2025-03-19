@@ -87,7 +87,7 @@ class RevisaoIndicadorController extends Controller
         
         $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
 
-        return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao', compact('dadosIndicador', 'dadosRegionalizacao'));
+        return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao'));
     }
 
     /**

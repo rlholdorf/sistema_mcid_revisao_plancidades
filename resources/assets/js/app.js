@@ -488,8 +488,8 @@ Vue.component(
 );
 
 Vue.component(
-  "edita-revisao-indicador",
-  require("./components/mod_plancidades/revisao/objetivo_estrategico/EditaRevisaoIndicador.vue")
+  "editar-revisao-indicador",
+  require("./components/mod_plancidades/revisao/objetivo_estrategico/EditarRevisaoIndicador.vue")
 );
 
 // Revisão Projeto
@@ -500,8 +500,8 @@ Vue.component(
 );
 
 Vue.component(
-  "edita-revisao-projeto",
-  require("./components/mod_plancidades/revisao/projeto/EditaRevisaoProjeto.vue")
+  "editar-revisao-projeto",
+  require("./components/mod_plancidades/revisao/projeto/EditarRevisaoProjeto.vue")
 );
 
 

@@ -6,6 +6,7 @@ use App\Mod_plancidades\MetasIndicadoresObjetivosEstrategicos;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Mod_plancidades\IndicadoresObjetivosEstrategicos;
+use App\Mod_plancidades\EtapasProjeto;
 use App\Mod_plancidades\MetasObjetivosEstrategicos;
 use App\Mod_plancidades\MonitoramentoIndicadores;
 use App\Mod_plancidades\MonitoramentoIndicadoresObjEspecificos;
@@ -18,6 +19,7 @@ use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicos;
 use App\Mod_plancidades\ViewApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicosMetas;
 use App\Mod_plancidades\ViewMonitoramentoIndicadoresObjEstrategicos;
+use App\Mod_plancidades\ViewProjetos;
 use App\Mod_plancidades\ViewResumoApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewValidacaoMonitoramentoIndicadores;
 use Illuminate\Support\Facades\DB;
@@ -61,33 +63,14 @@ class RevisaoProjetoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($indicadorId)
+    public function create($projetoId)
     {   
-        $dadosIndicador = ViewIndicadoresObjetivosEstrategicosMetas::find($indicadorId);
+               
+        $dadosProjeto = ViewProjetos::where('projeto_id', $projetoId)->first();
 
-        switch ($dadosIndicador->unidade_medida_id){
-            case 1:
-                $dadosIndicador->unidade_medida_simbolo = '(R$)';
-                break;
-            case 2:
-                $dadosIndicador->unidade_medida_simbolo = '(%)';
-                break;
-            case 3:
-                $dadosIndicador->unidade_medida_simbolo = '(ADI)';
-                break;
-            case 4:
-                $dadosIndicador->unidade_medida_simbolo = '(m²)';
-                break;
-            case 5:
-                $dadosIndicador->unidade_medida_simbolo = '(UN)';
-                break;
-            default:
-                $dadosIndicador->unidade_medida_simbolo = '';
-        }
-        
-        $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
+        $dadosEtapas = EtapasProjeto::where('projeto_id', $projetoId)->get();
 
-        return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao', compact('dadosIndicador', 'dadosRegionalizacao'));
+        return view('modulo_plancidades.revisao.projeto.editar_revisao_projeto', compact('dadosProjeto', 'dadosEtapas'));
     }
 
     /**

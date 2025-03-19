@@ -28,18 +28,20 @@
         <p>
            Nesta página, você poderá visualizar todas as informações do indicador, suas metas e regionalizações (caso houver).
            <br>
-           Ao final da página, selecione a nova situação do monitoramento após análise, bem como registre eventuais necessidades de ajuste antes de salvar.
+           Ao lado de cada atributo, existe um campo para informar alterações que devam ser feitas no indicador.
+           <br>
+           Ao final da página, clique em Salvar Revisão para enviar para análise.
         </p>
         
         <hr>
         <form role="form" method="POST" action='{{ route("plancidades.revisao.objetivoEstrategico.salvar") }}'>
             @csrf
-            <edita-revisao-indicador 
+            <editar-revisao-indicador 
             :url="'{{ url('/') }}'"
             :dados-indicador="{{json_encode($dadosIndicador)}}"
             :dados-regionalizacao="{{json_encode($dadosRegionalizacao)}}"
             >
-            </edita-revisao-indicador>
+            </editar-revisao-indicador>
             <span class="br-divider sm my-3"></span>
         </form>
     </div>

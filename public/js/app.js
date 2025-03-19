@@ -14619,13 +14619,13 @@ Vue.component("altera-situacao-monitoramento-projeto", __webpack_require__(308))
 
 Vue.component("consulta-indicador-revisao", __webpack_require__(311));
 
-Vue.component("edita-revisao-indicador", __webpack_require__(314));
+Vue.component("editar-revisao-indicador", __webpack_require__(358));
 
 // Revisão Projeto
 
 Vue.component("consulta-projeto-revisao", __webpack_require__(349));
 
-Vue.component("edita-revisao-projeto", __webpack_require__(352));
+Vue.component("editar-revisao-projeto", __webpack_require__(355));
 
 //Transferegov - Programas
 Vue.component("registro-programa", __webpack_require__(317));
@@ -110937,1440 +110937,9 @@ if (false) {
 }
 
 /***/ }),
-/* 314 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(315)
-/* template */
-var __vue_template__ = __webpack_require__(316)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/objetivo_estrategico/EditaRevisaoIndicador.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7df3116e", Component.options)
-  } else {
-    hotAPI.reload("data-v-7df3116e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 315 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['url', 'dadosIndicador', 'dadosRegionalizacao'],
-    data: function data() {
-        return {
-            //----Campos Select
-            unidadesMedida: '',
-            unidadeMedida: '',
-            periodicidades: '',
-            periodicidade: '',
-            polaridades: '',
-            polaridade: '',
-
-            //----Textos de Escolhas
-            textoEscolhaUnidadeMedida: "Escolha uma nova Unidade de Medida:",
-            textoEscolhaPeriodicidade: "Escolha uma nova Periodicidade:",
-            textoEscolhaPolaridade: "Escolha uma nova Polaridade:"
-        };
-    },
-
-    methods: {},
-    mounted: function mounted() {
-        var _this = this;
-
-        axios.get(this.url + '/api/plancidades/unidadesMedida').then(function (resposta) {
-            _this.unidadesMedida = resposta.data;
-        }).catch(function (error) {
-            console.log(error);
-        });
-
-        axios.get(this.url + '/api/plancidades/periodicidades').then(function (resposta) {
-            _this.periodicidades = resposta.data;
-        }).catch(function (error) {
-            console.log(error);
-        });
-
-        axios.get(this.url + '/api/plancidades/polaridades').then(function (resposta) {
-            _this.polaridades = resposta.data;
-        }).catch(function (error) {
-            console.log(error);
-        });
-    }
-});
-
-/***/ }),
-/* 316 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "form-group" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "txt_denominacao_indicador" } }, [
-            _vm._v("Denominação do Indicador")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.txt_denominacao_indicador)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "dsc_indicador" } }, [
-            _vm._v("Descrição do Indicador")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: { textContent: _vm._s(_vm.dadosIndicador.dsc_indicador) }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(2)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "txt_sigla_indicador" } }, [
-            _vm._v("Sigla do Indicador")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.txt_sigla_indicador)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(3)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "vlr_indice_referencia" } }, [
-            _vm._v("Valor de Referência")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.vlr_indice_referencia)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(4)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "txt_unidade_medida" } }, [
-            _vm._v("Unidade de Medida")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.txt_unidade_medida)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-          _c("label", [_vm._v("Nova Unidade de Medida")]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.unidadeMedida,
-                  expression: "unidadeMedida"
-                }
-              ],
-              staticClass: "form-select br-select",
-              attrs: {
-                id: "txt_unidade_medida_nova",
-                name: "txt_unidade_medida_nova"
-              },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.unidadeMedida = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
-              }
-            },
-            [
-              _c("option", {
-                attrs: { value: "" },
-                domProps: { textContent: _vm._s(_vm.textoEscolhaUnidadeMedida) }
-              }),
-              _vm._v(" "),
-              _vm._l(_vm.unidadesMedida, function(item) {
-                return _c("option", {
-                  key: item.id,
-                  domProps: {
-                    value: item.txt_unidade_medida,
-                    textContent: _vm._s(item.txt_unidade_medida)
-                  }
-                })
-              })
-            ],
-            2
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c(
-            "label",
-            { attrs: { for: "txt_data_divulgacao_ou_disponibilizacao" } },
-            [_vm._v("Data de Divulgação ou Disponibilidade")]
-          ),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(
-                _vm.dadosIndicador.txt_data_divulgacao_ou_disponibilizacao
-              )
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(5)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "dsc_periodicidades" } }, [
-            _vm._v("Periodicidade")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.dsc_periodicidades)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-          _c("label", [_vm._v("Nova Periodicidade")]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.periodicidade,
-                  expression: "periodicidade"
-                }
-              ],
-              staticClass: "form-select br-select",
-              attrs: {
-                id: "dsc_periodicidades_nova",
-                name: "dsc_periodicidades_nova"
-              },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.periodicidade = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
-              }
-            },
-            [
-              _c("option", {
-                attrs: { value: "" },
-                domProps: { textContent: _vm._s(_vm.textoEscolhaPeriodicidade) }
-              }),
-              _vm._v(" "),
-              _vm._l(_vm.periodicidades, function(item) {
-                return _c("option", {
-                  key: item.id,
-                  domProps: {
-                    value: item.dsc_periodicidades,
-                    textContent: _vm._s(item.dsc_periodicidades)
-                  }
-                })
-              })
-            ],
-            2
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "txt_polaridade" } }, [
-            _vm._v("Polaridade do Indicador")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: { textContent: _vm._s(_vm.dadosIndicador.txt_polaridade) }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-          _c("label", [_vm._v("Nova Polaridade do Indicador")]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.polaridade,
-                  expression: "polaridade"
-                }
-              ],
-              staticClass: "form-select br-select",
-              attrs: { id: "txt_polaridade_nova", name: "txt_polaridade_nova" },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.polaridade = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
-              }
-            },
-            [
-              _c("option", {
-                attrs: { value: "" },
-                domProps: { textContent: _vm._s(_vm.textoEscolhaPolaridade) }
-              }),
-              _vm._v(" "),
-              _vm._l(_vm.polaridades, function(item) {
-                return _c("option", {
-                  key: item.id,
-                  domProps: {
-                    value: item.txt_polaridade,
-                    textContent: _vm._s(item.txt_polaridade)
-                  }
-                })
-              })
-            ],
-            2
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "txt_formula_calculo" } }, [
-            _vm._v("Fórmula de Cálculo do Indicador")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.txt_formula_calculo)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(6)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "txt_fonte_dados_variaveis_calculo" } }, [
-            _vm._v("Fonte de Dados das Variáveis do Indicador")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(
-                _vm.dadosIndicador.txt_fonte_dados_variaveis_calculo
-              )
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(7)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "txt_forma_disponibilizacao" } }, [
-            _vm._v("Forma de Disponibilização do Indicador")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.txt_forma_disponibilizacao)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(8)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "dsc_procedimento_calculo" } }, [
-            _vm._v("Procedimento de Cálculo do Indicador")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.dsc_procedimento_calculo)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(9)
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _vm._m(10),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "txt_dsc_meta" } }, [
-            _vm._v("Denominação da Meta")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: { textContent: _vm._s(_vm.dadosIndicador.txt_dsc_meta) }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(11)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "bln_meta_cumulativa" } }, [
-            _vm._v("Cumulatividade da Meta")
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(
-                _vm.dadosIndicador.bln_meta_cumulativa ? "Sim" : "Não"
-              )
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-          _c("label", [_vm._v("Nova Cumulatividade da Meta")]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.cumulatividade,
-                  expression: "cumulatividade"
-                }
-              ],
-              staticClass: "form-select br-select",
-              attrs: {
-                id: "bln_meta_cumulativa_nova",
-                name: "bln_meta_cumulativa_nova"
-              },
-              on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.cumulatividade = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                }
-              }
-            },
-            [
-              _c("option", [_vm._v("Sim")]),
-              _vm._v(" "),
-              _c("option", [_vm._v("Não")])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "vlr_esperado_ano_2" } }, [
-            _vm._v(
-              "Meta para 2025 " +
-                _vm._s(_vm.dadosIndicador.unidade_medida_simbolo)
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.vlr_esperado_ano_2)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-          _c("label", [
-            _vm._v(
-              "Nova Meta para 2025 " +
-                _vm._s(_vm.dadosIndicador.unidade_medida_simbolo)
-            )
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.number",
-                value: _vm.vlr_esperado_ano_2_nova,
-                expression: "vlr_esperado_ano_2_nova",
-                modifiers: { number: true }
-              }
-            ],
-            attrs: {
-              id: "vlr_esperado_ano_2_nova",
-              type: "number",
-              name: "vlr_esperado_ano_2_nova",
-              step: "0.01"
-            },
-            domProps: { value: _vm.vlr_esperado_ano_2_nova },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.vlr_esperado_ano_2_nova = _vm._n($event.target.value)
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "vlr_esperado_ano_3" } }, [
-            _vm._v(
-              "Meta para 2026 " +
-                _vm._s(_vm.dadosIndicador.unidade_medida_simbolo)
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(_vm.dadosIndicador.vlr_esperado_ano_3)
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-          _c("label", [
-            _vm._v(
-              "Nova Meta para 2026 " +
-                _vm._s(_vm.dadosIndicador.unidade_medida_simbolo)
-            )
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.number",
-                value: _vm.vlr_esperado_ano_3_nova,
-                expression: "vlr_esperado_ano_3_nova",
-                modifiers: { number: true }
-              }
-            ],
-            attrs: {
-              id: "vlr_esperado_ano_3_nova",
-              type: "number",
-              name: "vlr_esperado_ano_3_nova",
-              step: "0.01"
-            },
-            domProps: { value: _vm.vlr_esperado_ano_3_nova },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.vlr_esperado_ano_3_nova = _vm._n($event.target.value)
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "vlr_meta_final_cenario_atual" } }, [
-            _vm._v(
-              "Meta para 2027 " +
-                _vm._s(_vm.dadosIndicador.unidade_medida_simbolo)
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", {
-            domProps: {
-              textContent: _vm._s(
-                _vm.dadosIndicador.vlr_meta_final_cenario_atual
-              )
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-          _c("label", [
-            _vm._v(
-              "Nova Meta para 2027 " +
-                _vm._s(_vm.dadosIndicador.unidade_medida_simbolo)
-            )
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.number",
-                value: _vm.vlr_meta_final_cenario_atual_nova,
-                expression: "vlr_meta_final_cenario_atual_nova",
-                modifiers: { number: true }
-              }
-            ],
-            attrs: {
-              id: "vlr_meta_final_cenario_atual_nova",
-              type: "number",
-              name: "vlr_meta_final_cenario_atual_nova",
-              step: "0.01"
-            },
-            domProps: { value: _vm.vlr_meta_final_cenario_atual_nova },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.vlr_meta_final_cenario_atual_nova = _vm._n(
-                  $event.target.value
-                )
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "mt-5" }, [
-        _vm._m(12),
-        _vm._v(" "),
-        _c("div", { staticClass: "table-responsive mt-3" }, [
-          _c("table", [
-            _vm._m(13),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.dadosRegionalizacao, function(item, index) {
-                return _c("tr", [
-                  _c("td", [_vm._v(_vm._s(index + 1))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      _vm._s(item.txt_sigla_objetivos_estrategicos_metas_region)
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _vm._v(_vm._s(item.vlr_esperado_ano_2))
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(14, true),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _vm._v(_vm._s(item.vlr_esperado_ano_3))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model.number",
-                          value: item.vlr_esperado_ano_3_nova,
-                          expression: "item.vlr_esperado_ano_3_nova",
-                          modifiers: { number: true }
-                        }
-                      ],
-                      attrs: {
-                        id: "vlr_esperado_ano_3_nova",
-                        type: "number",
-                        name: "vlr_esperado_ano_3_nova",
-                        step: "0.01"
-                      },
-                      domProps: { value: item.vlr_esperado_ano_3_nova },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            item,
-                            "vlr_esperado_ano_3_nova",
-                            _vm._n($event.target.value)
-                          )
-                        },
-                        blur: function($event) {
-                          return _vm.$forceUpdate()
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _vm._v(_vm._s(item.vlr_meta_final_cenario_alternativo))
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model.number",
-                          value: item.vlr_meta_final_cenario_alternativo_nova,
-                          expression:
-                            "item.vlr_meta_final_cenario_alternativo_nova",
-                          modifiers: { number: true }
-                        }
-                      ],
-                      attrs: {
-                        id: "vlr_meta_final_cenario_alternativo_nova",
-                        type: "number",
-                        name: "vlr_meta_final_cenario_alternativo_nova",
-                        step: "0.01"
-                      },
-                      domProps: {
-                        value: item.vlr_meta_final_cenario_alternativo_nova
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            item,
-                            "vlr_meta_final_cenario_alternativo_nova",
-                            _vm._n($event.target.value)
-                          )
-                        },
-                        blur: function($event) {
-                          return _vm.$forceUpdate()
-                        }
-                      }
-                    })
-                  ])
-                ])
-              }),
-              0
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col col-xs-12 col-sm-12" }, [
-          _c("div", { staticClass: "p-3 text-right" }, [
-            _c(
-              "button",
-              {
-                staticClass: "br-button primary mr-3",
-                attrs: { type: "submit", name: "salvar_revisão", value: true }
-              },
-              [_vm._v("Salvar Revisão\n                    ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "br-button danger mr-3",
-                attrs: {
-                  type: "button",
-                  href:
-                    this.url +
-                    "/plancidades/revisao/objetivo_estrategico/consulta"
-                }
-              },
-              [_vm._v("Voltar\n                    ")]
-            )
-          ])
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "text-center" }, [
-      _c("b", [_vm._v("Detalhamento do Indicador")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Nova Denominação do Indicador")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "txt_denominacao_indicador_nova",
-          name: "txt_denominacao_indicador_nova",
-          rows: "2"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Nova Descrição do Indicador")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "dsc_indicador_nova",
-          name: "dsc_indicador_nova",
-          rows: "5"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Nova Sigla do Indicador")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "txt_sigla_indicador_nova",
-          name: "txt_sigla_indicador_nova",
-          rows: "1"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Novo Valor de Referência")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "vlr_indice_referencia_nova",
-          name: "vlr_indice_referencia_nova",
-          rows: "1"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Novo Data de Divulgação ou Disponibilidade")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "txt_data_divulgacao_ou_disponibilizacao_nova",
-          name: "txt_data_divulgacao_ou_disponibilizacao_nova",
-          rows: "1"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Nova Fórmula de Cálculo do Indicador")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "txt_formula_calculo_nova",
-          name: "txt_formula_calculo_nova",
-          rows: "5"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Nova Fonte de Dados das Variáveis do Indicador")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "txt_fonte_dados_variaveis_calculo_nova",
-          name: "txt_fonte_dados_variaveis_calculo_nova",
-          rows: "5"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Nova Forma de Disponibilização do Indicador")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "txt_forma_disponibilizacao_nova",
-          name: "txt_forma_disponibilizacao_nova",
-          rows: "5"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Nova Procedimento de Cálculo do Indicador")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: {
-          id: "dsc_procedimento_calculo_nova",
-          name: "dsc_procedimento_calculo_nova",
-          rows: "5"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "text-center" }, [
-      _c("b", [_vm._v("Detalhamento da Meta do Indicador")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
-      _c("label", [_vm._v("Nova Denominação da Meta")]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "input-medium",
-        attrs: { id: "txt_dsc_meta_nova", name: "txt_dsc_meta_nova", rows: "2" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("span", { staticClass: "fs-5 fw-bold" }, [
-        _vm._v("Metas Regionalizadas")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Região")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Meta para 2025")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [
-          _vm._v("Nova Meta para 2025")
-        ]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Meta para 2026")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [
-          _vm._v("Nova Meta para 2026")
-        ]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [_vm._v("Meta para 2027")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center" }, [
-          _vm._v("Nova Meta para 2027")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "text-center" }, [
-      _c("input", {
-        staticStyle: { width: "150px" },
-        attrs: {
-          id: "vlr_esperado_ano_2_nova",
-          type: "number",
-          ame: "vlr_esperado_ano_2_nova",
-          step: "0.01"
-        }
-      })
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7df3116e", module.exports)
-  }
-}
-
-/***/ }),
+/* 314 */,
+/* 315 */,
+/* 316 */,
 /* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -118027,15 +116596,18 @@ if (false) {
 }
 
 /***/ }),
-/* 352 */
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(353)
+var __vue_script__ = __webpack_require__(356)
 /* template */
-var __vue_template__ = __webpack_require__(354)
+var __vue_template__ = __webpack_require__(357)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -118052,7 +116624,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/projeto/EditaRevisaoProjeto.vue"
+Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/projeto/EditarRevisaoProjeto.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -118061,9 +116633,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3c57761c", Component.options)
+    hotAPI.createRecord("data-v-6f3ab000", Component.options)
   } else {
-    hotAPI.reload("data-v-3c57761c", Component.options)
+    hotAPI.reload("data-v-6f3ab000", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -118074,7 +116646,819 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 353 */
+/* 356 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['url', 'dadosProjeto', 'dadosEtapas'],
+    data: function data() {
+        return {
+            //----Campos Select
+            objetivosEstrategicos: '',
+            objetivoEstrategico: '',
+            unidadesResponsaveis: '',
+            unidadeResponsavel: '',
+            periodicidades: '',
+            periodicidade: '',
+            polaridades: '',
+            polaridade: '',
+
+            //----Textos de Escolhas
+            textoEscolhaObjetivoEstrategico: "Escolha um novo Objetivo Estratégico",
+            textoEscolhaUnidadeResponsavel: "Escolha uma nova Unidade Responsável:",
+            textoEscolhaPeriodicidade: "Escolha uma nova Periodicidade:",
+            textoEscolhaPolaridade: "Escolha uma nova Polaridade:"
+        };
+    },
+
+    methods: {},
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(this.url + '/api/plancidades/objetivosEstrategicos').then(function (resposta) {
+            _this.objetivosEstrategicos = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        axios.get(this.url + '/api/plancidades/unidadesResponsaveis').then(function (resposta) {
+            _this.unidadesResponsaveis = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        axios.get(this.url + '/api/plancidades/periodicidades').then(function (resposta) {
+            _this.periodicidades = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        axios.get(this.url + '/api/plancidades/polaridades').then(function (resposta) {
+            _this.polaridades = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+});
+
+/***/ }),
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "form-group" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_enunciado_projeto" } }, [
+            _vm._v("Enunciado do Projeto")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosProjeto.txt_enunciado_projeto)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_objetivo_projeto" } }, [
+            _vm._v("Objetivo do Projeto")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosProjeto.dsc_objetivo_projeto)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c(
+            "label",
+            { attrs: { for: "txt_titulo_objetivo_estrategico_pei" } },
+            [_vm._v("Objetivo Estratégico Vinculado")]
+          ),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosProjeto.txt_titulo_objetivo_estrategico_pei
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Objetivo Estratégico Vinculado")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.objetivoEstrategico,
+                  expression: "objetivoEstrategico"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "txt_titulo_objetivo_estrategico_pei_nova",
+                name: "txt_titulo_objetivo_estrategico_pei_nova"
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.objetivoEstrategico = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: {
+                  textContent: _vm._s(_vm.textoEscolhaObjetivoEstrategico)
+                }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.objetivosEstrategicos, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.txt_titulo_objetivo_estrategico_pei,
+                    textContent: _vm._s(
+                      item.txt_titulo_objetivo_estrategico_pei
+                    )
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_unidade_responsavel" } }, [
+            _vm._v("Unidade Responsável")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosProjeto.txt_unidade_responsavel)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Unidade Responsável")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.unidadeResponsavel,
+                  expression: "unidadeResponsavel"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "txt_unidade_responsavel_nova",
+                name: "txt_unidade_responsavel_nova"
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.unidadeResponsavel = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: {
+                  textContent: _vm._s(_vm.textoEscolhaUnidadeResponsavel)
+                }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.unidadesResponsaveis, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.txt_unidade_responsavel,
+                    textContent: _vm._s(item.txt_unidade_responsavel)
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "bln_ppa" } }, [
+            _vm._v("É Medida Institucional e Normativa do PPA?")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosProjeto.bln_ppa ? "Sim" : "Não")
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v(
+              "Nova identificação de Medida Institucional e Normativa do PPA"
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.boleanoppa,
+                  expression: "boleanoppa"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: { id: "bln_ppa_nova", name: "bln_ppa_nova" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.boleanoppa = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", [_vm._v("Sim")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("Não")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.dadosProjeto.bln_ppa
+        ? _c("div", { staticClass: "row mt-3" }, [
+            _c("div", { staticClass: "column col-6 col-xs-12" }, [
+              _c("label", { attrs: { for: "dsc_min_ppa" } }, [
+                _vm._v("Descrição da MIN PPA")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.dadosProjeto.dsc_min_ppa) }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(3)
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_beneficios" } }, [
+            _vm._v("Benefícios do Projeto")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.dadosProjeto.dsc_beneficios) }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(4)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_premissas" } }, [
+            _vm._v("Premissas do Projeto")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.dadosProjeto.dsc_premissas) }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(5)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_restricoes" } }, [
+            _vm._v("Restrições do Projeto")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.dadosProjeto.dsc_restricoes) }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(6)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", [_vm._v("Patrocinador(a) do Projeto")]),
+          _vm._v(" "),
+          _c("p", {
+            staticClass: "mt-2",
+            domProps: {
+              textContent: _vm._s(
+                "Nome: " + _vm.dadosProjeto.dsc_nome_patrocinador
+              )
+            }
+          }),
+          _vm._v(" "),
+          _c("p", {
+            staticClass: "mt-4",
+            domProps: {
+              textContent: _vm._s("Cargo: " + _vm.dadosProjeto.dsc_cargo)
+            }
+          }),
+          _vm._v(" "),
+          _c("p", {
+            staticClass: "mt-4",
+            domProps: {
+              textContent: _vm._s(
+                "Unidade: " +
+                  _vm.dadosProjeto.txt_unidade_responsavel_patrocinador
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(7)
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(8),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col col-xs-12 col-sm-12" }, [
+          _c("div", { staticClass: "p-3 text-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "br-button primary mr-3",
+                attrs: { type: "submit", name: "salvar_revisão", value: true }
+              },
+              [_vm._v("Salvar Revisão\n                        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "br-button danger mr-3",
+                attrs: {
+                  type: "button",
+                  href: this.url + "/plancidades/revisao/projeto/consulta"
+                }
+              },
+              [_vm._v("Voltar\n                        ")]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Detalhamento do Projeto")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+      _c("label", [_vm._v("Novo Enunciado do Projeto")]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: {
+          id: "txt_enunciado_projeto_nova",
+          name: "txt_enunciado_projeto_nova",
+          rows: "2"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+      _c("label", [_vm._v("Novo Objetivo do Projeto")]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: {
+          id: "dsc_objetivo_projeto_nova",
+          name: "dsc_objetivo_projeto_nova",
+          rows: "5"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+      _c("label", [_vm._v("Nova Descrição da MIN PPA")]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: { id: "dsc_min_ppa_nova", name: "dsc_min_ppa_nova", rows: "2" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+      _c("label", [_vm._v("Nova Descrição de Benefícios do Projeto")]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: {
+          id: "dsc_beneficios_nova",
+          name: "dsc_beneficios_nova",
+          rows: "5"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+      _c("label", [_vm._v("Nova Descrição de Premissas do Projeto")]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: {
+          id: "dsc_premissas_nova",
+          name: "dsc_premissas_nova",
+          rows: "2"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+      _c("label", [_vm._v("Nova Descrição de Restrições do Projeto")]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: {
+          id: "dsc_restricoes_nova",
+          name: "dsc_restricoes_nova",
+          rows: "2"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+      _c("label", [_vm._v("Novo(a) Patrocinador(a) do Projeto")]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: {
+          id: "dsc_nome_patrocinador_nova",
+          name: "dsc_nome_patrocinador_nova",
+          placeholder: "Escreva o novo nome...",
+          rows: "1"
+        }
+      }),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: {
+          id: "dsc_cargo_nova",
+          name: "dsc_cargo_nova",
+          placeholder: "Escreva o cargo do novo patrocinador...",
+          rows: "1"
+        }
+      }),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "input-medium",
+        attrs: {
+          id: "txt_unidade_responsavel_patrocinador_nova",
+          name: "txt_unidade_responsavel_patrocinador_nova",
+          rows: "1"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Detalhamento das Etapas")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6f3ab000", module.exports)
+  }
+}
+
+/***/ }),
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(359)
+/* template */
+var __vue_template__ = __webpack_require__(360)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/objetivo_estrategico/EditarRevisaoIndicador.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d2213388", Component.options)
+  } else {
+    hotAPI.reload("data-v-d2213388", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 359 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -118447,7 +117831,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 354 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -119456,7 +118840,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3c57761c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-d2213388", module.exports)
   }
 }
 

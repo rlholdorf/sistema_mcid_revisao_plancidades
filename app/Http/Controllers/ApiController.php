@@ -884,7 +884,7 @@ class ApiController extends Controller
     public function buscarObjetivosEstrategicos()
     {
 
-        return ObjetivosEstrategicos::has('indicador')->orderBy('txt_titulo_objetivo_estrategico_pei')->get();
+        return ObjetivosEstrategicos::orderBy('txt_titulo_objetivo_estrategico_pei')->get();
     }
 
     public function buscarProjetosObjetivosEstrategicos($objetivoEstrategicoId, $orgaoResponsavelId)

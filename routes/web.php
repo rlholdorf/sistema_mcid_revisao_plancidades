@@ -615,7 +615,7 @@ Route::post('/plancidades/revisao/objetivo_estrategico/salvar', 'Mod_plancidades
 //--Informações Básicas (indicadores e metas)--//
 Route::get('/plancidades/revisao/projeto/consulta', 'Mod_plancidades\RevisaoProjetoController@consultarProjetos')->name('plancidades.revisao.projeto.consultar');
 Route::get('/plancidades/revisao/projeto/indicadores', 'Mod_plancidades\RevisaoController@listarProjetos')->name('plancidades.revisao.projeto.listarProjetos');
-// Route::get('/plancidades/revisao/objetivo_estrategico/{indicadorId}/criar', 'Mod_plancidades\RevisaoIndicadorController@create')->name('plancidades.revisao.objetivoEstrategico.iniciarRevisao');
+Route::get('/plancidades/revisao/projeto/{projetoId}/criar', 'Mod_plancidades\RevisaoProjetoController@create')->name('plancidades.revisao.projeto.iniciarRevisao');
 // Route::post('/plancidades/revisao/objetivo_estrategico/salvar', 'Mod_plancidades\RevisaoIndicadorController@teste')->name('plancidades.revisao.objetivoEstrategico.salvar');
 
 

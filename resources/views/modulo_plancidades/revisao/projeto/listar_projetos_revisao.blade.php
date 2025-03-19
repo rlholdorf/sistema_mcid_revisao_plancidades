@@ -59,7 +59,7 @@
                       <!-- <td class="text-center">{{ ($projeto->monitoramento_created_at != null) ? ($projeto->periodo_ultimo_monitoramento) : 'Não monitorado'  }}</td>
                       <td class="text-center">{{ ($projeto->txt_situacao_monitoramento != null) ? ($projeto->txt_situacao_monitoramento) : ''  }}</td> -->
                       <td class="text-center acao"><a class="br-button circle primary small"
-                          href='{{ route("plancidades.revisao.objetivoEstrategico.iniciarRevisao", ['projetoId' =>$projeto->id]) }}'><i
+                          href='{{ route("plancidades.revisao.projeto.iniciarRevisao", ['projetoId' =>$projeto->projeto_id]) }}'><i
                               class="fas fa-plus"></i></a></td>
                     </tr>
                 @endforeach
