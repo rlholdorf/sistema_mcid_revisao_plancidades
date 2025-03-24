@@ -46,18 +46,16 @@ class RevisaoIndicadorController extends Controller
      */
     public function index($indicadorId)
     {
-        $revisoes = RevisaoIndicadores::where('indicador_objetivo_estrategico_id', $indicadorId)
-        ->orderBy('revisao_indicador_id', 'DESC')
+        $monitoramentos = ViewMonitoramentoIndicadoresObjEstrategicos::where('view_monitoramento_indicadores.indicador_objetivo_estrategico_id', $indicadorId)
+        ->orderBy('view_monitoramento_indicadores.monitoramento_indicador_id', 'DESC')
         // ->leftJoin('mcid_plancidades.view_validacao_monitoramento_indicadores','view_validacao_monitoramento_indicadores.monitoramento_indicador_id','=','view_monitoramento_indicadores.monitoramento_indicador_id')
         // ->select('view_monitoramento_indicadores.*','view_validacao_monitoramento_indicadores.situacao_monitoramento_id','view_validacao_monitoramento_indicadores.txt_situacao_monitoramento')
-        ->get();
+        ->get(); //criar view para poder consultar as revisões passadas...
 
-        return ($revisoes);
-
-        if(count($revisoes) > 0){
-            return view("modulo_plancidades.revisao.objetivo_estrategico.listar_revisoes_indicador", compact('revisoes'));
+        if(count($monitoramentos) > 0){
+            return view("modulo_plancidades.objetivo_estrategico.listar_monitoramentos_indicador", compact('monitoramentos'));
         }else{
-            flash()->erro("Erro", "Nenhuma revisao encontrada...");
+            flash()->erro("Erro", "Nenhum monitoramento encontrado...");
             return back();
         }
     }
