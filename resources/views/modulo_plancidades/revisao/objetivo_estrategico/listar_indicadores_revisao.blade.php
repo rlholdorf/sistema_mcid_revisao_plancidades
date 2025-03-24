@@ -30,7 +30,7 @@
                             <!-- <th class="text-center ">Última Revisão</th>
                             <th class="text-center ">Situação da Revisão</th> -->
                             <th class="text-center acao">Nova Revisão</th>
-                            <!-- <th class="text-center acao">Exibir Anteriores</th> -->
+                            <th class="text-center acao">Exibir Anteriores</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,9 +45,9 @@
                                 <td class="text-center acao"><a class="br-button circle primary small"
                                     href='{{ route("plancidades.revisao.objetivoEstrategico.iniciarRevisao", ['indicadorId' =>$indicador->id]) }}'><i
                                         class="fas fa-plus"></i></a></td>
-                                <!-- <td class="text-center acao"><a class="br-button circle primary small"
-                                    href='{{ route('plancidades.monitoramentos.objetivoEstrategico.listarMonitoramentos', ['indicadorId' => $indicador->id]) }}'><i
-                                        class="fas fa-eye"></i></a></td> -->
+                                <td class="text-center acao"><a class="br-button circle primary small"
+                                    href='{{ route('plancidades.revisao.objetivoEstrategico.listarRevisoes', ['indicadorId' => $indicador->id]) }}'><i
+                                        class="fas fa-eye"></i></a></td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -17,7 +17,7 @@
                     class="form-select br-select" 
                     name="objetivoEstrategico" 
                     :disabled="orgaoResponsavel == '' || this.editando=='true'"
-                    @change="onChangeObjetivoEstrategico" v-model="objetivoEstrategico">
+                    v-model="objetivoEstrategico">
                     <option value="">{{this.textoEscolhaObjetivo}}</option>
                     <option v-for="item in objetivosEstrategicos" v-text="item.txt_titulo_objetivo_estrategico_pei" :value="item.id"
                         :key="item.id"></option>

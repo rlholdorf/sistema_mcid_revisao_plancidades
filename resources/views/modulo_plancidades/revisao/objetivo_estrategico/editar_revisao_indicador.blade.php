@@ -34,12 +34,13 @@
         </p>
         
         <hr>
-        <form role="form" method="POST" action='{{ route("plancidades.revisao.objetivoEstrategico.salvar") }}'>
+        <form role="form" method="POST" action='{{ route("plancidades.revisao.objetivoEstrategico.atualizar",['revisaoId'=> $revisaoCadastrada->revisao_indicador_id]) }}'>
             @csrf
             <editar-revisao-indicador 
             :url="'{{ url('/') }}'"
             :dados-indicador="{{json_encode($dadosIndicador)}}"
             :dados-regionalizacao="{{json_encode($dadosRegionalizacao)}}"
+            :revisao-cadastrada="{{json_encode($revisaoCadastrada)}}"
             >
             </editar-revisao-indicador>
             <span class="br-divider sm my-3"></span>

@@ -10,8 +10,10 @@ use App\Mod_plancidades\MetasObjetivosEstrategicos;
 use App\Mod_plancidades\MonitoramentoIndicadores;
 use App\Mod_plancidades\MonitoramentoIndicadoresObjEspecificos;
 use App\Mod_plancidades\RegionalizacaoMetaObjEstr;
+use App\Mod_plancidades\RevisaoIndicadores;
 use App\Mod_plancidades\RlcMonitoramentoObjEspecificos;
 use App\Mod_plancidades\RlcRestricaoMetaMonitoramentoIndic;
+use App\Mod_plancidades\RlcSituacaoRevisaoIndicadores;
 use App\Mod_plancidades\ViewApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewMonitoramentoIndicadoresObjEstrategicos;
 use App\Mod_plancidades\ViewProjetos;
@@ -132,8 +134,6 @@ class RevisaoController extends Controller
         //     ->where($where)->orderBy('txt_titulo_objetivo_estrategico_pei')->get();
 
         $indicadores = ViewIndicadoresObjetivosEstrategicos::where($where)->orderBy('txt_titulo_objetivo_estrategico_pei')->get();
-
-        // return ($indicadores);
 
         if(count($indicadores) > 0){
             return view("modulo_plancidades.revisao.objetivo_estrategico.listar_indicadores_revisao", compact('indicadores'));

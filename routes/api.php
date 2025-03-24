@@ -264,6 +264,8 @@ Route::get('/plancidades/monitoramentos/iniciativa/validar_periodo_monitoramento
 Route::get('/plancidades/monitoramentos/indicador/validar_periodo_monitoramento/{indicadorId}/{anoMonitoramentoId}/{periodoMonitoramentoId}', 'ApiController@validarPeriodoMonitoramentoIndicador');
 Route::get('/plancidades/monitoramentos/projeto/validar_periodo_monitoramento/{projetoId}/{anoMonitoramentoId}/{periodoMonitoramentoId}', 'ApiController@validarPeriodoMonitoramentoProjeto');
 
+Route::get('/plancidades/revisao/indicador/validar_periodo_revisao/{indicadorId}/{anoRevisaoId}/{periodoRevisaoId}', 'ApiController@validarPeriodoRevisaoIndicador');
+
 //Polaridades
 Route::get('/plancidades/polaridades', 'ApiController@buscarPolaridades');
 

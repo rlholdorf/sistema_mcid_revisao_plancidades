@@ -4,6 +4,9 @@
             <p class="text-center"><b>Detalhamento do Indicador</b></p>
             <div class="row mt-3">
                 <div class="column col-6 col-xs-12">
+                    <input type="hidden" id="indicador_objetivo_estrategico_id" name="indicador_objetivo_estrategico_id" :value="dadosIndicador.id">
+                    <input type="hidden" id="meta_indicador_objetivo_estrategico_id" name="meta_indicador_objetivo_estrategico_id" :value="dadosIndicador.objetivo_estrategico_meta_id">
+                    <input type="hidden" id="revisao_indicador_id" name="revisao_indicador_id" :value="revisaoCadastrada.revisao_indicador_id">
                     <label for="txt_denominacao_indicador">Denominação do Indicador</label>
                     <p v-text="dadosIndicador.txt_denominacao_indicador"></p>
                 </div>
@@ -63,9 +66,9 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Unidade de Medida</label>
                         <select id="txt_unidade_medida_nova" class="form-select br-select" name="txt_unidade_medida_nova"
-                        v-model="unidadeMedida">
+                        @change="onChangeUnidadeMedida" v-model="unidadeMedida">
                             <option value="" v-text="textoEscolhaUnidadeMedida"></option>
-                            <option v-for="item in unidadesMedida" v-text="item.txt_unidade_medida" :value="item.txt_unidade_medida"
+                            <option v-for="item in unidadesMedida" v-text="item.txt_unidade_medida" :value="item.id"
                                 :key="item.id"></option>
                         </select>
                 </div>
@@ -92,10 +95,10 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Periodicidade</label>
-                        <select id="dsc_periodicidades_nova" class="form-select br-select" name="dsc_periodicidades_nova"
+                        <select id="periodicidades_id_nova" class="form-select br-select" name="periodicidades_id_nova"
                         v-model="periodicidade">
                             <option value="" v-text="textoEscolhaPeriodicidade"></option>
-                            <option v-for="item in periodicidades" v-text="item.dsc_periodicidades" :value="item.dsc_periodicidades"
+                            <option v-for="item in periodicidades" v-text="item.dsc_periodicidades" :value="item.id"
                                 :key="item.id"></option>
                         </select>
                 </div>
@@ -109,10 +112,10 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Polaridade do Indicador</label>
-                    <select id="txt_polaridade_nova" class="form-select br-select" name="txt_polaridade_nova"
+                    <select id="polaridades_id_nova" class="form-select br-select" name="polaridades_id_nova"
                     v-model="polaridade">
                         <option value="" v-text="textoEscolhaPolaridade"></option>
-                        <option v-for="item in polaridades" v-text="item.txt_polaridade" :value="item.txt_polaridade"
+                        <option v-for="item in polaridades" v-text="item.txt_polaridade" :value="item.id"
                             :key="item.id"></option>
                     </select>
                 </div>
@@ -194,28 +197,28 @@
         
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Cumulatividade da Meta</label>
-                    <select id="bln_meta_cumulativa_nova" class="form-select br-select" name="bln_meta_cumulativa_nova"
-                    v-model="cumulatividade"><!-- Ajustar Select, pois está errado -->
-                    <option>Sim</option><!-- Ajustar Select, pois está errado -->
-                    <option>Não</option><!-- Ajustar Select, pois está errado -->
+                    <select id="bln_meta_cumulativa_nova" class="form-select br-select" name="bln_meta_cumulativa_nova">
+                    <option value="">Selecione se a meta é ou não cumulativa</option>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
                     </select>
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class="column col-6 col-xs-12">
-                    <label for="vlr_esperado_ano_2">Meta para 2025 {{dadosIndicador.unidade_medida_simbolo}}</label> <!--Faria sentido ter um OnChange para, se selecionado outro tipo de Unidade de Medida acima.-->
+                    <label for="vlr_esperado_ano_2">Meta para 2025 {{dadosIndicador.unidade_medida_simbolo}}</label>
                     <p v-text="dadosIndicador.vlr_esperado_ano_2"></p>
                 </div>
             
                 <div class="column col-6 col-xs-12 br-textarea">
-                    <label>Nova Meta para 2025 {{dadosIndicador.unidade_medida_simbolo}}</label>
+                    <label>Nova Meta para 2025 {{novaUnidadeMedida}}</label>  <!--Faria sentido ter um OnChange para, se selecionado outro tipo de Unidade de Medida acima.-->
                     <br>
                     <input id="vlr_esperado_ano_2_nova" 
                     type="number" 
                     name="vlr_esperado_ano_2_nova"
                     step="0.01"
-                    v-model.number="vlr_esperado_ano_2_nova">
+                    >
                 </div>
             </div>    
 
@@ -226,13 +229,13 @@
                 </div>
             
                 <div class="column col-6 col-xs-12 br-textarea">
-                    <label>Nova Meta para 2026 {{dadosIndicador.unidade_medida_simbolo}}</label>
+                    <label>Nova Meta para 2026 {{novaUnidadeMedida}}</label>
                     <br>
                     <input id="vlr_esperado_ano_3_nova" 
                     type="number" 
                     name="vlr_esperado_ano_3_nova"
                     step="0.01"
-                    v-model.number="vlr_esperado_ano_3_nova">
+                    >
                 </div>
             </div>
 
@@ -243,19 +246,48 @@
                 </div>
             
                 <div class="column col-6 col-xs-12 br-textarea">
-                    <label>Nova Meta para 2027 {{dadosIndicador.unidade_medida_simbolo}}</label>
+                    <label>Nova Meta para 2027 {{novaUnidadeMedida}}</label>
                     <br>
-                    <input id="vlr_meta_final_cenario_atual_nova" 
+                    <input id="vlr_esperado_ano_4_nova" 
                     type="number" 
-                    name="vlr_meta_final_cenario_atual_nova"
+                    name="vlr_esperado_ano_4_nova"
                     step="0.01"
-                    v-model.number="vlr_meta_final_cenario_atual_nova">
+                    >
                 </div>
             </div>
 
+            <div class="row mt-3">
+                <div class="column col-6 col-xs-12">
+                    <label for="bln_meta_regionalizada">A meta é regionalizada?</label>
+                    <p v-text="dadosIndicador.bln_meta_regionalizada ? 'Sim': 'Não'"></p>
+                </div>
+            
+                <div class="column col-6 col-xs-12 br-textarea">
+                    <label>A meta será regionalizada?</label>
+                    <select id="bln_meta_regionalizada_nova" class="form-select br-select" name="bln_meta_regionalizada_nova">
+                    <option value="">Selecione se a meta é ou não regionalizada</option>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="column col-6 col-xs-12">
+                    <label for="dsc_justificativa_ausencia_regionalizacao">Justificativa para não regionalização</label>
+                    <p v-text="dadosIndicador.dsc_justificativa_ausencia_regionalizacao"></p>
+                </div>
+            
+                <div class="column col-6 col-xs-12 br-textarea">
+                    <label>Nova Justificativa para não regionalização</label>
+                    <textarea class="input-medium" id="dsc_justificativa_ausencia_regionalizacao_nova" name="dsc_justificativa_ausencia_regionalizacao_nova" rows="5">
+                    </textarea>
+                </div>
+            </div>
+            
             <hr>
             
-            <div class="mt-5">
+            <!-- <div class="mt-5">
                 <div class="text-center">
                     <span class="fs-5 fw-bold">Metas Regionalizadas</span>
                 </div>
@@ -283,33 +315,36 @@
                                     type="number" 
                                     ame="vlr_esperado_ano_2_nova"
                                     step="0.01"
-                                    ></td> <!-- Precisa ser ajustado, porque não está aparecendo no Request, ou mudar pra Modal-->
+                                    ></td>
                                 <td class="text-center">{{ item.vlr_esperado_ano_3 }}</td>
                                 <td class="text-center">
                                     <input id="vlr_esperado_ano_3_nova" 
                                     type="number" 
                                     name="vlr_esperado_ano_3_nova"
                                     step="0.01"
-                                    v-model.number="item.vlr_esperado_ano_3_nova"></td>
+                                    ></td>
                                 <td class="text-center">{{ item.vlr_meta_final_cenario_alternativo }}</td>
                                 <td class="text-center">
                                     <input id="vlr_meta_final_cenario_alternativo_nova" 
                                     type="number" 
                                     name="vlr_meta_final_cenario_alternativo_nova"
                                     step="0.01"
-                                    v-model.number="item.vlr_meta_final_cenario_alternativo_nova"></td>
+                                    ></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> -->
 
 
     <!-- Botões Formulário -->
             <div class="row">
                 <div class="col col-xs-12 col-sm-12">
                     <div class="p-3 text-right">
-                        <button class="br-button primary mr-3" type="submit" name="salvar_revisão" :value="true">Salvar Revisão
+                        <button class="br-button primary mr-3" type="submit" name="botao_salvar" :value="true">Salvar
+                        </button>
+
+                        <button class="br-button success mr-3" type="submit" name="botao_finalizar" :value="true" >Finalizar
                         </button>
 
                         <a class="br-button danger mr-3" type="button" :href='this.url+"/plancidades/revisao/objetivo_estrategico/consulta"'>Voltar
@@ -323,12 +358,14 @@
 
 <script>
 export default {
-    props: ['url', 'dadosIndicador', 'dadosRegionalizacao'],
+    props: ['url', 'dadosIndicador', 'dadosRegionalizacao', 'revisaoCadastrada'],
     data() {
         return {
         //----Campos Select
+            bln_meta_regionalizada_nova:'',
             unidadesMedida:'',
             unidadeMedida:'',
+            novaUnidadeMedida:this.dadosIndicador.unidade_medida_simbolo,
             periodicidades:'',
             periodicidade:'',
             polaridades:'',
@@ -341,6 +378,29 @@ export default {
         }
     },
     methods: {
+        onChangeUnidadeMedida(){
+            this.novaUnidadeMedida = this.unidadeMedida;
+            switch (this.novaUnidadeMedida){
+            case 1:
+                this.novaUnidadeMedida = '(R$)';
+                break;
+            case 2:
+                this.novaUnidadeMedida = '(%)';
+                break;
+            case 3:
+                this.novaUnidadeMedida = '(ADI)';
+                break;
+            case 4:
+                this.novaUnidadeMedida = '(m²)';
+                break;
+            case 5:
+                this.novaUnidadeMedida = '(UN)';
+                break;
+            default:
+                this.novaUnidadeMedida = '';
+        }
+
+        }
         
     },
     mounted() {
@@ -361,6 +421,7 @@ export default {
         }).catch(error=>{
             console.log(error);
         });
+
     }
 }
 </script>
