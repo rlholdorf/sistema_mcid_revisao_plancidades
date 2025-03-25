@@ -18,7 +18,7 @@ use App\Mod_plancidades\ViewApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewMonitoramentoIndicadoresObjEstrategicos;
 use App\Mod_plancidades\ViewProjetos;
 use App\Mod_plancidades\ViewResumoApuracaoMetaIndicador;
-use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicos;
+use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicosRevisao;
 use Illuminate\Support\Facades\DB;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegrationAssertPostConditionsForV7AndPrevious;
 
@@ -125,7 +125,7 @@ class RevisaoController extends Controller
             $where[] = ['bln_ppa', true];
         }
 
-        $indicadores = ViewIndicadoresObjetivosEstrategicos::where($where)->orderBy('txt_titulo_objetivo_estrategico_pei')->get(); //criar nova View, para poder apresentar na grid a última revisão.
+        $indicadores = ViewIndicadoresObjetivosEstrategicosRevisao::where($where)->orderBy('txt_titulo_objetivo_estrategico_pei')->get();
 
         if(count($indicadores) > 0){
             return view("modulo_plancidades.revisao.objetivo_estrategico.listar_indicadores_revisao", compact('indicadores'));

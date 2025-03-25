@@ -498,6 +498,11 @@ Vue.component(
   require("./components/mod_plancidades/revisao/objetivo_estrategico/EditarRevisaoIndicador.vue")
 );
 
+Vue.component(
+  "show-revisao-indicador",
+  require("./components/mod_plancidades/revisao/objetivo_estrategico/ShowRevisaoIndicador.vue")
+);
+
 // Revisão Projeto
 
 Vue.component(

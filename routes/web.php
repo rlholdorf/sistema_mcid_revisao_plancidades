@@ -597,7 +597,7 @@ Route::get('/plancidades/revisao/objetivo_estrategico/indicadores', 'Mod_plancid
 Route::get('/plancidades/revisao/objetivo_estrategico/{indicadorId}/criar', 'Mod_plancidades\RevisaoIndicadorController@create')->name('plancidades.revisao.objetivoEstrategico.iniciarRevisao');
 Route::post('/plancidades/revisao/objetivo_estrategico/salvar', 'Mod_plancidades\RevisaoIndicadorController@store')->name('plancidades.revisao.objetivoEstrategico.salvar');
 Route::get('/plancidades/revisao/objetivo_estrategico/indicadores/{indicadorId}', 'Mod_plancidades\RevisaoIndicadorController@index')->name('plancidades.revisao.objetivoEstrategico.listarRevisoes');
-// Route::get('/plancidades/monitoramentos/objetivo_estrategico/exibir/{monitoramentoId}', 'Mod_plancidades\MonitoramentoIndicadorController@show')->name('plancidades.monitoramentos.objetivoEstrategico.show');
+Route::get('/plancidades/revisao/objetivo_estrategico/exibir/{revisaoId}', 'Mod_plancidades\RevisaoIndicadorController@show')->name('plancidades.revisao.objetivoEstrategico.show');
 
 
 Route::get('/plancidades/revisao/objetivo_estrategico/{revisaoId}/editar', 'Mod_plancidades\RevisaoIndicadorController@edit')->name('plancidades.revisao.objetivoEstrategico.editar');

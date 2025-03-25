@@ -10,6 +10,8 @@
 
 
     <historico-navegacao :url="'{{ url('/home') }}'" 
+        :telanterior03="'Indicador {{$dadosIndicador->indicador_objetivo_estrategico_id}}'"
+        :link3="'{{url('/plancidades/revisao/objetivo_estrategico/indicadores/'.$dadosIndicador->indicador_objetivo_estrategico_id)}}'"
         :telanterior02="'Consultar Indicadores para Revisão'"
         :link2="'{{url('/plancidades/revisao/objetivo_estrategico/consulta')}}'"
         :telanterior01="'PlanCidades'" 
@@ -26,24 +28,16 @@
             :barracompartilhar="false">
         </cabecalho-relatorios>
         <p>
-           Nesta página, você poderá visualizar todas as informações do indicador, suas metas e regionalizações (caso houver).
-           <br>
-           Ao lado de cada atributo, existe um campo para informar alterações que devam ser feitas no indicador.
-           <br>
-           Ao final da página, clique em Salvar Revisão para enviar para análise.
+        Nesta página, você poderá visualizar todos os detalhes da revisão.
         </p>
         
         <hr>
-        <form role="form" method="POST" action='{{ route("plancidades.revisao.objetivoEstrategico.atualizar",['revisaoId'=> $revisaoCadastrada->revisao_indicador_id]) }}'>
-            @csrf
-            <editar-revisao-indicador 
-            :url="'{{ url('/') }}'"
-            :dados-indicador="{{json_encode($dadosIndicador)}}"
-            :dados-regionalizacao="{{json_encode($dadosRegionalizacao)}}"
-            :revisao-cadastrada="{{json_encode($revisaoCadastrada)}}"
-            >
-            </editar-revisao-indicador>
-            <span class="br-divider sm my-3"></span>
-        </form>
+        <show-revisao-indicador 
+        :url="'{{ url('/') }}'"
+        :dados-indicador="{{json_encode($dadosIndicador)}}"
+        :dados-regionalizacao="{{json_encode($dadosRegionalizacao)}}"
+        >
+        </show-revisao-indicador>
+        <span class="br-divider sm my-3"></span>
     </div>
 @endsection

@@ -21,9 +21,10 @@ use App\Mod_plancidades\RlcSituacaoRevisaoIndicadores;
 use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicos;
 use App\Mod_plancidades\ViewApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicosMetas;
-use App\Mod_plancidades\ViewMonitoramentoIndicadoresObjEstrategicos;
+use App\Mod_plancidades\ViewRevisaoIndicadoresObjEstrategicos;
 use App\Mod_plancidades\ViewResumoApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewValidacaoMonitoramentoIndicadores;
+use App\Mod_plancidades\ViewValidacaoRevisaoIndicadores;
 use Illuminate\Support\Facades\DB;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegrationAssertPostConditionsForV7AndPrevious;
 use Illuminate\Database\Query\JoinClause;
@@ -46,16 +47,16 @@ class RevisaoIndicadorController extends Controller
      */
     public function index($indicadorId)
     {
-        $monitoramentos = ViewMonitoramentoIndicadoresObjEstrategicos::where('view_monitoramento_indicadores.indicador_objetivo_estrategico_id', $indicadorId)
-        ->orderBy('view_monitoramento_indicadores.monitoramento_indicador_id', 'DESC')
-        // ->leftJoin('mcid_plancidades.view_validacao_monitoramento_indicadores','view_validacao_monitoramento_indicadores.monitoramento_indicador_id','=','view_monitoramento_indicadores.monitoramento_indicador_id')
-        // ->select('view_monitoramento_indicadores.*','view_validacao_monitoramento_indicadores.situacao_monitoramento_id','view_validacao_monitoramento_indicadores.txt_situacao_monitoramento')
-        ->get(); //criar view para poder consultar as revisões passadas...
+        $revisoes = ViewRevisaoIndicadoresObjEstrategicos::where('view_revisao_indicadores.indicador_objetivo_estrategico_id', $indicadorId)
+        ->orderBy('view_revisao_indicadores.revisao_indicador_id', 'DESC')
+        ->leftJoin('mcid_hom_plancidades.view_validacao_revisao_indicadores','view_validacao_revisao_indicadores.revisao_indicador_id','=','view_revisao_indicadores.revisao_indicador_id')
+        ->select('view_revisao_indicadores.*','view_validacao_revisao_indicadores.situacao_revisao_id','view_validacao_revisao_indicadores.txt_situacao_revisao')
+        ->get();
 
-        if(count($monitoramentos) > 0){
-            return view("modulo_plancidades.objetivo_estrategico.listar_monitoramentos_indicador", compact('monitoramentos'));
+        if(count($revisoes) > 0){
+            return view("modulo_plancidades.revisao.objetivo_estrategico.listar_revisoes_indicador", compact('revisoes'));
         }else{
-            flash()->erro("Erro", "Nenhum monitoramento encontrado...");
+            flash()->erro("Erro", "Nenhuma revisao encontrada...");
             return back();
         }
     }
@@ -93,7 +94,6 @@ class RevisaoIndicadorController extends Controller
      */
     public function store(Request $request)
     {
-       
         $user = Auth()->user();
 
         DB::beginTransaction();
@@ -115,8 +115,8 @@ class RevisaoIndicadorController extends Controller
 
         $dados_revisao->user_id = $user->id;
         $dados_revisao->indicador_objetivo_estrategico_id = $request->indicador;
-        $dados_revisao->periodo_revisao_id = $request->periodorevisao;
-        $dados_revisao->num_ano_periodo_revisao = $request->anorevisao;
+        $dados_revisao->periodo_revisao_id = $request->periodoRevisao;
+        $dados_revisao->num_ano_periodo_revisao = $request->anoRevisao;
         $dados_revisao->created_at = date('Y-m-d H:i:s');
 
         $dados_salvos = $dados_revisao->save();
@@ -166,6 +166,31 @@ class RevisaoIndicadorController extends Controller
      */
     public function show($id)
     {
+        $dadosIndicador = ViewRevisaoIndicadoresObjEstrategicos::where('revisao_indicador_id', $id)->first();
+
+            switch ($dadosIndicador->unidade_medida_id){
+                case 1:
+                    $dadosIndicador->unidade_medida_simbolo = '(R$)';
+                    break;
+                case 2:
+                    $dadosIndicador->unidade_medida_simbolo = '(%)';
+                    break;
+                case 3:
+                    $dadosIndicador->unidade_medida_simbolo = '(ADI)';
+                    break;
+                case 4:
+                    $dadosIndicador->unidade_medida_simbolo = '(m²)';
+                    break;
+                case 5:
+                    $dadosIndicador->unidade_medida_simbolo = '(UN)';
+                    break;
+                default:
+                    $dadosIndicador->unidade_medida_simbolo = '';
+            }
+            
+            $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
+
+            return view('modulo_plancidades.revisao.objetivo_estrategico.show_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao'));
 
     }
 
@@ -179,41 +204,39 @@ class RevisaoIndicadorController extends Controller
     {
         $revisaoCadastrada = RlcSituacaoRevisaoIndicadores::where('revisao_indicador_id', $id)->orderBy('created_at', 'desc')->first();
 
-        $situacoes = array('5', '6', null);
+        if($revisaoCadastrada && ($revisaoCadastrada->situacao_revisao_id == 3 || $revisaoCadastrada->situacao_revisao_id == 5 || $revisaoCadastrada->situacao_revisao_id == 6 )) {
 
-        // if (!empty($revisaoCadastrada)) {
-        //     if(!in_array($revisaoCadastrada->situacao_revisao_id, $situacoes)) {
-        //         DB::rollBack();
-        //         flash()->erro("Erro", "Já existe um monitoramento para esse período.");
-        //         return back();
-        //     }
-        // }
-
-        $dadosIndicador = ViewIndicadoresObjetivosEstrategicosMetas::where('id', $revisaoCadastrada->indicador_objetivo_estrategico_id)->first();
-
-        switch ($dadosIndicador->unidade_medida_id){
-            case 1:
-                $dadosIndicador->unidade_medida_simbolo = '(R$)';
-                break;
-            case 2:
-                $dadosIndicador->unidade_medida_simbolo = '(%)';
-                break;
-            case 3:
-                $dadosIndicador->unidade_medida_simbolo = '(ADI)';
-                break;
-            case 4:
-                $dadosIndicador->unidade_medida_simbolo = '(m²)';
-                break;
-            case 5:
-                $dadosIndicador->unidade_medida_simbolo = '(UN)';
-                break;
-            default:
-                $dadosIndicador->unidade_medida_simbolo = '';
+            flash()->erro("Erro", "Não foi possível atualizar a revisao.");
+            return Redirect::route("plancidades.revisao.objetivoEstrategico.listarRevisoes", ['indicadorId'=> $revisaoCadastrada->indicador_objetivo_estrategico_id]);
         }
-        
-        $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
+        else{
 
-        return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao','revisaoCadastrada'));
+            $dadosIndicador = ViewIndicadoresObjetivosEstrategicosMetas::where('id', $revisaoCadastrada->indicador_objetivo_estrategico_id)->first();
+
+            switch ($dadosIndicador->unidade_medida_id){
+                case 1:
+                    $dadosIndicador->unidade_medida_simbolo = '(R$)';
+                    break;
+                case 2:
+                    $dadosIndicador->unidade_medida_simbolo = '(%)';
+                    break;
+                case 3:
+                    $dadosIndicador->unidade_medida_simbolo = '(ADI)';
+                    break;
+                case 4:
+                    $dadosIndicador->unidade_medida_simbolo = '(m²)';
+                    break;
+                case 5:
+                    $dadosIndicador->unidade_medida_simbolo = '(UN)';
+                    break;
+                default:
+                    $dadosIndicador->unidade_medida_simbolo = '';
+            }
+            
+            $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
+
+            return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao','revisaoCadastrada'));
+        }
     }
     /**
      * Update the specified resource in storage.
@@ -230,7 +253,7 @@ class RevisaoIndicadorController extends Controller
         $user = Auth()->user();
         DB::beginTransaction();
 
-        $dados_revisao_indicador = IndicadoresObjetivosEstrategicosRevisao::where('indicador_objetivo_estrategico_id', $request->indicador_objetivo_estrategico_id);
+        $dados_revisao_indicador = IndicadoresObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
 
         $dados_revisao_indicador->user_id = $user->id;
         $dados_revisao_indicador->revisao_indicador_id = $request->revisao_indicador_id;
@@ -257,7 +280,7 @@ class RevisaoIndicadorController extends Controller
 
         $dados_salvos = $dados_revisao_indicador->update();
 
-        $dados_revisao_meta = new MetasObjetivosEstrategicosRevisao();
+        $dados_revisao_meta = MetasObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
 
         $dados_revisao_meta->meta_indicador_objetivo_estrategico_id = $request->meta_indicador_objetivo_estrategico_id;
         $dados_revisao_meta->revisao_indicador_id = $request->revisao_indicador_id;
@@ -267,7 +290,7 @@ class RevisaoIndicadorController extends Controller
         $dados_revisao_meta->vlr_esperado_ano_2 = $request->vlr_esperado_ano_2_nova;
         $dados_revisao_meta->vlr_esperado_ano_3 = $request->vlr_esperado_ano_3_nova;
         $dados_revisao_meta->vlr_esperado_ano_4 = $request->vlr_esperado_ano_4_nova;
-        $dados_revisao_meta->bln_meta_regionalizadaboolean = $request->bln_meta_regionalizada_nova;
+        $dados_revisao_meta->bln_meta_regionalizada = $request->bln_meta_regionalizada_nova;
         $dados_revisao_meta->dsc_justificativa_ausencia_regionalizacao = $request->dsc_justificativa_ausencia_regionalizacao_nova;
         $dados_revisao_meta->created_at = date('Y-m-d H:i:s');
         $dados_revisao_meta->user_id = $user->id;
@@ -305,7 +328,7 @@ class RevisaoIndicadorController extends Controller
                 // LEMBRAR DE FAZER ESSA DISTINÇÃO DEPOIS, CONSIDERANDO TODOS OS CASOS
                 DB::commit();
                 flash()->sucesso("Sucesso", "Revisão do Indicador finalizada com sucesso!");
-                return Redirect::route("plancidades.revisao.objetivoEstrategico.indicadores", ['revisaoId'=> $id]);
+                return Redirect::route("plancidades.revisao.objetivoEstrategico.listarRevisoes", ['indicadorId'=> $request->indicador_objetivo_estrategico_id]);
                 
                 }
             }
@@ -333,7 +356,7 @@ class RevisaoIndicadorController extends Controller
         return view("modulo_plancidades.revisao.objetivo_estrategico.consultar_indicador");
     }
 
-    public function pesquisarMonitoramento(Request $request)
+    public function pesquisarRevisoes(Request $request)
     {
         $where = [];
 
@@ -349,19 +372,14 @@ class RevisaoIndicadorController extends Controller
             $where[] = ['indicador_objetivo_estrategico_id', $request->indicador];
         }
 
-        $monitoramentos = ViewMonitoramentoIndicadoresObjEstrategicos::where($where)->orderBy('indicador_objetivo_estrategico_id')->paginate(10);
+        $revisoes = ViewRevisaoIndicadoresObjEstrategicos::where($where)->orderBy('indicador_objetivo_estrategico_id')->paginate(10);
 
-        if (count($monitoramentos) > 0) {
-            return view("modulo_plancidades.listar_monitoramentos_indicador", compact('monitoramentos'));
+        if (count($revisoes) > 0) {
+            return view("modulo_plancidades.revisao.objetivo_estrategico.listar_revisoes_indicador", compact('revisoes'));
         } else {
             flash()->erro("Erro", "Nenhum monitoramento encontrado...");
             return back();
         }
-    }
-
-    public function teste(Request $request)
-    {
-        return ($request);
     }
 
 }
