@@ -30,7 +30,7 @@ use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegrationAssertPostConditionsForV7An
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Redirect;
 
-class RevisaoIndicadorController extends Controller
+class RevisaoIniciativaController extends Controller
 {
 
     public function __construct()
@@ -66,8 +66,9 @@ class RevisaoIndicadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($indicadorId)
+    public function create($iniciativaId)
     {   
+        return ($iniciativaId);
     
         $revisaoCadastrada = RlcSituacaoRevisaoIndicadores::where('indicador_objetivo_estrategico_id', $indicadorId)->orderBy('created_at', 'desc')->first();
 
@@ -355,9 +356,9 @@ class RevisaoIndicadorController extends Controller
     }
     
 
-    public function consultarIndicadores()
+    public function consultarIniciativas()
     {
-        return view("modulo_plancidades.revisao.objetivo_estrategico.consultar_indicador");
+        return view("modulo_plancidades.revisao.iniciativa.consultar_iniciativa");
     }
 
     public function pesquisarRevisoes(Request $request)

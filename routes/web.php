@@ -609,7 +609,26 @@ Route::post('/plancidades/revisao/objetivo_estrategico/{revisaoId}/atualizar', '
 // Route::get('/plancidades/monitoramentos/apuracao_meta_indicador/edit/{monitoramentoId}', 'Mod_plancidades\MonitoramentoMetaIndicadorController@edit')->name('plancidades.apuracaoMetaIndicador.editar');
 // Route::post('/plancidades/monitoramentos/apuracao_meta_indicador/atualizar', 'Mod_plancidades\MonitoramentoMetaIndicadorController@update')->name('plancidades.apuracaoMetaIndicador.atualizar');
 
-//--------Objetivos Estratégicos---------//
+//--------Iniciativas---------//
+
+//--Informações Básicas (indicadores e metas)--//
+Route::get('/plancidades/revisao/iniciativa/consulta', 'Mod_plancidades\RevisaoIniciativaController@consultarIniciativas')->name('plancidades.revisao.iniciativa.consultar');
+Route::get('/plancidades/revisao/iniciativa/listar', 'Mod_plancidades\RevisaoController@listarIniciativas')->name('plancidades.revisao.iniciativa.listarIniciativas');
+Route::get('/plancidades/revisao/iniciativa/{iniciativaId}/criar', 'Mod_plancidades\RevisaoIniciativaController@create')->name('plancidades.revisao.iniciativa.iniciarRevisao');
+// Route::post('/plancidades/revisao/iniciativa/salvar', 'Mod_plancidades\RevisaoIniciativaController@store')->name('plancidades.revisao.iniciativa.salvar');
+Route::get('/plancidades/revisao/iniciativa/listar/{iniciativaId}', 'Mod_plancidades\RevisaoIniciativaController@index')->name('plancidades.revisao.iniciativa.listarRevisoes');
+// Route::get('/plancidades/revisao/iniciativa/exibir/{revisaoId}', 'Mod_plancidades\RevisaoIniciativaController@show')->name('plancidades.revisao.iniciativa.show');
+
+
+// Route::get('/plancidades/revisao/iniciativa/{revisaoId}/editar', 'Mod_plancidades\RevisaoIniciativaController@edit')->name('plancidades.revisao.iniciativa.editar');
+// Route::post('/plancidades/revisao/iniciativa/{revisaoId}/atualizar', 'Mod_plancidades\RevisaoIniciativaController@update')->name('plancidades.revisao.iniciativa.atualizar');
+
+
+
+
+
+
+//--------Projetos---------//
 
 //--Informações Básicas (indicadores e metas)--//
 Route::get('/plancidades/revisao/projeto/consulta', 'Mod_plancidades\RevisaoProjetoController@consultarProjetos')->name('plancidades.revisao.projeto.consultar');

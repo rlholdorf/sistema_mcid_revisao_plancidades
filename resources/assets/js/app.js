@@ -503,6 +503,15 @@ Vue.component(
   require("./components/mod_plancidades/revisao/objetivo_estrategico/ShowRevisaoIndicador.vue")
 );
 
+// Revisão Iniciativas
+Vue.component(
+  "consulta-iniciativa-revisao",
+  require("./components/mod_plancidades/revisao/iniciativa/ConsultaIniciativaRevisao.vue")
+);
+
+
+
+
 // Revisão Projeto
 
 Vue.component(

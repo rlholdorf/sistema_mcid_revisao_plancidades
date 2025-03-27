@@ -16,7 +16,7 @@ use App\Mod_plancidades\RlcRestricaoMetaMonitoramentoIndic;
 use App\Mod_plancidades\RlcSituacaoRevisaoIndicadores;
 use App\Mod_plancidades\ViewApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewMonitoramentoIndicadoresObjEstrategicos;
-use App\Mod_plancidades\ViewProjetos;
+use App\Mod_plancidades\ViewIndicadoresIniciativas;
 use App\Mod_plancidades\ViewResumoApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicosRevisao;
 use Illuminate\Support\Facades\DB;
@@ -131,6 +131,35 @@ class RevisaoController extends Controller
             return view("modulo_plancidades.revisao.objetivo_estrategico.listar_indicadores_revisao", compact('indicadores'));
         }else{
             flash()->erro("Erro", "Nenhum indicador encontrado...");
+            return back();
+        }
+    }
+    
+    public function listarIniciativas(Request $request)
+    {
+    
+        $where = [];
+
+        if ($request->orgaoResponsavel){
+            $where[] = ['orgao_pei_id', $request->orgaoResponsavel];
+        }
+
+        if ($request->objetivoEstrategico){
+            $where[] = ['objetivo_estrategico_pei_id', $request->objetivoEstrategico];
+        }
+
+        if ($request->bln_ppa){
+            $where[] = ['bln_ppa', true];
+        }
+
+        $iniciativas = ViewIndicadoresIniciativas::where($where)->orderBy('iniciativa_id')->get();
+
+        // return ($iniciativas);
+
+        if(count($iniciativas)){
+            return view("modulo_plancidades.revisao.iniciativa.listar_iniciativas_revisao", compact('iniciativas'));
+        }else{
+            flash()->erro("Erro", "Nenhuma iniciativa encontrada...");
             return back();
         }
     }
