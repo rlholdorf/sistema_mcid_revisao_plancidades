@@ -41,6 +41,8 @@
             :dados-indicador="{{json_encode($dadosIndicador)}}"
             :dados-regionalizacao="{{json_encode($dadosRegionalizacao)}}"
             :revisao-cadastrada="{{json_encode($revisaoCadastrada)}}"
+            v-bind:dados-indicador-revisao="{{json_encode($dadosIndicadorRevisao)}}"
+            v-bind:dados-meta-revisao="{{json_encode($dadosMetaRevisao)}}"
             >
             </editar-revisao-indicador>
             <span class="br-divider sm my-3"></span>

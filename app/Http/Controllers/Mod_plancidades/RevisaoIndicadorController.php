@@ -233,9 +233,13 @@ class RevisaoIndicadorController extends Controller
                     $dadosIndicador->unidade_medida_simbolo = '';
             }
             
+            $dadosIndicadorRevisao = IndicadoresObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
+            
+            $dadosMetaRevisao = MetasObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
+
             $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
 
-            return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao','revisaoCadastrada'));
+            return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao','revisaoCadastrada', 'dadosIndicadorRevisao', 'dadosMetaRevisao'));
         }
     }
     /**
