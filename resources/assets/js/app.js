@@ -509,7 +509,20 @@ Vue.component(
   require("./components/mod_plancidades/revisao/iniciativa/ConsultaIniciativaRevisao.vue")
 );
 
+Vue.component(
+  "cadastro-revisao-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/CadastroRevisaoIniciativa.vue")
+);
 
+Vue.component(
+  "editar-revisao-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/EditarRevisaoIniciativa.vue")
+);
+
+Vue.component(
+  "show-revisao-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/ShowRevisaoIniciativa.vue")
+);
 
 
 // Revisão Projeto

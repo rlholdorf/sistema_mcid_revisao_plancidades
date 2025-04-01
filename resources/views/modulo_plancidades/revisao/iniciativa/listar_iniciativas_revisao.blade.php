@@ -43,13 +43,13 @@
                                 <td>{{ $iniciativa->txt_denominacao_indicador}}</td>
                                 <td class="text-center">{{$iniciativa->bln_ppa ? 'Sim' : 'Não'}}</td>
                                 <td class="text-center">{{$iniciativa->bln_pac ? 'Sim' : 'Não'}}</td>
-                                <td class="text-center">{{ $iniciativa->txt_sigla_orgao}}</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td> 
-                                <td class="text-center acao" disabled><a class="br-button circle primary small"
+                                <td class="text-center">{{$iniciativa->txt_sigla_orgao}}</td>
+                                <td class="text-center">{{ ($iniciativa->revisao_created_at != null) ? ($iniciativa->periodo_ultima_revisao) : 'Não revisado'  }}</td>
+                                <td class="text-center">{{ ($iniciativa->txt_situacao_revisao != null) ? ($iniciativa->txt_situacao_revisao) : ''  }}</td>
+                                <td class="text-center acao" {{(($iniciativa->situacao_revisao_id == null) || ($iniciativa->situacao_revisao_id == '5' ) || ($iniciativa->situacao_revisao_id == '6')) ? '' : 'disabled' }}><a class="br-button circle primary small"
                                     href='{{ route("plancidades.revisao.iniciativa.iniciarRevisao", ['iniciativaId' =>$iniciativa->iniciativa_id]) }}'><i
                                         class="fas fa-plus"></i></a></td>
-                                <td class="text-center acao" disabled><a class="br-button circle primary small"
+                                <td class="text-center acao"><a class="br-button circle primary small"
                                     href='{{ route("plancidades.revisao.iniciativa.listarRevisoes", ['iniciativaId' => $iniciativa->iniciativa_id]) }}'><i
                                         class="fas fa-eye"></i></a></td>
                             </tr>

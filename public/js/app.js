@@ -14408,7 +14408,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(356);
+module.exports = __webpack_require__(365);
 
 
 /***/ }),
@@ -14626,37 +14626,43 @@ Vue.component("editar-revisao-indicador", __webpack_require__(317));
 Vue.component("show-revisao-indicador", __webpack_require__(320));
 
 // Revisão Iniciativas
-Vue.component("consulta-iniciativa-revisao", __webpack_require__(361));
+Vue.component("consulta-iniciativa-revisao", __webpack_require__(323));
+
+Vue.component("cadastro-revisao-iniciativa", __webpack_require__(326));
+
+Vue.component("editar-revisao-iniciativa", __webpack_require__(329));
+
+Vue.component("show-revisao-iniciativa", __webpack_require__(370));
 
 // Revisão Projeto
 
-Vue.component("consulta-projeto-revisao", __webpack_require__(323));
+Vue.component("consulta-projeto-revisao", __webpack_require__(332));
 
-Vue.component("editar-revisao-projeto", __webpack_require__(326));
+Vue.component("editar-revisao-projeto", __webpack_require__(335));
 
 //Transferegov - Programas
-Vue.component("registro-programa", __webpack_require__(329));
+Vue.component("registro-programa", __webpack_require__(338));
 
-Vue.component("listar-programas", __webpack_require__(332));
+Vue.component("listar-programas", __webpack_require__(341));
 
-Vue.component("cadastro-destaque", __webpack_require__(335));
+Vue.component("cadastro-destaque", __webpack_require__(344));
 
 //planejamento tarefas
 
 
-Vue.component("cadastro-planejamento-tarefa", __webpack_require__(338));
+Vue.component("cadastro-planejamento-tarefa", __webpack_require__(347));
 
-Vue.component("etapas-planejamanto", __webpack_require__(341));
+Vue.component("etapas-planejamanto", __webpack_require__(350));
 
-Vue.component("tarefa-etapa", __webpack_require__(344));
+Vue.component("tarefa-etapa", __webpack_require__(353));
 
-Vue.component("lista-verificacao-tarefa", __webpack_require__(347));
+Vue.component("lista-verificacao-tarefa", __webpack_require__(356));
 
 //transferênciais especiais
 
-Vue.component("filtro-tansferencias-especiais", __webpack_require__(350));
+Vue.component("filtro-tansferencias-especiais", __webpack_require__(359));
 
-Vue.component("cadastro-analise-plano", __webpack_require__(353));
+Vue.component("cadastro-analise-plano", __webpack_require__(362));
 
 var app = new Vue({
   el: "#app"
@@ -112911,17 +112917,21 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "row mt-3" }, [
         _c("div", { staticClass: "column col-6 col-xs-12" }, [
-          _c("label", { attrs: { for: "vlr_meta_final_cenario_atual" } }, [
-            _vm._v(
-              "Meta para 2027 " +
-                _vm._s(_vm.dadosIndicador.unidade_medida_simbolo)
-            )
-          ]),
+          _c(
+            "label",
+            { attrs: { for: "vlr_meta_final_cenario_alternativo" } },
+            [
+              _vm._v(
+                "Meta para 2027 " +
+                  _vm._s(_vm.dadosIndicador.unidade_medida_simbolo)
+              )
+            ]
+          ),
           _vm._v(" "),
           _c("p", {
             domProps: {
               textContent: _vm._s(
-                _vm.dadosIndicador.vlr_meta_final_cenario_atual
+                _vm.dadosIndicador.vlr_meta_final_cenario_alternativo
               )
             }
           })
@@ -114657,7 +114667,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/projeto/ConsultaProjetoRevisao.vue"
+Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/iniciativa/ConsultaIniciativaRevisao.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -114666,9 +114676,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1e54572a", Component.options)
+    hotAPI.createRecord("data-v-1bd5ea88", Component.options)
   } else {
-    hotAPI.reload("data-v-1e54572a", Component.options)
+    hotAPI.reload("data-v-1bd5ea88", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -114764,7 +114774,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.objetivoEstrategico = '';
 
             if (this.orgaoResponsavel != '') {
-                axios.get(this.url + '/api/plancidades/projetos/orgaoResponsavel/' + this.orgaoResponsavel).then(function (resposta) {
+                axios.get(this.url + '/api/plancidades/iniciativas/orgaoResponsavel/' + this.orgaoResponsavel).then(function (resposta) {
                     _this.textoEscolhaObjetivo = "Escolha um objetivo estratégico:";
                     _this.objetivosEstrategicos = resposta.data;
                 }).catch(function (error) {
@@ -114972,7 +114982,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1e54572a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1bd5ea88", module.exports)
   }
 }
 
@@ -114986,6 +114996,2900 @@ var normalizeComponent = __webpack_require__(0)
 var __vue_script__ = __webpack_require__(327)
 /* template */
 var __vue_template__ = __webpack_require__(328)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/iniciativa/CadastroRevisaoIniciativa.vue"
+
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-de4588dc", Component.options)
+  } else {
+    hotAPI.reload("data-v-de4588dc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 327 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['url', 'dadosIniciativa'],
+    data: function data() {
+        return {
+            //----Campos Select
+            anosRevisoes: '',
+            anoRevisao: '',
+            periodosRevisao: '',
+            periodoRevisao: '',
+            periodoValido: false,
+            validandoPeriodo: false,
+
+            //----Textos de Escolhas
+            textoEscolhaAno: "Escolha o Ano da Revisão:",
+            textoEscolhaMês: "Escolha o Mês da Revisão:"
+        };
+    },
+
+    methods: {
+        onChangeAnoRevisao: function onChangeAnoRevisao() {
+            this.periodoRevisao = '';
+            this.periodoValido = false;
+            if (this.anoRevisao != '') {
+                this.textoEscolhaAno = 'Escolha o Periodo de Revisão:';
+            } else {
+                this.textoEscolhaAno = 'Escolha o Ano do Revisão:';
+            }
+        },
+        onChangeMesRevisao: function onChangeMesRevisao() {
+            var _this = this;
+
+            if (this.periodoRevisao != '') {
+                this.validandoPeriodo = true;
+                axios.get(this.url + '/api/plancidades/revisao/iniciativa/validar_periodo_revisao/' + this.dadosIniciativa.iniciativa_id + '/' + this.anoRevisao + '/' + this.periodoRevisao).then(function (resposta) {
+                    _this.periodoValido = resposta.data.length <= 0 ? true : false;
+                    _this.validandoPeriodo = false;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        }
+    },
+    mounted: function mounted() {
+        var _this2 = this;
+
+        //retorna os anos para revisao
+        axios.get(this.url + '/api/plancidades/anos_monitoramento').then(function (resposta) {
+            _this2.anosRevisoes = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        //busca os meses para revisao
+        axios.get(this.url + '/api/plancidades/monitoramentos/meses_monitoramento/').then(function (resposta) {
+            _this2.periodosRevisao = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+});
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "row mt-3" }, [
+          _c("input", {
+            attrs: { type: "hidden", id: "iniciativa", name: "iniciativa" },
+            domProps: { value: _vm.dadosIniciativa.iniciativa_id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "orgaoResponsavel",
+              name: "orgaoResponsavel"
+            },
+            domProps: { value: _vm.dadosIniciativa.orgao_pei_id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "objetivoEstrategico",
+              name: "objetivoEstrategico"
+            },
+            domProps: { value: _vm.dadosIniciativa.objetivo_estrategico_pei_id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "indicadorIniciativa",
+              name: "indicadorIniciativa"
+            },
+            domProps: { value: _vm.dadosIniciativa.id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "metaIniciativa",
+              name: "metaIniciativa"
+            },
+            domProps: { value: _vm.dadosIniciativa.meta_iniciativa_id }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "iniciativa" } }, [
+            _vm._v("Enunciado da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.iniciativa_id +
+                  " - " +
+                  _vm.dadosIniciativa.txt_enunciado_iniciativa
+              )
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-3 col-xs-12" }, [
+          _c("label", [_vm._v("Órgão Responsável")]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.dadosIniciativa.dsc_orgao) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-9 col-xs-12" }, [
+          _c("label", [_vm._v("Objetivo Estratégico")]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_titulo_objetivo_estrategico_pei
+              )
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("label", { attrs: { for: "indicador" } }, [
+          _vm._v("Indicador da Iniciativa")
+        ]),
+        _vm._v(" "),
+        _c("p", {
+          domProps: {
+            textContent: _vm._s(
+              _vm.dadosIniciativa.id +
+                " - " +
+                _vm.dadosIniciativa.txt_denominacao_indicador
+            )
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("div", { staticClass: "row mt-3" }, [
+          _c("div", { staticClass: "column col-xs-12" }, [
+            _c("label", { attrs: { for: "dscMeta" } }, [
+              _vm._v("Descrição da Meta")
+            ]),
+            _vm._v(" "),
+            _c("p", {
+              domProps: {
+                textContent: _vm._s(
+                  _vm.dadosIniciativa.meta_iniciativa_id +
+                    " - " +
+                    _vm.dadosIniciativa.txt_dsc_meta
+                )
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row mt-3" }, [
+          _c("div", { staticClass: "column col-xs-12 col-sm-4" }, [
+            _c("label", { attrs: { for: "bln_ppa" } }, [
+              _vm._v("Consta no PPA:")
+            ]),
+            _vm._v(" "),
+            _c("p", {
+              domProps: {
+                textContent: _vm._s(_vm.dadosIniciativa.bln_ppa ? "Sim" : "Não")
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column col-xs-12 col-sm-4" }, [
+            _c("label", { attrs: { for: "bln_meta_regionalizada" } }, [
+              _vm._v("Possui Meta Regionalizada:")
+            ]),
+            _vm._v(" "),
+            _c("p", {
+              domProps: {
+                textContent: _vm._s(
+                  _vm.dadosIniciativa.bln_meta_regionalizada ? "Sim" : "Não"
+                )
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-xs-12 col-sm-6" }, [
+          _c("label", { attrs: { for: "anoRevisao" } }, [
+            _vm._v("Ano da Revisão")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.anoRevisao,
+                  expression: "anoRevisao"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: { id: "anoRevisao", name: "anoRevisao", required: "" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.anoRevisao = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.onChangeAnoRevisao
+                ]
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: { textContent: _vm._s(_vm.textoEscolhaMês) }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.anosRevisoes, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.num_ano_monitoramento,
+                    textContent: _vm._s(item.num_ano_monitoramento)
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-xs-12 col-sm-6" }, [
+          _c("label", { attrs: { for: "periodoRevisao" } }, [
+            _vm._v("Periodo de Revisão")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.periodoRevisao,
+                  expression: "periodoRevisao"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "periodoRevisao",
+                name: "periodoRevisao",
+                disabled: _vm.anoRevisao == "",
+                required: ""
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.periodoRevisao = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.onChangeMesRevisao
+                ]
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: { textContent: _vm._s(_vm.textoEscolhaAno) }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.periodosRevisao, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.id,
+                    textContent: _vm._s(item.dsc_periodo_monitoramento)
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      !this.periodoValido && this.periodoRevisao != "" && !this.validandoPeriodo
+        ? _c("div", { staticClass: "row mt-3" }, [
+            _c("div", { staticClass: "column col-sm-6" }),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-xs-12 col-sm-6" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col col-xs-12 col-sm-6" }, [
+        _c("div", { staticClass: "p-3 text-right" }, [
+          !_vm.validandoPeriodo
+            ? _c(
+                "button",
+                {
+                  staticClass: "br-button primary mr-3",
+                  attrs: {
+                    disabled: !this.periodoValido || this.periodoRevisao == "",
+                    type: "submit",
+                    name: "botao_salvar",
+                    value: true
+                  }
+                },
+                [_vm._v(" Salvar\n                ")]
+              )
+            : _c(
+                "button",
+                {
+                  staticClass: "br-button primary mr-3",
+                  attrs: { disabled: "" }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                  _vm._v(" Aguarde\n                ")
+                ]
+              ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "br-button danger mr-3",
+              attrs: {
+                type: "button",
+                href: "javascript:window.history.go(-1)"
+              }
+            },
+            [_vm._v("Voltar\n                ")]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-sm-6 col-xs-12" }, [
+      _c("p", { staticClass: "text-danger" }, [
+        _vm._v("O indicador já tem uma revisão com esta data.")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-de4588dc", module.exports)
+  }
+}
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(330)
+/* template */
+var __vue_template__ = __webpack_require__(331)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/iniciativa/EditarRevisaoIniciativa.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0bb11190", Component.options)
+  } else {
+    hotAPI.reload("data-v-0bb11190", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 330 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['url', 'dadosIniciativa', 'dadosRegionalizacao', 'revisaoCadastrada', 'dadosIniciativaRevisao', 'dadosIndicadorIniciativaRevisao', 'dadosMetaIniciativaRevisao'],
+    data: function data() {
+        return {
+            //----Campos Select
+            bln_meta_regionalizada_nova: '',
+            unidadesMedida: '',
+            unidadeMedida: '',
+            novaUnidadeMedida: this.dadosIniciativa.unidade_medida_simbolo,
+            periodicidades: '',
+            periodicidade: '',
+            polaridades: '',
+            polaridade: '',
+
+            //----Textos de Escolhas
+            textoEscolhaUnidadeMedida: "Escolha uma nova Unidade de Medida:",
+            textoEscolhaPeriodicidade: "Escolha uma nova Periodicidade:",
+            textoEscolhaPolaridade: "Escolha uma nova Polaridade:"
+        };
+    },
+
+    methods: {
+        onChangeUnidadeMedida: function onChangeUnidadeMedida() {
+            this.novaUnidadeMedida = this.unidadeMedida;
+            switch (this.novaUnidadeMedida) {
+                case 1:
+                    this.novaUnidadeMedida = '(R$)';
+                    break;
+                case 2:
+                    this.novaUnidadeMedida = '(%)';
+                    break;
+                case 3:
+                    this.novaUnidadeMedida = '(ADI)';
+                    break;
+                case 4:
+                    this.novaUnidadeMedida = '(m²)';
+                    break;
+                case 5:
+                    this.novaUnidadeMedida = '(UN)';
+                    break;
+                default:
+                    this.novaUnidadeMedida = '';
+            }
+        }
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(this.url + '/api/plancidades/unidadesMedida').then(function (resposta) {
+            _this.unidadesMedida = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        axios.get(this.url + '/api/plancidades/periodicidades').then(function (resposta) {
+            _this.periodicidades = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        axios.get(this.url + '/api/plancidades/polaridades').then(function (resposta) {
+            _this.polaridades = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+});
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "form-group" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("input", {
+            attrs: { type: "hidden", id: "iniciativa", name: "iniciativa" },
+            domProps: { value: _vm.dadosIniciativa.iniciativa_id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "orgaoResponsavel",
+              name: "orgaoResponsavel"
+            },
+            domProps: { value: _vm.dadosIniciativa.orgao_pei_id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "objetivo_estrategico_pei_id",
+              name: "objetivo_estrategico_pei_id"
+            },
+            domProps: { value: _vm.dadosIniciativa.objetivo_estrategico_pei_id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "indicadorIniciativa",
+              name: "indicadorIniciativa"
+            },
+            domProps: { value: _vm.dadosIniciativa.id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "meta_iniciativa_id",
+              name: "meta_iniciativa_id"
+            },
+            domProps: { value: _vm.dadosIniciativa.meta_iniciativa_id }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "hidden",
+              id: "revisao_iniciativa_id",
+              name: "revisao_iniciativa_id"
+            },
+            domProps: { value: _vm.revisaoCadastrada.revisao_iniciativa_id }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "txt_enunciado_iniciativa" } }, [
+            _vm._v("Denominação da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_enunciado_iniciativa)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Denominação da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIniciativaRevisao.txt_enunciado_iniciativa,
+                expression: "dadosIniciativaRevisao.txt_enunciado_iniciativa"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_enunciado_iniciativa_nova",
+              name: "txt_enunciado_iniciativa_nova",
+              rows: "2"
+            },
+            domProps: {
+              value: _vm.dadosIniciativaRevisao.txt_enunciado_iniciativa
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIniciativaRevisao,
+                  "txt_enunciado_iniciativa",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_iniciativa" } }, [
+            _vm._v("Descrição da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.dsc_iniciativa)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Descrição da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIniciativaRevisao.dsc_iniciativa,
+                expression: "dadosIniciativaRevisao.dsc_iniciativa"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "dsc_iniciativa_nova",
+              name: "dsc_iniciativa_nova",
+              rows: "5"
+            },
+            domProps: { value: _vm.dadosIniciativaRevisao.dsc_iniciativa },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIniciativaRevisao,
+                  "dsc_iniciativa",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "bln_pac" } }, [
+            _vm._v("É entrega/iniciativa do PAC?")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.bln_pac ? "Sim" : "Não")
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Novo enquadramento de entrega/iniciativa do PAC")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosIniciativaRevisao.bln_pac,
+                  expression: "dadosIniciativaRevisao.bln_pac"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: { id: "bln_pac_nova", name: "bln_pac_nova" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosIniciativaRevisao,
+                    "bln_pac",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [
+                _vm._v("Selecione se a meta é ou não do PAC")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "true" } }, [_vm._v("Sim")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "false" } }, [_vm._v("Não")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_denominacao_indicador" } }, [
+            _vm._v("Denominação do Indicador da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_denominacao_indicador)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Denominação do Indicador da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao.txt_denominacao_indicador,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_denominacao_indicador"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_denominacao_indicador_nova",
+              name: "txt_denominacao_indicador_nova",
+              rows: "1"
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao.txt_denominacao_indicador
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_denominacao_indicador",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_indicador" } }, [
+            _vm._v("Descrição do Indicador da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.dadosIniciativa.dsc_indicador) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Descrição do Indicador da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIndicadorIniciativaRevisao.dsc_indicador,
+                expression: "dadosIndicadorIniciativaRevisao.dsc_indicador"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "dsc_indicador_nova",
+              name: "dsc_indicador_nova",
+              rows: "5"
+            },
+            domProps: {
+              value: _vm.dadosIndicadorIniciativaRevisao.dsc_indicador
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "dsc_indicador",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_sigla_indicador" } }, [
+            _vm._v("Sigla do Indicador da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_sigla_indicador)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Sigla do Indicador da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIndicadorIniciativaRevisao.txt_sigla_indicador,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_sigla_indicador"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_sigla_indicador_nova",
+              name: "txt_sigla_indicador_nova",
+              rows: "1"
+            },
+            domProps: {
+              value: _vm.dadosIndicadorIniciativaRevisao.txt_sigla_indicador
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_sigla_indicador",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "vlr_indice_referencia" } }, [
+            _vm._v("Valor de Referência")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.vlr_indice_referencia)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Novo Valor de Referência")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao.vlr_indice_referencia,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.vlr_indice_referencia"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "vlr_indice_referencia_nova",
+              name: "vlr_indice_referencia_nova",
+              rows: "1"
+            },
+            domProps: {
+              value: _vm.dadosIndicadorIniciativaRevisao.vlr_indice_referencia
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "vlr_indice_referencia",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_unidade_medida" } }, [
+            _vm._v("Unidade de Medida")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_unidade_medida)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Unidade de Medida")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosIndicadorIniciativaRevisao.txt_unidade_medida,
+                  expression:
+                    "dadosIndicadorIniciativaRevisao.txt_unidade_medida"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "txt_unidade_medida_nova",
+                name: "txt_unidade_medida_nova"
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.dadosIndicadorIniciativaRevisao,
+                      "txt_unidade_medida",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  _vm.onChangeUnidadeMedida
+                ]
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: { textContent: _vm._s(_vm.textoEscolhaUnidadeMedida) }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.unidadesMedida, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.id,
+                    textContent: _vm._s(item.txt_unidade_medida)
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c(
+            "label",
+            { attrs: { for: "txt_data_divulgacao_ou_disponibilizacao" } },
+            [_vm._v("Data de Divulgação ou Disponibilidade")]
+          ),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_data_divulgacao_ou_disponibilizacao
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Novo Data de Divulgação ou Disponibilidade")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao
+                    .txt_data_divulgacao_ou_disponibilizacao,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_data_divulgacao_ou_disponibilizacao"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_data_divulgacao_ou_disponibilizacao_nova",
+              name: "txt_data_divulgacao_ou_disponibilizacao_nova",
+              rows: "1"
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao
+                  .txt_data_divulgacao_ou_disponibilizacao
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_data_divulgacao_ou_disponibilizacao",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_periodicidades" } }, [
+            _vm._v("Periodicidade")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.dsc_periodicidades)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Periodicidade")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosIndicadorIniciativaRevisao.dsc_periodicidades,
+                  expression:
+                    "dadosIndicadorIniciativaRevisao.dsc_periodicidades"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "periodicidade_id_nova",
+                name: "periodicidade_id_nova"
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosIndicadorIniciativaRevisao,
+                    "dsc_periodicidades",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: { textContent: _vm._s(_vm.textoEscolhaPeriodicidade) }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.periodicidades, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.id,
+                    textContent: _vm._s(item.dsc_periodicidades)
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_polaridade" } }, [
+            _vm._v("Polaridade do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_polaridade)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Polaridade do Indicador")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosIndicadorIniciativaRevisao.txt_polaridade,
+                  expression: "dadosIndicadorIniciativaRevisao.txt_polaridade"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: { id: "polaridade_id_nova", name: "polaridade_id_nova" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosIndicadorIniciativaRevisao,
+                    "txt_polaridade",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: { textContent: _vm._s(_vm.textoEscolhaPolaridade) }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.polaridades, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.id,
+                    textContent: _vm._s(item.txt_polaridade)
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_formula_calculo" } }, [
+            _vm._v("Fórmula de Cálculo do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_formula_calculo
+                  ? _vm.dadosIniciativa.txt_formula_calculo
+                  : "Verificar no Espelho do PPA"
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Fórmula de Cálculo do Indicador")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIndicadorIniciativaRevisao.txt_formula_calculo,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_formula_calculo"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_formula_calculo_nova",
+              name: "txt_formula_calculo_nova",
+              rows: "5"
+            },
+            domProps: {
+              value: _vm.dadosIndicadorIniciativaRevisao.txt_formula_calculo
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_formula_calculo",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_fonte_dados_variaveis_calculo" } }, [
+            _vm._v("Fonte de Dados das Variáveis do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_fonte_dados_variaveis_calculo
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Nova Fonte de Dados das Variáveis do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao
+                    .txt_fonte_dados_variaveis_calculo,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_fonte_dados_variaveis_calculo"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_fonte_dados_variaveis_calculo_nova",
+              name: "txt_fonte_dados_variaveis_calculo_nova",
+              rows: "5"
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao
+                  .txt_fonte_dados_variaveis_calculo
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_fonte_dados_variaveis_calculo",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_forma_disponibilizacao" } }, [
+            _vm._v("Forma de Disponibilização do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_forma_disponibilizacao
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Forma de Disponibilização do Indicador")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao
+                    .txt_forma_disponibilizacao,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_forma_disponibilizacao"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_forma_disponibilizacao_nova",
+              name: "txt_forma_disponibilizacao_nova",
+              rows: "5"
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao.txt_forma_disponibilizacao
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_forma_disponibilizacao",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_procedimento_calculo" } }, [
+            _vm._v("Procedimento de Cálculo do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.dsc_procedimento_calculo)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Procedimento de Cálculo do Indicador")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao.dsc_procedimento_calculo,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.dsc_procedimento_calculo"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "dsc_procedimento_calculo_nova",
+              name: "dsc_procedimento_calculo_nova",
+              rows: "5"
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao.dsc_procedimento_calculo
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "dsc_procedimento_calculo",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_dsc_meta" } }, [
+            _vm._v("Denominação da Meta")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.dadosIniciativa.txt_dsc_meta) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Denominação da Meta")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosMetaIniciativaRevisao.txt_dsc_meta,
+                expression: "dadosMetaIniciativaRevisao.txt_dsc_meta"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_dsc_meta_nova",
+              name: "txt_dsc_meta_nova",
+              rows: "2"
+            },
+            domProps: { value: _vm.dadosMetaIniciativaRevisao.txt_dsc_meta },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "txt_dsc_meta",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "bln_meta_cumulativa" } }, [
+            _vm._v("Cumulatividade da Meta")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.bln_meta_cumulativa ? "Sim" : "Não"
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Cumulatividade da Meta")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosMetaIniciativaRevisao.bln_meta_cumulativa,
+                  expression: "dadosMetaIniciativaRevisao.bln_meta_cumulativa"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "bln_meta_cumulativa_nova",
+                name: "bln_meta_cumulativa_nova"
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosMetaIniciativaRevisao,
+                    "bln_meta_cumulativa",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [
+                _vm._v("Selecione se a meta é ou não cumulativa")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "true" } }, [_vm._v("Sim")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "false" } }, [_vm._v("Não")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "vlr_esperado_ano_2" } }, [
+            _vm._v(
+              "Meta para 2025 " +
+                _vm._s(_vm.dadosIniciativa.unidade_medida_simbolo)
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.vlr_esperado_ano_2)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Nova Meta para 2025 " + _vm._s(_vm.novaUnidadeMedida))
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_2,
+                expression: "dadosMetaIniciativaRevisao.vlr_esperado_ano_2"
+              }
+            ],
+            attrs: {
+              id: "vlr_esperado_ano_2_nova",
+              type: "number",
+              name: "vlr_esperado_ano_2_nova",
+              step: "0.01"
+            },
+            domProps: {
+              value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_2
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "vlr_esperado_ano_2",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "vlr_esperado_ano_3" } }, [
+            _vm._v(
+              "Meta para 2026 " +
+                _vm._s(_vm.dadosIniciativa.unidade_medida_simbolo)
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.vlr_esperado_ano_3)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Nova Meta para 2026 " + _vm._s(_vm.novaUnidadeMedida))
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_3,
+                expression: "dadosMetaIniciativaRevisao.vlr_esperado_ano_3"
+              }
+            ],
+            attrs: {
+              id: "vlr_esperado_ano_3_nova",
+              type: "number",
+              name: "vlr_esperado_ano_3_nova",
+              step: "0.01"
+            },
+            domProps: {
+              value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_3
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "vlr_esperado_ano_3",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c(
+            "label",
+            { attrs: { for: "vlr_meta_final_cenario_alternativo" } },
+            [
+              _vm._v(
+                "Meta para 2027 " +
+                  _vm._s(_vm.dadosIniciativa.unidade_medida_simbolo)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.vlr_meta_final_cenario_alternativo
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Nova Meta para 2027 " + _vm._s(_vm.novaUnidadeMedida))
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_4,
+                expression: "dadosMetaIniciativaRevisao.vlr_esperado_ano_4"
+              }
+            ],
+            attrs: {
+              id: "vlr_esperado_ano_4_nova",
+              type: "number",
+              name: "vlr_esperado_ano_4_nova",
+              step: "0.01"
+            },
+            domProps: {
+              value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_4
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "vlr_esperado_ano_4",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "bln_meta_regionalizada" } }, [
+            _vm._v("A meta é regionalizada?")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.bln_meta_regionalizada ? "Sim" : "Não"
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("A meta será regionalizada?")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosMetaIniciativaRevisao.bln_meta_regionalizada,
+                  expression:
+                    "dadosMetaIniciativaRevisao.bln_meta_regionalizada"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "bln_meta_regionalizada_nova",
+                name: "bln_meta_regionalizada_nova"
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosMetaIniciativaRevisao,
+                    "bln_meta_regionalizada",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [
+                _vm._v("Selecione se a meta é ou não regionalizada")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "true" } }, [_vm._v("Sim")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "false" } }, [_vm._v("Não")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c(
+            "label",
+            { attrs: { for: "dsc_justificativa_ausencia_regionalizacao" } },
+            [_vm._v("Justificativa para não regionalização")]
+          ),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.dsc_justificativa_ausencia_regionalizacao
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Justificativa para não regionalização")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosMetaIniciativaRevisao
+                    .dsc_justificativa_ausencia_regionalizacao,
+                expression:
+                  "dadosMetaIniciativaRevisao.dsc_justificativa_ausencia_regionalizacao"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "dsc_justificativa_ausencia_regionalizacao_nova",
+              name: "dsc_justificativa_ausencia_regionalizacao_nova",
+              rows: "5"
+            },
+            domProps: {
+              value:
+                _vm.dadosMetaIniciativaRevisao
+                  .dsc_justificativa_ausencia_regionalizacao
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "dsc_justificativa_ausencia_regionalizacao",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col col-xs-12 col-sm-12" }, [
+          _c("div", { staticClass: "p-3 text-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "br-button primary mr-3",
+                attrs: { type: "submit", name: "botao_salvar", value: true }
+              },
+              [_vm._v("Salvar\n                    ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "br-button success mr-3",
+                attrs: { type: "submit", name: "botao_finalizar", value: true }
+              },
+              [_vm._v("Finalizar\n                    ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "br-button danger mr-3",
+                attrs: {
+                  type: "button",
+                  href:
+                    this.url +
+                    "/plancidades/revisao/objetivo_estrategico/consulta"
+                }
+              },
+              [_vm._v("Voltar\n                    ")]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Detalhamento da Iniciativa")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Detalhamento do Indicador da Iniciativa")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Detalhamento da Meta do Indicador da Iniciativa")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0bb11190", module.exports)
+  }
+}
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(333)
+/* template */
+var __vue_template__ = __webpack_require__(334)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/projeto/ConsultaProjetoRevisao.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1e54572a", Component.options)
+  } else {
+    hotAPI.reload("data-v-1e54572a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 333 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['url', 'dados'],
+    data: function data() {
+        return {
+
+            //----Objetivos/Órgãos
+            objetivosEstrategicos: '',
+            objetivoEstrategico: '',
+            orgaosResponsaveis: '',
+            orgaoResponsavel: '',
+
+            //----Textos de Escolhas
+            textoEscolhaObjetivo: "Escolha o Órgão Responsável:",
+            textoEscolhaOrgaoResponsavel: "Escolha o Órgão Responsável:"
+        };
+    },
+
+    methods: {
+        onChangeOrgaoResponsavel: function onChangeOrgaoResponsavel() {
+            var _this = this;
+
+            this.textoEscolhaObjetivo = "Buscando...";
+            this.objetivoEstrategico = '';
+
+            if (this.orgaoResponsavel != '') {
+                axios.get(this.url + '/api/plancidades/projetos/orgaoResponsavel/' + this.orgaoResponsavel).then(function (resposta) {
+                    _this.textoEscolhaObjetivo = "Escolha um objetivo estratégico:";
+                    _this.objetivosEstrategicos = resposta.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            } else {
+                this.textoEscolhaObjetivo = "Escolha o Órgão Responsável:";
+                this.orgaoResponsavel = '';
+            }
+        }
+    },
+    mounted: function mounted() {
+        var _this2 = this;
+
+        //retorna as Unidades Responsáveis
+        axios.get(this.url + '/api/plancidades/orgaosPEI').then(function (resposta) {
+            _this2.textoEscolhaOrgaoResponsavel = "Escolha o Órgão Responsável:";
+            _this2.orgaosResponsaveis = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+        ;
+    }
+});
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form-group" }, [
+    _c("div", { staticClass: "row mt-3" }, [
+      _c("div", { staticClass: "column col-6 col-xs-12" }, [
+        _c("label", { attrs: { for: "orgaoResponsavel" } }, [
+          _vm._v("Órgão Responsável")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.orgaoResponsavel,
+                expression: "orgaoResponsavel"
+              }
+            ],
+            staticClass: "form-select br-select",
+            attrs: { id: "orgaoResponsavel", name: "orgaoResponsavel" },
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.orgaoResponsavel = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.onChangeOrgaoResponsavel
+              ]
+            }
+          },
+          [
+            _c("option", { attrs: { value: "" } }, [
+              _vm._v("Escolha a Órgão Responsável:")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.orgaosResponsaveis, function(item) {
+              return _c("option", {
+                key: item.id,
+                domProps: {
+                  value: item.id,
+                  textContent: _vm._s(item.dsc_orgao)
+                }
+              })
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column col-6 col-xs-12" }, [
+        _c("label", { attrs: { for: "objetivoEstrategico" } }, [
+          _vm._v("Objetivo Estratégico")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.objetivoEstrategico,
+                expression: "objetivoEstrategico"
+              }
+            ],
+            staticClass: "form-select br-select",
+            attrs: {
+              id: "objetivoEstrategico",
+              name: "objetivoEstrategico",
+              disabled: _vm.orgaoResponsavel == "" || this.editando == "true"
+            },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.objetivoEstrategico = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "" } }, [
+              _vm._v(_vm._s(this.textoEscolhaObjetivo))
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.objetivosEstrategicos, function(item) {
+              return _c("option", {
+                key: item.id,
+                domProps: {
+                  value: item.id,
+                  textContent: _vm._s(item.txt_titulo_objetivo_estrategico_pei)
+                }
+              })
+            })
+          ],
+          2
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-xs-12 col-sm-12" }, [
+        _c("div", { staticClass: "p-3 text-right" }, [
+          _c(
+            "button",
+            {
+              staticClass: "br-button primary mr-3",
+              attrs: { type: "submit", name: "Salvar Edição" }
+            },
+            [_vm._v("Pesquisar\n                ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "br-button danger mr-3",
+              attrs: { type: "button", href: this.url + "/plancidades/" }
+            },
+            [_vm._v("Voltar\n                ")]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-3" }, [
+      _c("div", { staticClass: "column col-2" }, [
+        _c(
+          "div",
+          { staticClass: "br-item", attrs: { "data-toggle": "selection" } },
+          [
+            _c("div", { staticClass: "br-checkbox" }, [
+              _c("input", {
+                attrs: { id: "bln_ppa", name: "bln_ppa", type: "checkbox" }
+              }),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "bln_ppa" } }, [
+                _vm._v("Buscar somente PPA")
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1e54572a", module.exports)
+  }
+}
+
+/***/ }),
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(336)
+/* template */
+var __vue_template__ = __webpack_require__(337)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -115024,7 +117928,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 327 */
+/* 336 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -115303,7 +118207,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 328 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -115959,15 +118863,15 @@ if (false) {
 }
 
 /***/ }),
-/* 329 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(330)
+var __vue_script__ = __webpack_require__(339)
 /* template */
-var __vue_template__ = __webpack_require__(331)
+var __vue_template__ = __webpack_require__(340)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -116006,7 +118910,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 330 */
+/* 339 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -116280,7 +119184,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 331 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -116859,15 +119763,15 @@ if (false) {
 }
 
 /***/ }),
-/* 332 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(333)
+var __vue_script__ = __webpack_require__(342)
 /* template */
-var __vue_template__ = __webpack_require__(334)
+var __vue_template__ = __webpack_require__(343)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -116906,7 +119810,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 333 */
+/* 342 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -117265,7 +120169,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 334 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -118129,15 +121033,15 @@ if (false) {
 }
 
 /***/ }),
-/* 335 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(336)
+var __vue_script__ = __webpack_require__(345)
 /* template */
-var __vue_template__ = __webpack_require__(337)
+var __vue_template__ = __webpack_require__(346)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -118176,7 +121080,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 336 */
+/* 345 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -118349,7 +121253,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 337 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -118646,15 +121550,15 @@ if (false) {
 }
 
 /***/ }),
-/* 338 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(339)
+var __vue_script__ = __webpack_require__(348)
 /* template */
-var __vue_template__ = __webpack_require__(340)
+var __vue_template__ = __webpack_require__(349)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -118693,7 +121597,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 339 */
+/* 348 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -118771,7 +121675,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 340 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -118928,15 +121832,15 @@ if (false) {
 }
 
 /***/ }),
-/* 341 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(342)
+var __vue_script__ = __webpack_require__(351)
 /* template */
-var __vue_template__ = __webpack_require__(343)
+var __vue_template__ = __webpack_require__(352)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -118975,7 +121879,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 342 */
+/* 351 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -119111,7 +122015,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 343 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -119331,15 +122235,15 @@ if (false) {
 }
 
 /***/ }),
-/* 344 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(345)
+var __vue_script__ = __webpack_require__(354)
 /* template */
-var __vue_template__ = __webpack_require__(346)
+var __vue_template__ = __webpack_require__(355)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -119378,7 +122282,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 345 */
+/* 354 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -119553,7 +122457,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 346 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -119920,15 +122824,15 @@ if (false) {
 }
 
 /***/ }),
-/* 347 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(348)
+var __vue_script__ = __webpack_require__(357)
 /* template */
-var __vue_template__ = __webpack_require__(349)
+var __vue_template__ = __webpack_require__(358)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -119967,7 +122871,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 348 */
+/* 357 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -120142,7 +123046,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 349 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -120509,15 +123413,15 @@ if (false) {
 }
 
 /***/ }),
-/* 350 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(351)
+var __vue_script__ = __webpack_require__(360)
 /* template */
-var __vue_template__ = __webpack_require__(352)
+var __vue_template__ = __webpack_require__(361)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -120556,7 +123460,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 351 */
+/* 360 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -120673,7 +123577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 352 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -120843,15 +123747,15 @@ if (false) {
 }
 
 /***/ }),
-/* 353 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(354)
+var __vue_script__ = __webpack_require__(363)
 /* template */
-var __vue_template__ = __webpack_require__(355)
+var __vue_template__ = __webpack_require__(364)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -120890,7 +123794,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 354 */
+/* 363 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -121000,7 +123904,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 355 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -121260,25 +124164,25 @@ if (false) {
 }
 
 /***/ }),
-/* 356 */
+/* 365 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(362)
+var __vue_script__ = __webpack_require__(371)
 /* template */
-var __vue_template__ = __webpack_require__(363)
+var __vue_template__ = __webpack_require__(372)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -121295,7 +124199,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/iniciativa/ConsultaIniciativaRevisao.vue"
+Component.options.__file = "resources/assets/js/components/mod_plancidades/revisao/iniciativa/ShowRevisaoIniciativa.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -121304,9 +124208,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1bd5ea88", Component.options)
+    hotAPI.createRecord("data-v-3ad157ce", Component.options)
   } else {
-    hotAPI.reload("data-v-1bd5ea88", Component.options)
+    hotAPI.reload("data-v-3ad157ce", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -121317,7 +124221,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 362 */
+/* 371 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -121376,89 +124280,663 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['url', 'dados'],
+    props: ['url', 'dadosIniciativa', 'dadosRegionalizacao', 'dadosIniciativaRevisao', 'dadosIndicadorIniciativaRevisao', 'dadosMetaIniciativaRevisao'],
     data: function data() {
         return {
+            //----Campos Select
+            bln_meta_regionalizada_nova: '',
+            unidadesMedida: '',
+            unidadeMedida: '',
+            novaUnidadeMedida: this.dadosIniciativa.unidade_medida_simbolo,
+            periodicidades: '',
+            periodicidade: '',
+            polaridades: '',
+            polaridade: '',
 
-            //----Objetivos/Órgãos
-            objetivosEstrategicos: '',
-            objetivoEstrategico: '',
-            orgaosResponsaveis: '',
-            orgaoResponsavel: '',
+            //----Validação Revisão
+            txt_situacao_revisao: '',
+            situacao_revisao_observacao: '',
+            situacao_revisao_id: '',
 
             //----Textos de Escolhas
-            textoEscolhaObjetivo: "Escolha o Órgão Responsável:",
-            textoEscolhaOrgaoResponsavel: "Escolha o Órgão Responsável:"
+            textoEscolhaUnidadeMedida: "Escolha uma nova Unidade de Medida:",
+            textoEscolhaPeriodicidade: "Escolha uma nova Periodicidade:",
+            textoEscolhaPolaridade: "Escolha uma nova Polaridade:"
         };
     },
 
     methods: {
-        onChangeOrgaoResponsavel: function onChangeOrgaoResponsavel() {
-            var _this = this;
-
-            this.textoEscolhaObjetivo = "Buscando...";
-            this.objetivoEstrategico = '';
-
-            if (this.orgaoResponsavel != '') {
-                axios.get(this.url + '/api/plancidades/iniciativas/orgaoResponsavel/' + this.orgaoResponsavel).then(function (resposta) {
-                    _this.textoEscolhaObjetivo = "Escolha um objetivo estratégico:";
-                    _this.objetivosEstrategicos = resposta.data;
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            } else {
-                this.textoEscolhaObjetivo = "Escolha o Órgão Responsável:";
-                this.orgaoResponsavel = '';
+        onChangeUnidadeMedida: function onChangeUnidadeMedida() {
+            this.novaUnidadeMedida = this.unidadeMedida;
+            switch (this.novaUnidadeMedida) {
+                case 1:
+                    this.novaUnidadeMedida = '(R$)';
+                    break;
+                case 2:
+                    this.novaUnidadeMedida = '(%)';
+                    break;
+                case 3:
+                    this.novaUnidadeMedida = '(ADI)';
+                    break;
+                case 4:
+                    this.novaUnidadeMedida = '(m²)';
+                    break;
+                case 5:
+                    this.novaUnidadeMedida = '(UN)';
+                    break;
+                default:
+                    this.novaUnidadeMedida = '';
             }
+        },
+        IrParaEdicao: function IrParaEdicao(revisaoId) {
+            window.location.href = "/plancidades/revisao/iniciativa/" + revisaoId + "/editar";
         }
     },
     mounted: function mounted() {
-        var _this2 = this;
+        var _this = this;
 
-        //retorna as Unidades Responsáveis
-        axios.get(this.url + '/api/plancidades/orgaosPEI').then(function (resposta) {
-            _this2.textoEscolhaOrgaoResponsavel = "Escolha o Órgão Responsável:";
-            _this2.orgaosResponsaveis = resposta.data;
+        axios.get(this.url + '/api/plancidades/unidadesMedida').then(function (resposta) {
+            _this.unidadesMedida = resposta.data;
         }).catch(function (error) {
             console.log(error);
         });
-        ;
+
+        axios.get(this.url + '/api/plancidades/periodicidades').then(function (resposta) {
+            _this.periodicidades = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        axios.get(this.url + '/api/plancidades/polaridades').then(function (resposta) {
+            _this.polaridades = resposta.data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        if (this.situacaoRevisao != null) {
+            this.situacao_revisao_id = this.situacaoRevisao.situacao_revisao_id;
+            this.txt_situacao_revisao = this.situacaoRevisao.txt_situacao_revisao;
+            this.situacao_revisao_observacao = this.situacaoRevisao.situacao_revisao_observacao;
+        } else {
+            this.situacao_revisao_id = '';
+            this.txt_situacao_revisao = 'Em revisão';
+            this.situacao_revisao_observacao = '';
+        };
     }
 });
 
 /***/ }),
-/* 363 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("div", { staticClass: "row mt-3" }, [
-      _c("div", { staticClass: "column col-6 col-xs-12" }, [
-        _c("label", { attrs: { for: "orgaoResponsavel" } }, [
-          _vm._v("Órgão Responsável")
+  return _c("div", [
+    _c("div", { staticClass: "form-group" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-xs-12 col-sm-3" }, [
+          _c("label", [_vm._v("Ano da Revisão")]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.num_ano_periodo_revisao)
+            }
+          })
         ]),
         _vm._v(" "),
-        _c(
-          "select",
-          {
+        _c("div", { staticClass: "column col-xs-12 col-sm-3" }, [
+          _c("label", [_vm._v("Periodo da Revisão")]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.dsc_periodo_monitoramento)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-xs-12 col-sm-3" }, [
+          _c("label", { attrs: { for: "situacaoRevisao" } }, [
+            _vm._v("Situação da Revisão")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.txt_situacao_revisao) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-xs-12 col-sm-12" }, [
+          _c("label", { attrs: { for: "observacaoRevisao" } }, [
+            _vm._v("Observações CGPI sobre a Revisão")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.situacao_revisao_observacao) }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_enunciado_iniciativa" } }, [
+            _vm._v("Denominação da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_enunciado_iniciativa)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Denominação da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.orgaoResponsavel,
-                expression: "orgaoResponsavel"
+                value: _vm.dadosIniciativaRevisao.txt_enunciado_iniciativa,
+                expression: "dadosIniciativaRevisao.txt_enunciado_iniciativa"
               }
             ],
-            staticClass: "form-select br-select",
-            attrs: { id: "orgaoResponsavel", name: "orgaoResponsavel" },
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_enunciado_iniciativa_nova",
+              name: "txt_enunciado_iniciativa_nova",
+              rows: "2",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.dadosIniciativaRevisao.txt_enunciado_iniciativa
+            },
             on: {
-              change: [
-                function($event) {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIniciativaRevisao,
+                  "txt_enunciado_iniciativa",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_iniciativa" } }, [
+            _vm._v("Descrição da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.dsc_iniciativa)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Descrição da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIniciativaRevisao.dsc_iniciativa,
+                expression: "dadosIniciativaRevisao.dsc_iniciativa"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "dsc_iniciativa_nova",
+              name: "dsc_iniciativa_nova",
+              rows: "5",
+              disabled: ""
+            },
+            domProps: { value: _vm.dadosIniciativaRevisao.dsc_iniciativa },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIniciativaRevisao,
+                  "dsc_iniciativa",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "bln_pac" } }, [
+            _vm._v("É entrega/iniciativa do PAC?")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.bln_pac ? "Sim" : "Não")
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Novo enquadramento de entrega/iniciativa do PAC")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosIniciativaRevisao.bln_pac,
+                  expression: "dadosIniciativaRevisao.bln_pac"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: { id: "bln_pac_nova", name: "bln_pac_nova", disabled: "" },
+              on: {
+                change: function($event) {
                   var $$selectedVal = Array.prototype.filter
                     .call($event.target.options, function(o) {
                       return o.selected
@@ -121467,113 +124945,1212 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.orgaoResponsavel = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
-                },
-                _vm.onChangeOrgaoResponsavel
-              ]
-            }
-          },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("Escolha a Órgão Responsável:")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.orgaosResponsaveis, function(item) {
-              return _c("option", {
-                key: item.id,
-                domProps: {
-                  value: item.id,
-                  textContent: _vm._s(item.dsc_orgao)
+                  _vm.$set(
+                    _vm.dadosIniciativaRevisao,
+                    "bln_pac",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
                 }
-              })
-            })
-          ],
-          2
-        )
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [
+                _vm._v("Selecione se a meta é ou não do PAC")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "true" } }, [_vm._v("Sim")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "false" } }, [_vm._v("Não")])
+            ]
+          )
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "column col-6 col-xs-12" }, [
-        _c("label", { attrs: { for: "objetivoEstrategico" } }, [
-          _vm._v("Objetivo Estratégico")
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_denominacao_indicador" } }, [
+            _vm._v("Denominação do Indicador da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_denominacao_indicador)
+            }
+          })
         ]),
         _vm._v(" "),
-        _c(
-          "select",
-          {
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Denominação do Indicador da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.objetivoEstrategico,
-                expression: "objetivoEstrategico"
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao.txt_denominacao_indicador,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_denominacao_indicador"
               }
             ],
-            staticClass: "form-select br-select",
+            staticClass: "input-medium",
             attrs: {
-              id: "objetivoEstrategico",
-              name: "objetivoEstrategico",
-              disabled: _vm.orgaoResponsavel == "" || this.editando == "true"
+              id: "txt_denominacao_indicador_nova",
+              name: "txt_denominacao_indicador_nova",
+              rows: "1",
+              disabled: ""
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao.txt_denominacao_indicador
             },
             on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.objetivoEstrategico = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_denominacao_indicador",
+                  $event.target.value
+                )
               }
             }
-          },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v(_vm._s(this.textoEscolhaObjetivo))
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.objetivosEstrategicos, function(item) {
-              return _c("option", {
-                key: item.id,
-                domProps: {
-                  value: item.id,
-                  textContent: _vm._s(item.txt_titulo_objetivo_estrategico_pei)
-                }
-              })
-            })
-          ],
-          2
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col col-xs-12 col-sm-12" }, [
-        _c("div", { staticClass: "p-3 text-right" }, [
-          _c(
-            "button",
-            {
-              staticClass: "br-button primary mr-3",
-              attrs: { type: "submit", name: "Salvar Edição" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_indicador" } }, [
+            _vm._v("Descrição do Indicador da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.dadosIniciativa.dsc_indicador) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Descrição do Indicador da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIndicadorIniciativaRevisao.dsc_indicador,
+                expression: "dadosIndicadorIniciativaRevisao.dsc_indicador"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "dsc_indicador_nova",
+              name: "dsc_indicador_nova",
+              rows: "5",
+              disabled: ""
             },
-            [_vm._v("Pesquisar\n                ")]
-          ),
+            domProps: {
+              value: _vm.dadosIndicadorIniciativaRevisao.dsc_indicador
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "dsc_indicador",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_sigla_indicador" } }, [
+            _vm._v("Sigla do Indicador da Iniciativa")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_sigla_indicador)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Sigla do Indicador da Iniciativa")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIndicadorIniciativaRevisao.txt_sigla_indicador,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_sigla_indicador"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_sigla_indicador_nova",
+              name: "txt_sigla_indicador_nova",
+              rows: "1",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.dadosIndicadorIniciativaRevisao.txt_sigla_indicador
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_sigla_indicador",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "vlr_indice_referencia" } }, [
+            _vm._v("Valor de Referência")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.vlr_indice_referencia)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Novo Valor de Referência")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao.vlr_indice_referencia,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.vlr_indice_referencia"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "vlr_indice_referencia_nova",
+              name: "vlr_indice_referencia_nova",
+              rows: "1",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.dadosIndicadorIniciativaRevisao.vlr_indice_referencia
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "vlr_indice_referencia",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_unidade_medida" } }, [
+            _vm._v("Unidade de Medida")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_unidade_medida)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Unidade de Medida")]),
           _vm._v(" "),
           _c(
-            "a",
+            "select",
             {
-              staticClass: "br-button danger mr-3",
-              attrs: { type: "button", href: this.url + "/plancidades/" }
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosIndicadorIniciativaRevisao.txt_unidade_medida,
+                  expression:
+                    "dadosIndicadorIniciativaRevisao.txt_unidade_medida"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "txt_unidade_medida_nova",
+                name: "txt_unidade_medida_nova",
+                disabled: ""
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.dadosIndicadorIniciativaRevisao,
+                      "txt_unidade_medida",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  _vm.onChangeUnidadeMedida
+                ]
+              }
             },
-            [_vm._v("Voltar\n                ")]
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: { textContent: _vm._s(_vm.textoEscolhaUnidadeMedida) }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.unidadesMedida, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.id,
+                    textContent: _vm._s(item.txt_unidade_medida)
+                  }
+                })
+              })
+            ],
+            2
           )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c(
+            "label",
+            { attrs: { for: "txt_data_divulgacao_ou_disponibilizacao" } },
+            [_vm._v("Data de Divulgação ou Disponibilidade")]
+          ),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_data_divulgacao_ou_disponibilizacao
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Novo Data de Divulgação ou Disponibilidade")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao
+                    .txt_data_divulgacao_ou_disponibilizacao,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_data_divulgacao_ou_disponibilizacao"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_data_divulgacao_ou_disponibilizacao_nova",
+              name: "txt_data_divulgacao_ou_disponibilizacao_nova",
+              rows: "1",
+              disabled: ""
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao
+                  .txt_data_divulgacao_ou_disponibilizacao
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_data_divulgacao_ou_disponibilizacao",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_periodicidades" } }, [
+            _vm._v("Periodicidade")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.dsc_periodicidades)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Periodicidade")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosIndicadorIniciativaRevisao.dsc_periodicidades,
+                  expression:
+                    "dadosIndicadorIniciativaRevisao.dsc_periodicidades"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "periodicidade_id_nova",
+                name: "periodicidade_id_nova",
+                disabled: ""
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosIndicadorIniciativaRevisao,
+                    "dsc_periodicidades",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: { textContent: _vm._s(_vm.textoEscolhaPeriodicidade) }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.periodicidades, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.id,
+                    textContent: _vm._s(item.dsc_periodicidades)
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_polaridade" } }, [
+            _vm._v("Polaridade do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.txt_polaridade)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Polaridade do Indicador")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosIndicadorIniciativaRevisao.txt_polaridade,
+                  expression: "dadosIndicadorIniciativaRevisao.txt_polaridade"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "polaridade_id_nova",
+                name: "polaridade_id_nova",
+                disabled: ""
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosIndicadorIniciativaRevisao,
+                    "txt_polaridade",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", {
+                attrs: { value: "" },
+                domProps: { textContent: _vm._s(_vm.textoEscolhaPolaridade) }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.polaridades, function(item) {
+                return _c("option", {
+                  key: item.id,
+                  domProps: {
+                    value: item.id,
+                    textContent: _vm._s(item.txt_polaridade)
+                  }
+                })
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_formula_calculo" } }, [
+            _vm._v("Fórmula de Cálculo do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_formula_calculo
+                  ? _vm.dadosIniciativa.txt_formula_calculo
+                  : "Verificar no Espelho do PPA"
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Fórmula de Cálculo do Indicador")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosIndicadorIniciativaRevisao.txt_formula_calculo,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_formula_calculo"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_formula_calculo_nova",
+              name: "txt_formula_calculo_nova",
+              rows: "5",
+              disabled: ""
+            },
+            domProps: {
+              value: _vm.dadosIndicadorIniciativaRevisao.txt_formula_calculo
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_formula_calculo",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_fonte_dados_variaveis_calculo" } }, [
+            _vm._v("Fonte de Dados das Variáveis do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_fonte_dados_variaveis_calculo
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Nova Fonte de Dados das Variáveis do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao
+                    .txt_fonte_dados_variaveis_calculo,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_fonte_dados_variaveis_calculo"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_fonte_dados_variaveis_calculo_nova",
+              name: "txt_fonte_dados_variaveis_calculo_nova",
+              rows: "5",
+              disabled: ""
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao
+                  .txt_fonte_dados_variaveis_calculo
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_fonte_dados_variaveis_calculo",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_forma_disponibilizacao" } }, [
+            _vm._v("Forma de Disponibilização do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.txt_forma_disponibilizacao
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Forma de Disponibilização do Indicador")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao
+                    .txt_forma_disponibilizacao,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.txt_forma_disponibilizacao"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_forma_disponibilizacao_nova",
+              name: "txt_forma_disponibilizacao_nova",
+              rows: "5",
+              disabled: ""
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao.txt_forma_disponibilizacao
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "txt_forma_disponibilizacao",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "dsc_procedimento_calculo" } }, [
+            _vm._v("Procedimento de Cálculo do Indicador")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.dsc_procedimento_calculo)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Procedimento de Cálculo do Indicador")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosIndicadorIniciativaRevisao.dsc_procedimento_calculo,
+                expression:
+                  "dadosIndicadorIniciativaRevisao.dsc_procedimento_calculo"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "dsc_procedimento_calculo_nova",
+              name: "dsc_procedimento_calculo_nova",
+              rows: "5",
+              disabled: ""
+            },
+            domProps: {
+              value:
+                _vm.dadosIndicadorIniciativaRevisao.dsc_procedimento_calculo
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosIndicadorIniciativaRevisao,
+                  "dsc_procedimento_calculo",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "txt_dsc_meta" } }, [
+            _vm._v("Denominação da Meta")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: { textContent: _vm._s(_vm.dadosIniciativa.txt_dsc_meta) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Denominação da Meta")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosMetaIniciativaRevisao.txt_dsc_meta,
+                expression: "dadosMetaIniciativaRevisao.txt_dsc_meta"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "txt_dsc_meta_nova",
+              name: "txt_dsc_meta_nova",
+              rows: "2",
+              disabled: ""
+            },
+            domProps: { value: _vm.dadosMetaIniciativaRevisao.txt_dsc_meta },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "txt_dsc_meta",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "bln_meta_cumulativa" } }, [
+            _vm._v("Cumulatividade da Meta")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.bln_meta_cumulativa ? "Sim" : "Não"
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Cumulatividade da Meta")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosMetaIniciativaRevisao.bln_meta_cumulativa,
+                  expression: "dadosMetaIniciativaRevisao.bln_meta_cumulativa"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "bln_meta_cumulativa_nova",
+                name: "bln_meta_cumulativa_nova",
+                disabled: ""
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosMetaIniciativaRevisao,
+                    "bln_meta_cumulativa",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [
+                _vm._v("Selecione se a meta é ou não cumulativa")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "true" } }, [_vm._v("Sim")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "false" } }, [_vm._v("Não")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "vlr_esperado_ano_2" } }, [
+            _vm._v(
+              "Meta para 2025 " +
+                _vm._s(_vm.dadosIniciativa.unidade_medida_simbolo)
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.vlr_esperado_ano_2)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Nova Meta para 2025 " + _vm._s(_vm.novaUnidadeMedida))
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_2,
+                expression: "dadosMetaIniciativaRevisao.vlr_esperado_ano_2"
+              }
+            ],
+            attrs: {
+              id: "vlr_esperado_ano_2_nova",
+              disabled: "",
+              type: "number",
+              name: "vlr_esperado_ano_2_nova",
+              step: "0.01"
+            },
+            domProps: {
+              value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_2
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "vlr_esperado_ano_2",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "vlr_esperado_ano_3" } }, [
+            _vm._v(
+              "Meta para 2026 " +
+                _vm._s(_vm.dadosIniciativa.unidade_medida_simbolo)
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(_vm.dadosIniciativa.vlr_esperado_ano_3)
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Nova Meta para 2026 " + _vm._s(_vm.novaUnidadeMedida))
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_3,
+                expression: "dadosMetaIniciativaRevisao.vlr_esperado_ano_3"
+              }
+            ],
+            attrs: {
+              id: "vlr_esperado_ano_3_nova",
+              disabled: "",
+              type: "number",
+              name: "vlr_esperado_ano_3_nova",
+              step: "0.01"
+            },
+            domProps: {
+              value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_3
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "vlr_esperado_ano_3",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c(
+            "label",
+            { attrs: { for: "vlr_meta_final_cenario_alternativo" } },
+            [
+              _vm._v(
+                "Meta para 2027 " +
+                  _vm._s(_vm.dadosIniciativa.unidade_medida_simbolo)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.vlr_meta_final_cenario_alternativo
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [
+            _vm._v("Nova Meta para 2027 " + _vm._s(_vm.novaUnidadeMedida))
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_4,
+                expression: "dadosMetaIniciativaRevisao.vlr_esperado_ano_4"
+              }
+            ],
+            attrs: {
+              id: "vlr_esperado_ano_4_nova",
+              disabled: "",
+              type: "number",
+              name: "vlr_esperado_ano_4_nova",
+              step: "0.01"
+            },
+            domProps: {
+              value: _vm.dadosMetaIniciativaRevisao.vlr_esperado_ano_4
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "vlr_esperado_ano_4",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c("label", { attrs: { for: "bln_meta_regionalizada" } }, [
+            _vm._v("A meta é regionalizada?")
+          ]),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.bln_meta_regionalizada ? "Sim" : "Não"
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("A meta será regionalizada?")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dadosMetaIniciativaRevisao.bln_meta_regionalizada,
+                  expression:
+                    "dadosMetaIniciativaRevisao.bln_meta_regionalizada"
+                }
+              ],
+              staticClass: "form-select br-select",
+              attrs: {
+                id: "bln_meta_regionalizada_nova",
+                name: "bln_meta_regionalizada_nova",
+                disabled: ""
+              },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.dadosMetaIniciativaRevisao,
+                    "bln_meta_regionalizada",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [
+                _vm._v("Selecione se a meta é ou não regionalizada")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "true" } }, [_vm._v("Sim")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "false" } }, [_vm._v("Não")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-3" }, [
+        _c("div", { staticClass: "column col-6 col-xs-12" }, [
+          _c(
+            "label",
+            { attrs: { for: "dsc_justificativa_ausencia_regionalizacao" } },
+            [_vm._v("Justificativa para não regionalização")]
+          ),
+          _vm._v(" "),
+          _c("p", {
+            domProps: {
+              textContent: _vm._s(
+                _vm.dadosIniciativa.dsc_justificativa_ausencia_regionalizacao
+              )
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "column col-6 col-xs-12 br-textarea" }, [
+          _c("label", [_vm._v("Nova Justificativa para não regionalização")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value:
+                  _vm.dadosMetaIniciativaRevisao
+                    .dsc_justificativa_ausencia_regionalizacao,
+                expression:
+                  "dadosMetaIniciativaRevisao.dsc_justificativa_ausencia_regionalizacao"
+              }
+            ],
+            staticClass: "input-medium",
+            attrs: {
+              id: "dsc_justificativa_ausencia_regionalizacao_nova",
+              name: "dsc_justificativa_ausencia_regionalizacao_nova",
+              rows: "5",
+              disabled: ""
+            },
+            domProps: {
+              value:
+                _vm.dadosMetaIniciativaRevisao
+                  .dsc_justificativa_ausencia_regionalizacao
+            },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.dadosMetaIniciativaRevisao,
+                  "dsc_justificativa_ausencia_regionalizacao",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col col-xs-12 col-sm-12" }, [
+          _c("div", { staticClass: "p-3 text-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "br-button primary mr-3",
+                attrs: {
+                  disabled:
+                    this.situacao_revisao_id == "3" ||
+                    this.situacao_revisao_id == "5" ||
+                    this.situacao_revisao_id == "6"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.IrParaEdicao(
+                      _vm.dadosIniciativa.revisao_iniciativa_id
+                    )
+                  }
+                }
+              },
+              [_vm._v("\n                    Editar\n                    ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "br-button danger mr-3",
+                attrs: {
+                  type: "button",
+                  href:
+                    this.url +
+                    "/plancidades/revisao/iniciativa/listar/" +
+                    this.dadosIniciativa.iniciativa_id
+                }
+              },
+              [_vm._v("Voltar\n                    ")]
+            )
+          ])
         ])
       ])
     ])
@@ -121584,24 +126161,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-3" }, [
-      _c("div", { staticClass: "column col-2" }, [
-        _c(
-          "div",
-          { staticClass: "br-item", attrs: { "data-toggle": "selection" } },
-          [
-            _c("div", { staticClass: "br-checkbox" }, [
-              _c("input", {
-                attrs: { id: "bln_ppa", name: "bln_ppa", type: "checkbox" }
-              }),
-              _vm._v(" "),
-              _c("label", { attrs: { for: "bln_ppa" } }, [
-                _vm._v("Buscar somente PPA")
-              ])
-            ])
-          ]
-        )
-      ])
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Informações da Revisão")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Detalhamento da Iniciativa")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Detalhamento do Indicador da Iniciativa")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-center" }, [
+      _c("b", [_vm._v("Detalhamento da Meta do Indicador da Iniciativa")])
     ])
   }
 ]
@@ -121610,7 +126195,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1bd5ea88", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3ad157ce", module.exports)
   }
 }
 

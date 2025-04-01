@@ -16,7 +16,7 @@ use App\Mod_plancidades\RlcRestricaoMetaMonitoramentoIndic;
 use App\Mod_plancidades\RlcSituacaoRevisaoIndicadores;
 use App\Mod_plancidades\ViewApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewMonitoramentoIndicadoresObjEstrategicos;
-use App\Mod_plancidades\ViewIndicadoresIniciativas;
+use App\Mod_plancidades\ViewIndicadoresIniciativasRevisao;
 use App\Mod_plancidades\ViewResumoApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicosRevisao;
 use Illuminate\Support\Facades\DB;
@@ -152,7 +152,7 @@ class RevisaoController extends Controller
             $where[] = ['bln_ppa', true];
         }
 
-        $iniciativas = ViewIndicadoresIniciativas::where($where)->orderBy('iniciativa_id')->get();
+        $iniciativas = ViewIndicadoresIniciativasRevisao::where($where)->orderBy('iniciativa_id')->get();
 
         // return ($iniciativas);
 

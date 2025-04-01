@@ -280,7 +280,7 @@ class RevisaoIndicadorController extends Controller
         $dados_revisao_indicador->txt_forma_disponibilizacao = $request->txt_forma_disponibilizacao_nova;
         $dados_revisao_indicador->dsc_procedimento_calculo = $request->dsc_procedimento_calculo_nova;
         $dados_revisao_indicador->bln_ppa = $request->bln_ppa_nova;
-        $dados_revisao_indicador->created_at = date('Y-m-d H:i:s');
+        $dados_revisao_indicador->updated_at = date('Y-m-d H:i:s');
 
         $dados_salvos = $dados_revisao_indicador->update();
 
@@ -296,7 +296,7 @@ class RevisaoIndicadorController extends Controller
         $dados_revisao_meta->vlr_esperado_ano_4 = $request->vlr_esperado_ano_4_nova;
         $dados_revisao_meta->bln_meta_regionalizada = $request->bln_meta_regionalizada_nova;
         $dados_revisao_meta->dsc_justificativa_ausencia_regionalizacao = $request->dsc_justificativa_ausencia_regionalizacao_nova;
-        $dados_revisao_meta->created_at = date('Y-m-d H:i:s');
+        $dados_revisao_meta->updated_at = date('Y-m-d H:i:s');
         $dados_revisao_meta->user_id = $user->id;
 
         $dados_revisao_meta->update();

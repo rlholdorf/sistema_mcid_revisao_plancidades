@@ -30,7 +30,7 @@
            <br>
            Ao lado de cada atributo, existe um campo para informar alterações que devam ser feitas no indicador.
            <br>
-           Ao final da página, clique em Salvar Revisão para enviar para análise.
+           Ao final da página, clique em Salvar Revisão para salvar. Ao final, clique em Finalizar para enviar para análise.
         </p>
         
         <hr>
