@@ -188,9 +188,13 @@ class RevisaoIndicadorController extends Controller
                     $dadosIndicador->unidade_medida_simbolo = '';
             }
             
+            $dadosIndicadorRevisao = IndicadoresObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
+            
+            $dadosMetaRevisao = MetasObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
+
             $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
 
-            return view('modulo_plancidades.revisao.objetivo_estrategico.show_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao'));
+            return view('modulo_plancidades.revisao.objetivo_estrategico.show_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao','dadosIndicadorRevisao', 'dadosMetaRevisao'));
 
     }
 
@@ -251,7 +255,7 @@ class RevisaoIndicadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return ($request);
+        // return ($request);
         //return ($id);
 
         $user = Auth()->user();

@@ -6,22 +6,24 @@ use App\Mod_plancidades\MetasIndicadoresObjetivosEstrategicos;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Mod_plancidades\IndicadoresObjetivosEstrategicos;
-use App\Mod_plancidades\EtapasProjeto;
+use App\Mod_plancidades\IndicadoresObjetivosEstrategicosRevisao;
 use App\Mod_plancidades\MetasObjetivosEstrategicos;
+use App\Mod_plancidades\MetasObjetivosEstrategicosRevisao;
 use App\Mod_plancidades\MonitoramentoIndicadores;
 use App\Mod_plancidades\MonitoramentoIndicadoresObjEspecificos;
 use App\Mod_plancidades\RegionalizacaoMetaObjEstr;
+use App\Mod_plancidades\RevisaoIndicadores;
 use App\Mod_plancidades\RlcMetasMonitoramentoIndicadores;
 use App\Mod_plancidades\RlcMonitoramentoObjEspecificos;
 use App\Mod_plancidades\RlcRestricaoMetaMonitoramentoIndic;
-use App\Mod_plancidades\RlcSituacaoMonitoramentoIndicadores;
-use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicos;
+use App\Mod_plancidades\RlcSituacaoRevisaoProjetos;
+use App\Mod_plancidades\ViewProjetos;
 use App\Mod_plancidades\ViewApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewIndicadoresObjetivosEstrategicosMetas;
-use App\Mod_plancidades\ViewMonitoramentoIndicadoresObjEstrategicos;
-use App\Mod_plancidades\ViewProjetos;
+use App\Mod_plancidades\ViewRevisaoIndicadoresObjEstrategicos;
 use App\Mod_plancidades\ViewResumoApuracaoMetaIndicador;
 use App\Mod_plancidades\ViewValidacaoMonitoramentoIndicadores;
+use App\Mod_plancidades\ViewValidacaoRevisaoIndicadores;
 use Illuminate\Support\Facades\DB;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegrationAssertPostConditionsForV7AndPrevious;
 use Illuminate\Database\Query\JoinClause;
@@ -44,16 +46,16 @@ class RevisaoProjetoController extends Controller
      */
     public function index($indicadorId)
     {
-        $monitoramentos = ViewMonitoramentoIndicadoresObjEstrategicos::where('view_monitoramento_indicadores.indicador_objetivo_estrategico_id', $indicadorId)
-        ->orderBy('view_monitoramento_indicadores.monitoramento_indicador_id', 'DESC')
-        ->leftJoin('mcid_plancidades.view_validacao_monitoramento_indicadores','view_validacao_monitoramento_indicadores.monitoramento_indicador_id','=','view_monitoramento_indicadores.monitoramento_indicador_id')
-        ->select('view_monitoramento_indicadores.*','view_validacao_monitoramento_indicadores.situacao_monitoramento_id','view_validacao_monitoramento_indicadores.txt_situacao_monitoramento')
+        $revisoes = ViewRevisaoIndicadoresObjEstrategicos::where('view_revisao_indicadores.indicador_objetivo_estrategico_id', $indicadorId)
+        ->orderBy('view_revisao_indicadores.revisao_indicador_id', 'DESC')
+        ->leftJoin('mcid_hom_plancidades.view_validacao_revisao_indicadores','view_validacao_revisao_indicadores.revisao_indicador_id','=','view_revisao_indicadores.revisao_indicador_id')
+        ->select('view_revisao_indicadores.*','view_validacao_revisao_indicadores.situacao_revisao_id','view_validacao_revisao_indicadores.txt_situacao_revisao')
         ->get();
 
-        if(count($monitoramentos) > 0){
-            return view("modulo_plancidades.objetivo_estrategico.listar_monitoramentos_indicador", compact('monitoramentos'));
+        if(count($revisoes) > 0){
+            return view("modulo_plancidades.revisao.objetivo_estrategico.listar_revisoes_indicador", compact('revisoes'));
         }else{
-            flash()->erro("Erro", "Nenhum monitoramento encontrado...");
+            flash()->erro("Erro", "Nenhuma revisao encontrada...");
             return back();
         }
     }
@@ -65,12 +67,22 @@ class RevisaoProjetoController extends Controller
      */
     public function create($projetoId)
     {   
-               
+        
+        $revisaoCadastrada = RlcSituacaoRevisaoProjetos::where('projeto_id', $projetoId)->orderBy('created_at', 'desc')->first();
+
+        $situacoes = array('5', '6', null);
+
+        if (!empty($revisaoCadastrada)) {
+            if(!in_array($revisaoCadastrada->situacao_revisao_id, $situacoes)) {
+                DB::rollBack();
+                flash()->erro("Erro", "Já existe uma revisão em andamento.");
+                return back();
+            }
+        }
+
         $dadosProjeto = ViewProjetos::where('projeto_id', $projetoId)->first();
 
-        $dadosEtapas = EtapasProjeto::where('projeto_id', $projetoId)->get();
-
-        return view('modulo_plancidades.revisao.projeto.editar_revisao_projeto', compact('dadosProjeto', 'dadosEtapas'));
+        return view('modulo_plancidades.revisao.projeto.iniciar_revisao_projeto', compact('dadosProjeto'));
     }
 
     /**
@@ -81,74 +93,71 @@ class RevisaoProjetoController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth()->user();
 
-        DB::beginTransaction();
-        $where = [];
-        $where[] = ['indicador_objetivo_estrategico_id', $request->indicador];
-        $where[] = ['num_ano_periodo_monitoramento', $request->anoMonitoramento];
-        $where[] = ['periodo_monitoramento_id', $request->periodoMonitoramento];
+        return ($request);
 
+        // $user = Auth()->user();
 
-        $monitoramentoCadastrado = MonitoramentoIndicadores::where($where)->first();
+        // DB::beginTransaction();
+        
+        // $where = [];
+        // $where[] = ['indicador_objetivo_estrategico_id', $request->indicador];
+        // $where[] = ['num_ano_periodo_revisao', $request->anoRevisao];
+        // $where[] = ['periodo_revisao_id', $request->periodoRevisao];
+        
+        // $revisaoCadastrada = RevisaoIndicadores::where($where)->first();
 
-        if (!empty($monitoramentoCadastrado)) {
-            DB::rollBack();
-            flash()->erro("Erro", "Já existe um monitoramento para esse período.");
-            return back();
-        }
+        // if (!empty($revisaoCadastrada)) {
+        //     DB::rollBack();
+        //     flash()->erro("Erro", "Já existe uma revisão em andamento.");
+        //     return back();
+        // }   
+
+        // $dados_revisao = new RevisaoIndicadores();
+
+        // $dados_revisao->user_id = $user->id;
+        // $dados_revisao->indicador_objetivo_estrategico_id = $request->indicador;
+        // $dados_revisao->periodo_revisao_id = $request->periodoRevisao;
+        // $dados_revisao->num_ano_periodo_revisao = $request->anoRevisao;
+        // $dados_revisao->created_at = date('Y-m-d H:i:s');
+
+        // $dados_salvos = $dados_revisao->save();
+        
+        // $situacao_revisao_indicadores = new RlcSituacaoRevisaoIndicadores();
+        // $situacao_revisao_indicadores->revisao_indicador_id = $dados_revisao->id;
+        // $situacao_revisao_indicadores->situacao_revisao_id = '2';
+        // $situacao_revisao_indicadores->user_id = $user->id;
+        // $situacao_revisao_indicadores->created_at = date('Y-m-d H:i:s');
+        // $situacao_revisao_indicadores->indicador_objetivo_estrategico_id = $request->indicador;
+        // $situacao_revisao_indicadores->save();
+
+        // $dados_revisao_indicador = new IndicadoresObjetivosEstrategicosRevisao();
+        // $dados_revisao_indicador->user_id = $user->id;
+        // $dados_revisao_indicador->revisao_indicador_id = $dados_revisao->id;
+        // $dados_revisao_indicador->indicador_objetivo_estrategico_id = $request->indicador;
+        // $dados_revisao_indicador->created_at = date('Y-m-d H:i:s');
+        // $dados_revisao_indicador->save();
+
+        // $dados_revisao_meta = new MetasObjetivosEstrategicosRevisao();
+        // $dados_revisao_meta->user_id = $user->id;
+        // $dados_revisao_meta->revisao_indicador_id = $dados_revisao->id;
+        // $dados_revisao_meta->indicador_objetivo_estrategico_id = $request->indicador;
+        // $dados_revisao_meta->meta_indicador_objetivo_estrategico_id = $request->metaObjetivoEstrategico;
+        // $dados_revisao_meta->created_at = date('Y-m-d H:i:s');
+        // $dados_revisao_meta->save();
 
         
-        $dados_monitoramento = new MonitoramentoIndicadores();
-
-        $dados_monitoramento->user_id = $user->id;
-        $dados_monitoramento->indicador_objetivo_estrategico_id = $request->indicador;
-        $dados_monitoramento->dsc_analise_indicador = $request->dsc_analise_indicador;
-        $dados_monitoramento->dsc_causas_impedimentos = $request->dsc_causas_impedimentos_atingimento_meta;
-        $dados_monitoramento->dsc_desafios_proximos_passos = $request->dsc_desafios_proximos_passos;
-        $dados_monitoramento->periodo_monitoramento_id = $request->periodoMonitoramento;
-        $dados_monitoramento->num_ano_periodo_monitoramento = $request->anoMonitoramento;
         
-        $dados_monitoramento->created_at = date('Y-m-d H:i:s');
+        // if ($dados_salvos) {
+        //     DB::commit();
 
-        $dados_salvos = $dados_monitoramento->save();
-
-        $metaObjetivoEstrategico = MetasObjetivosEstrategicos::where('indicador_objetivo_estrategico_id', $dados_monitoramento->indicador_objetivo_estrategico_id)->first();
-
-
-        if($metaObjetivoEstrategico->bln_meta_regionalizada && $dados_salvos){
-            $regionalizacoes = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $metaObjetivoEstrategico->id)->get();
-
-            foreach($regionalizacoes as $regionalizacao){
-                $rlc_metas_monitoramento = new RlcMetasMonitoramentoIndicadores();
-
-                $rlc_metas_monitoramento->monitoramento_indicador_id = $dados_monitoramento->id;
-                $rlc_metas_monitoramento->meta_indicador_id = $metaObjetivoEstrategico->id;
-                $rlc_metas_monitoramento->regionalizacao_meta_indicador_id = $regionalizacao->id;
-                $rlc_metas_monitoramento->vlr_apurado = null;
-                $rlc_metas_monitoramento->created_at = date('Y-m-d H:i:s');
-                $rlc_metas_monitoramento->save();
-            }
-        }
-        
-        $situacao_monitoramento_indicadores = new RlcSituacaoMonitoramentoIndicadores();
-        $situacao_monitoramento_indicadores->monitoramento_indicador_id = $dados_monitoramento->id;
-        $situacao_monitoramento_indicadores->situacao_monitoramento_id = '2';
-        $situacao_monitoramento_indicadores->user_id = $user->id;
-        $situacao_monitoramento_indicadores->created_at = date('Y-m-d H:i:s');
-        $situacao_monitoramento_indicadores->indicador_objetivo_estrategico_id = $request->indicador_objetivo_estrategico_id;
-        $situacao_monitoramento_indicadores->save();
-        
-        if ($dados_salvos) {
-            DB::commit();
-
-            flash()->sucesso("Sucesso", "Monitoramento do Indicador cadastrado com sucesso!");
-            return Redirect::route("plancidades.monitoramentos.objetivoEstrategico.editar", ["monitoramentoId" => $dados_monitoramento->id]);
-        } else {
-            DB::rollBack();
-            flash()->erro("Erro", "Não foi possível cadastrar o monitoramento.");
-            return back();
-        }
+        //     flash()->sucesso("Sucesso", "Revisão do Indicador cadastrada com sucesso!");
+        //     return Redirect::route("plancidades.revisao.objetivoEstrategico.editar", ["revisaoId" => $dados_revisao->id]);
+        // } else {
+        //     DB::rollBack();
+        //     flash()->erro("Erro", "Não foi possível cadastrar a revisão.");
+        //     return back();
+        // }
     }
 
     /**
@@ -159,55 +168,36 @@ class RevisaoProjetoController extends Controller
      */
     public function show($id)
     {
-        $dados_monitoramento = ViewMonitoramentoIndicadoresObjEstrategicos::find($id);
+        $dadosIndicador = ViewRevisaoIndicadoresObjEstrategicos::where('revisao_indicador_id', $id)->first();
 
-        switch ($dados_monitoramento->unidade_medida_id){
-            case 1:
-                $dados_monitoramento->unidade_medida_simbolo = '(R$)';
-                break;
-            case 2:
-                $dados_monitoramento->unidade_medida_simbolo = '(%)';
-                break;
-            case 3:
-                $dados_monitoramento->unidade_medida_simbolo = '(ADI)';
-                break;
-            case 4:
-                $dados_monitoramento->unidade_medida_simbolo = '(m²)';
-                break;
-            case 5:
-                $dados_monitoramento->unidade_medida_simbolo = '(UN)';
-                break;
-            default:
-                $dados_monitoramento->unidade_medida_simbolo = '';
-        }
+            switch ($dadosIndicador->unidade_medida_id){
+                case 1:
+                    $dadosIndicador->unidade_medida_simbolo = '(R$)';
+                    break;
+                case 2:
+                    $dadosIndicador->unidade_medida_simbolo = '(%)';
+                    break;
+                case 3:
+                    $dadosIndicador->unidade_medida_simbolo = '(ADI)';
+                    break;
+                case 4:
+                    $dadosIndicador->unidade_medida_simbolo = '(m²)';
+                    break;
+                case 5:
+                    $dadosIndicador->unidade_medida_simbolo = '(UN)';
+                    break;
+                default:
+                    $dadosIndicador->unidade_medida_simbolo = '';
+            }
+            
+            $dadosIndicadorRevisao = IndicadoresObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
+            
+            $dadosMetaRevisao = MetasObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
 
-        $resumoApuracaoMeta = ViewResumoApuracaoMetaIndicador::where('monitoramento_indicador_id', $id)->first();
+            $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
 
-        $metaIndicador = MetasObjetivosEstrategicos::where('indicador_objetivo_estrategico_id', $dados_monitoramento->indicador_objetivo_estrategico_id)->first();
+            return view('modulo_plancidades.revisao.objetivo_estrategico.show_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao','dadosIndicadorRevisao', 'dadosMetaRevisao'));
 
-        $regionalizacaoMetas = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $metaIndicador->id)
-            ->leftJoin('mcid_plancidades.rlc_metas_monitoramento_indicadores','rlc_metas_monitoramento_indicadores.regionalizacao_meta_indicador_id','=','tab_regionalizacao_metas_objetivos_estrategicos.id')
-            ->where('rlc_metas_monitoramento_indicadores.monitoramento_indicador_id',$id)
-            ->orderBy('tab_regionalizacao_metas_objetivos_estrategicos.id')
-            ->get();
-        $regionalizacaoMetas->load('regionalizacao', 'metasIndicadores.indicador');
-
-        $restricoes = RlcRestricaoMetaMonitoramentoIndic::where('monitoramento_indicador_id', $dados_monitoramento->monitoramento_indicador_id)->get();
-        $restricoes->load('monitoramentoIndicador', 'restricaoAtingimentoMeta');
-
-        $situacao_monitoramento = ViewValidacaoMonitoramentoIndicadores::where('monitoramento_indicador_id', $id)->first();
-
-        return view(
-            'modulo_plancidades.objetivo_estrategico.show_monitoramento_indicador',
-             compact(
-                'dados_monitoramento', 
-                'resumoApuracaoMeta', 
-                'metaIndicador', 
-                'regionalizacaoMetas', 
-                'restricoes',
-                'situacao_monitoramento'
-            )
-        );
     }
 
     /**
@@ -218,64 +208,44 @@ class RevisaoProjetoController extends Controller
      */
     public function edit($id)
     {
-        $situacao_monitoramento = ViewValidacaoMonitoramentoIndicadores::where('monitoramento_indicador_id', $id)->first();
+        $revisaoCadastrada = RlcSituacaoRevisaoIndicadores::where('revisao_indicador_id', $id)->orderBy('created_at', 'desc')->first();
 
-        if($situacao_monitoramento && ($situacao_monitoramento->situacao_monitoramento_id == 3 || $situacao_monitoramento->situacao_monitoramento_id == 5 || $situacao_monitoramento->situacao_monitoramento_id == 6 )) {
+        if($revisaoCadastrada && ($revisaoCadastrada->situacao_revisao_id == 3 || $revisaoCadastrada->situacao_revisao_id == 5 || $revisaoCadastrada->situacao_revisao_id == 6 )) {
 
-            flash()->erro("Erro", "Não foi possível atualizar o monitoramento.");
-            return Redirect::route("plancidades.monitoramentos.objetivoEstrategico.listarMonitoramentos", ['monitoramentoId'=> $situacao_monitoramento->indicador_objetivo_estrategico_id]);
+            flash()->erro("Erro", "Não foi possível atualizar a revisao.");
+            return Redirect::route("plancidades.revisao.objetivoEstrategico.listarRevisoes", ['indicadorId'=> $revisaoCadastrada->indicador_objetivo_estrategico_id]);
         }
         else{
 
+            $dadosIndicador = ViewIndicadoresObjetivosEstrategicosMetas::where('id', $revisaoCadastrada->indicador_objetivo_estrategico_id)->first();
 
-            $dados_monitoramento = ViewMonitoramentoIndicadoresObjEstrategicos::find($id);
-
-            switch ($dados_monitoramento->unidade_medida_id){
+            switch ($dadosIndicador->unidade_medida_id){
                 case 1:
-                    $dados_monitoramento->unidade_medida_simbolo = '(R$)';
+                    $dadosIndicador->unidade_medida_simbolo = '(R$)';
                     break;
                 case 2:
-                    $dados_monitoramento->unidade_medida_simbolo = '(%)';
+                    $dadosIndicador->unidade_medida_simbolo = '(%)';
                     break;
                 case 3:
-                    $dados_monitoramento->unidade_medida_simbolo = '(ADI)';
+                    $dadosIndicador->unidade_medida_simbolo = '(ADI)';
                     break;
                 case 4:
-                    $dados_monitoramento->unidade_medida_simbolo = '(m²)';
+                    $dadosIndicador->unidade_medida_simbolo = '(m²)';
                     break;
                 case 5:
-                    $dados_monitoramento->unidade_medida_simbolo = '(UN)';
+                    $dadosIndicador->unidade_medida_simbolo = '(UN)';
                     break;
                 default:
-                    $dados_monitoramento->unidade_medida_simbolo = '';
+                    $dadosIndicador->unidade_medida_simbolo = '';
             }
+            
+            $dadosIndicadorRevisao = IndicadoresObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
+            
+            $dadosMetaRevisao = MetasObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
 
-            $resumoApuracaoMeta = ViewResumoApuracaoMetaIndicador::where('monitoramento_indicador_id', $id)->first();
+            $dadosRegionalizacao = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $dadosIndicador->objetivo_estrategico_meta_id)->get();
 
-            $metaIndicador = MetasObjetivosEstrategicos::where('indicador_objetivo_estrategico_id', $dados_monitoramento->indicador_objetivo_estrategico_id)->first();
-
-            $regionalizacaoMetas = RegionalizacaoMetaObjEstr::where('meta_objetivos_estrategicos_id', $metaIndicador->id)
-                ->leftJoin('mcid_plancidades.rlc_metas_monitoramento_indicadores','rlc_metas_monitoramento_indicadores.regionalizacao_meta_indicador_id','=','tab_regionalizacao_metas_objetivos_estrategicos.id')
-                ->where('rlc_metas_monitoramento_indicadores.monitoramento_indicador_id',$id)
-                ->orderBy('tab_regionalizacao_metas_objetivos_estrategicos.id')
-                ->get();
-            $regionalizacaoMetas->load('regionalizacao', 'metasIndicadores.indicador');
-
-            $restricoes = RlcRestricaoMetaMonitoramentoIndic::where('monitoramento_indicador_id', $dados_monitoramento->monitoramento_indicador_id)->get();
-            $restricoes->load('monitoramentoIndicador', 'restricaoAtingimentoMeta');
-
-        
-            return view(
-                'modulo_plancidades.objetivo_estrategico.editar_monitoramento_indicador',
-                compact(
-                    'dados_monitoramento', 
-                    'resumoApuracaoMeta', 
-                    'metaIndicador', 
-                    'regionalizacaoMetas', 
-                    'restricoes',
-                    'situacao_monitoramento'
-                )
-            );
+            return view('modulo_plancidades.revisao.objetivo_estrategico.editar_revisao_indicador', compact('dadosIndicador', 'dadosRegionalizacao','revisaoCadastrada', 'dadosIndicadorRevisao', 'dadosMetaRevisao'));
         }
     }
     /**
@@ -287,121 +257,94 @@ class RevisaoProjetoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //return ($request);
+        // return ($request);
         //return ($id);
 
         $user = Auth()->user();
         DB::beginTransaction();
 
-        $dados_monitoramento = MonitoramentoIndicadores::find($id);
+        $dados_revisao_indicador = IndicadoresObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
 
-        if($request->vlr_apurado_global != null){
-            $dados_monitoramento->vlr_apurado_global = $request->vlr_apurado_global;
-        }
-        if($request->dsc_analise_indicador != null){
-            $dados_monitoramento->dsc_analise_indicador = $request->dsc_analise_indicador;
-        }
-        if($request->dsc_causas_impedimentos_atingimento_meta != null){
-            $dados_monitoramento->dsc_causas_impedimentos = $request->dsc_causas_impedimentos_atingimento_meta;
-        }
-        if($request->dsc_desafios_proximos_passos != null){
-            $dados_monitoramento->dsc_desafios_proximos_passos = $request->dsc_desafios_proximos_passos;
-        }
+        $dados_revisao_indicador->user_id = $user->id;
+        $dados_revisao_indicador->revisao_indicador_id = $request->revisao_indicador_id;
+        $dados_revisao_indicador->indicador_objetivo_estrategico_id = $request->indicador_objetivo_estrategico_id;
+        $dados_revisao_indicador->txt_denominacao_indicador = $request->txt_denominacao_indicador_nova;
+        $dados_revisao_indicador->dsc_indicador = $request->dsc_indicador_nova;
+        $dados_revisao_indicador->txt_sigla_indicador = $request->txt_sigla_indicador_nova;
+        $dados_revisao_indicador->vlr_indice_referencia = $request->vlr_indice_referencia_nova;
+        $dados_revisao_indicador->objetivo_estrategico_pei_id = $request->objetivo_estrategico_pei_id_nova;
+        $dados_revisao_indicador->unidade_responsavel_id = $request->unidade_responsavel_id_nova;
+        $dados_revisao_indicador->dte_apuracao = $request->dte_apuracao_nova;
+        $dados_revisao_indicador->unidade_medida_id = $request->unidade_medida_id_nova;
+        $dados_revisao_indicador->txt_periodo_ou_data = $request->txt_periodo_ou_data_nova;
+        $dados_revisao_indicador->txt_data_divulgacao_ou_disponibilizacao = $request->txt_data_divulgacao_ou_disponibilizacao_nova;
+        $dados_revisao_indicador->periodicidades_id = $request->periodicidades_id_nova;
+        $dados_revisao_indicador->polaridades_id = $request->polaridades_id_nova;
+        $dados_revisao_indicador->txt_formula_calculo = $request->txt_formula_calculo_nova;
+        $dados_revisao_indicador->txt_variaveis_calculo = $request->txt_variaveis_calculo_nova;
+        $dados_revisao_indicador->txt_fonte_dados_variaveis_calculo = $request->txt_fonte_dados_variaveis_calculo_nova;
+        $dados_revisao_indicador->txt_forma_disponibilizacao = $request->txt_forma_disponibilizacao_nova;
+        $dados_revisao_indicador->dsc_procedimento_calculo = $request->dsc_procedimento_calculo_nova;
+        $dados_revisao_indicador->bln_ppa = $request->bln_ppa_nova;
+        $dados_revisao_indicador->updated_at = date('Y-m-d H:i:s');
 
-        $dados_meta = ViewResumoApuracaoMetaIndicador::where('monitoramento_indicador_id', $dados_monitoramento->id)->first();
+        $dados_salvos = $dados_revisao_indicador->update();
+
+        $dados_revisao_meta = MetasObjetivosEstrategicosRevisao::where('revisao_indicador_id', $id)->first();
+
+        $dados_revisao_meta->meta_indicador_objetivo_estrategico_id = $request->meta_indicador_objetivo_estrategico_id;
+        $dados_revisao_meta->revisao_indicador_id = $request->revisao_indicador_id;
+        $dados_revisao_meta->txt_dsc_meta = $request->txt_dsc_meta_nova;
+        $dados_revisao_meta->indicador_objetivo_estrategico_id = $request->indicador_objetivo_estrategico_id;
+        $dados_revisao_meta->bln_meta_cumulativa = $request->bln_meta_cumulativa_nova;
+        $dados_revisao_meta->vlr_esperado_ano_2 = $request->vlr_esperado_ano_2_nova;
+        $dados_revisao_meta->vlr_esperado_ano_3 = $request->vlr_esperado_ano_3_nova;
+        $dados_revisao_meta->vlr_esperado_ano_4 = $request->vlr_esperado_ano_4_nova;
+        $dados_revisao_meta->bln_meta_regionalizada = $request->bln_meta_regionalizada_nova;
+        $dados_revisao_meta->dsc_justificativa_ausencia_regionalizacao = $request->dsc_justificativa_ausencia_regionalizacao_nova;
+        $dados_revisao_meta->updated_at = date('Y-m-d H:i:s');
+        $dados_revisao_meta->user_id = $user->id;
+
+        $dados_revisao_meta->update();
         
-        $checagem = IndicadoresObjetivosEstrategicos::where('id', $dados_meta->indicador_objetivo_estrategico_id)->first();
-
-        switch ($checagem->polaridades_id) {
-            case 1:
-                if($dados_monitoramento->vlr_apurado_global >= $dados_meta->vlr_esperado){
-                    $dados_monitoramento->bln_meta_atingida = true;
-                }else{
-                    $dados_monitoramento->bln_meta_atingida = false;
-                }
-            break;
-            case 2:
-                if($dados_monitoramento->vlr_apurado_global <= $dados_meta->vlr_esperado){
-                    $dados_monitoramento->bln_meta_atingida = true;
-                }else{
-                    $dados_monitoramento->bln_meta_atingida = false;
-                }
-            break;
-            case 3:
-                if($dados_monitoramento->vlr_apurado_global == $dados_meta->vlr_esperado){
-                    $dados_monitoramento->bln_meta_atingida = true;
-                }else{
-                    $dados_monitoramento->bln_meta_atingida = false;
-                }
-            break;
-            default:
-        }
-
-        if ($checagem->bln_ppa && !$dados_monitoramento->bln_meta_atingida && $dados_monitoramento->vlr_apurado_global != null){ //Tem que confirmar BLN_PPA = TRUE
-            $dados_monitoramento->bln_restricao = true;
-        }else{
-            $dados_monitoramento->bln_restricao = false;
-        }
-
-        $restricoes = RlcRestricaoMetaMonitoramentoIndic::where('monitoramento_indicador_id', $dados_monitoramento->id)->get();
-        $restricoes->load('monitoramentoIndicador', 'restricaoAtingimentoMeta');
-
-        $regionalizacoesMonitoradas = RlcMetasMonitoramentoIndicadores::where('monitoramento_indicador_id',$id)
-        ->whereNotNull('rlc_metas_monitoramento_indicadores.vlr_apurado')->get();
-        
-
-        if ((($dados_monitoramento->bln_restricao && count($restricoes) > 0) || !$dados_monitoramento->bln_restricao) 
-            && (!$dados_meta->bln_meta_regionalizada||count($regionalizacoesMonitoradas) >= $dados_meta->qtd_metas) 
-            && $dados_monitoramento->vlr_apurado_global != null){
-            $dados_monitoramento->bln_meta_apurada = true;
-        }else{
-            $dados_monitoramento->bln_meta_apurada = false;
-        }
-
-        $dados_salvos = $dados_monitoramento->update();
-
-        $checa_situacao_monitoramento = RlcSituacaoMonitoramentoIndicadores::where('monitoramento_indicador_id', $dados_monitoramento->id)->orderBy('created_at', 'desc')->first();
-        
-        
+        $checa_situacao_revisao = RlcSituacaoRevisaoIndicadores::where('revisao_indicador_id', $id)->orderBy('created_at', 'desc')->first();
 
         if ($dados_salvos) {
-            
-            
+                        
             if($request->botao_salvar){
-                if(!$checa_situacao_monitoramento || $checa_situacao_monitoramento->situacao_monitoramento_id <> '2'){
-                    $situacao_monitoramento_indicadores = new RlcSituacaoMonitoramentoIndicadores();
-                    $situacao_monitoramento_indicadores->monitoramento_indicador_id = $id;
-                    $situacao_monitoramento_indicadores->situacao_monitoramento_id = '2';
-                    $situacao_monitoramento_indicadores->user_id = $user->id;
-                    $situacao_monitoramento_indicadores->created_at = date('Y-m-d H:i:s');
-                    $situacao_monitoramento_indicadores->indicador_objetivo_estrategico_id = $dados_meta->indicador_objetivo_estrategico_id;
-                    $situacao_monitoramento_indicadores->save();
+                if(!$checa_situacao_revisao || $checa_situacao_revisao->situacao_revisao_id <> '2'){
+                    $situacao_revisao_indicadores = new RlcSituacaoRevisaoIndicadores();
+                    $situacao_revisao_indicadores->revisao_indicador_id = $id;
+                    $situacao_revisao_indicadores->situacao_revisao_id = '2';
+                    $situacao_revisao_indicadores->user_id = $user->id;
+                    $situacao_revisao_indicadores->created_at = date('Y-m-d H:i:s');
+                    $situacao_revisao_indicadores->indicador_objetivo_estrategico_id = $request->indicador_objetivo_estrategico_id;
+                    $situacao_revisao_indicadores->save();
                 }
 
                 DB::commit();
-                flash()->sucesso("Sucesso", "Monitoramento do Indicador atualizado com sucesso!");
-                return Redirect::route("plancidades.monitoramentos.objetivoEstrategico.editar", ['monitoramentoId'=> $dados_monitoramento->id]);
+                flash()->sucesso("Sucesso", "Revisão do Indicador atualizada com sucesso!");
+                return Redirect::route("plancidades.revisao.objetivoEstrategico.editar", ['revisaoId'=> $id]);
             }
             else{
                 if($request->botao_finalizar){
-                $situacao_monitoramento_indicadores = new RlcSituacaoMonitoramentoIndicadores();
-                $situacao_monitoramento_indicadores->monitoramento_indicador_id = $id;
-                $situacao_monitoramento_indicadores->situacao_monitoramento_id = '3';
-                $situacao_monitoramento_indicadores->user_id = $user->id;
-                $situacao_monitoramento_indicadores->created_at = date('Y-m-d H:i:s');
-                $situacao_monitoramento_indicadores->indicador_objetivo_estrategico_id = $dados_meta->indicador_objetivo_estrategico_id;
-                $situacao_monitoramento_indicadores->save();  
+                $situacao_revisao_indicadores = new RlcSituacaoRevisaoIndicadores();
+                $situacao_revisao_indicadores->revisao_indicador_id = $id;
+                $situacao_revisao_indicadores->situacao_revisao_id = '3';
+                $situacao_revisao_indicadores->user_id = $user->id;
+                $situacao_revisao_indicadores->created_at = date('Y-m-d H:i:s');
+                $situacao_revisao_indicadores->indicador_objetivo_estrategico_id = $request->indicador_objetivo_estrategico_id;
+                $situacao_revisao_indicadores->save();  
                 // LEMBRAR DE FAZER ESSA DISTINÇÃO DEPOIS, CONSIDERANDO TODOS OS CASOS
                 DB::commit();
-                flash()->sucesso("Sucesso", "Monitoramento do Indicador finalizado com sucesso!");
-                //return redirect("plancidades/monitoramento/processo/indicador_obj_estrategico/listar_monitoramentos/" . $dados_monitoramento->indicador_objetivo_estrategico_id);
-                return Redirect::route("plancidades.monitoramentos.objetivoEstrategico.listarMonitoramentos", ['monitoramentoId'=> $dados_monitoramento->indicador_objetivo_estrategico_id]);
+                flash()->sucesso("Sucesso", "Revisão do Indicador finalizada com sucesso!");
+                return Redirect::route("plancidades.revisao.objetivoEstrategico.listarRevisoes", ['indicadorId'=> $request->indicador_objetivo_estrategico_id]);
                 
                 }
             }
         } else {
             DB::rollBack();
-            flash()->erro("Erro", "Não foi possível atualizar o monitoramento.");
+            flash()->erro("Erro", "Não foi possível atualizar a revisao.");
             return back();
         }
     }
@@ -423,7 +366,7 @@ class RevisaoProjetoController extends Controller
         return view("modulo_plancidades.revisao.projeto.consultar_projeto");
     }
 
-    public function pesquisarMonitoramento(Request $request)
+    public function pesquisarRevisoes(Request $request)
     {
         $where = [];
 
@@ -439,19 +382,14 @@ class RevisaoProjetoController extends Controller
             $where[] = ['indicador_objetivo_estrategico_id', $request->indicador];
         }
 
-        $monitoramentos = ViewMonitoramentoIndicadoresObjEstrategicos::where($where)->orderBy('indicador_objetivo_estrategico_id')->paginate(10);
+        $revisoes = ViewRevisaoIndicadoresObjEstrategicos::where($where)->orderBy('indicador_objetivo_estrategico_id')->paginate(10);
 
-        if (count($monitoramentos) > 0) {
-            return view("modulo_plancidades.listar_monitoramentos_indicador", compact('monitoramentos'));
+        if (count($revisoes) > 0) {
+            return view("modulo_plancidades.revisao.objetivo_estrategico.listar_revisoes_indicador", compact('revisoes'));
         } else {
             flash()->erro("Erro", "Nenhum monitoramento encontrado...");
             return back();
         }
-    }
-
-    public function teste(Request $request)
-    {
-        return ($request);
     }
 
 }

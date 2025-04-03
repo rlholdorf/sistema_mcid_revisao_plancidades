@@ -37,7 +37,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Denominação do Indicador</label>
-                        <textarea disabled class="input-medium" id="txt_denominacao_indicador_nova" name="txt_denominacao_indicador_nova" rows="2">
+                        <textarea disabled class="input-medium" id="txt_denominacao_indicador_nova" name="txt_denominacao_indicador_nova" rows="2"
+                            v-model="dadosIndicadorRevisao.txt_denominacao_indicador">
                         </textarea>
                 </div>
             </div>
@@ -50,7 +51,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Descrição do Indicador</label>
-                        <textarea disabled class="input-medium" id="dsc_indicador_nova" name="dsc_indicador_nova" rows="5">
+                        <textarea disabled class="input-medium" id="dsc_indicador_nova" name="dsc_indicador_nova" rows="5" v-model="dadosIndicadorRevisao.dsc_indicador">
                         </textarea>
                 </div>
             </div>
@@ -63,7 +64,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Sigla do Indicador</label>
-                        <textarea disabled class="input-medium" id="txt_sigla_indicador_nova" name="txt_sigla_indicador_nova" rows="1">
+                        <textarea disabled class="input-medium" id="txt_sigla_indicador_nova" name="txt_sigla_indicador_nova" rows="1" v-model="dadosIndicadorRevisao.txt_sigla_indicador">
                         </textarea>
                 </div>
             </div>
@@ -76,7 +77,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Novo Valor de Referência</label>
-                        <textarea disabled class="input-medium" id="vlr_indice_referencia_nova" name="vlr_indice_referencia_nova" rows="1">
+                        <textarea disabled class="input-medium" id="vlr_indice_referencia_nova" name="vlr_indice_referencia_nova" rows="1" v-model="dadosIndicadorRevisao.vlr_indice_referencia">
                         </textarea>
                 </div>
             </div>
@@ -89,12 +90,9 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Unidade de Medida</label>
-                        <select disabled id="txt_unidade_medida_nova" class="form-select br-select" name="txt_unidade_medida_nova"
-                        @change="onChangeUnidadeMedida" v-model="unidadeMedida">
-                            <option value="" v-text="textoEscolhaUnidadeMedida"></option>
-                            <option v-for="item in unidadesMedida" v-text="item.txt_unidade_medida" :value="item.id"
-                                :key="item.id"></option>
-                        </select>
+                        <textarea disabled class="input-medium" id="txt_unidade_medida_nova" name="txt_unidade_medida_nova" rows="1"
+                            v-model="dadosIndicadorRevisao.txt_unidade_medida">
+                </textarea>
                 </div>
             </div>
 
@@ -106,7 +104,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Novo Data de Divulgação ou Disponibilidade</label>
-                        <textarea disabled class="input-medium" id="txt_data_divulgacao_ou_disponibilizacao_nova" name="txt_data_divulgacao_ou_disponibilizacao_nova" rows="1">
+                        <textarea disabled class="input-medium" id="txt_data_divulgacao_ou_disponibilizacao_nova" name="txt_data_divulgacao_ou_disponibilizacao_nova" rows="1"
+                        v-model="dadosIndicadorRevisao.txt_data_divulgacao_ou_disponibilizacao">
                         </textarea>
                 </div>
             </div>
@@ -119,12 +118,9 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Periodicidade</label>
-                        <select disabled id="periodicidades_id_nova" class="form-select br-select" name="periodicidades_id_nova"
-                        v-model="periodicidade">
-                            <option value="" v-text="textoEscolhaPeriodicidade"></option>
-                            <option v-for="item in periodicidades" v-text="item.dsc_periodicidades" :value="item.id"
-                                :key="item.id"></option>
-                        </select>
+                    <textarea disabled id="periodicidades_id_nova" class="input-medium" name="periodicidades_id_nova" rows="1"
+                    v-model="dadosIndicadorRevisao.dsc_periodicidades">
+                    </textarea>
                 </div>
             </div>
 
@@ -136,12 +132,9 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Polaridade do Indicador</label>
-                    <select disabled id="polaridades_id_nova" class="form-select br-select" name="polaridades_id_nova"
-                    v-model="polaridade">
-                        <option value="" v-text="textoEscolhaPolaridade"></option>
-                        <option v-for="item in polaridades" v-text="item.txt_polaridade" :value="item.id"
-                            :key="item.id"></option>
-                    </select>
+                    <textarea disabled id="polaridades_id_nova" class="input-medium" name="polaridades_id_nova" rows="1"
+                    v-model="dadosIndicadorRevisao.txt_polaridades">
+                    </textarea>
                 </div>
             </div>
 
@@ -153,7 +146,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Fórmula de Cálculo do Indicador</label>
-                    <textarea disabled class="input-medium" id="txt_formula_calculo_nova" name="txt_formula_calculo_nova" rows="5">
+                    <textarea disabled class="input-medium" id="txt_formula_calculo_nova" name="txt_formula_calculo_nova" rows="5" v-model="dadosIndicadorRevisao.txt_formula_calculo">
                     </textarea>
                 </div>
             </div>
@@ -166,7 +159,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Fonte de Dados das Variáveis do Indicador</label>
-                    <textarea disabled class="input-medium" id="txt_fonte_dados_variaveis_calculo_nova" name="txt_fonte_dados_variaveis_calculo_nova" rows="5">
+                    <textarea disabled class="input-medium" id="txt_fonte_dados_variaveis_calculo_nova" name="txt_fonte_dados_variaveis_calculo_nova" rows="5"
+                    v-model="dadosIndicadorRevisao.txt_fonte_dados_variaveis_calculo">
                     </textarea>
                 </div>
             </div>
@@ -179,7 +173,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Forma de Disponibilização do Indicador</label>
-                    <textarea disabled class="input-medium" id="txt_forma_disponibilizacao_nova" name="txt_forma_disponibilizacao_nova" rows="5">
+                    <textarea disabled class="input-medium" id="txt_forma_disponibilizacao_nova" name="txt_forma_disponibilizacao_nova" rows="5"
+                    v-model="dadosIndicadorRevisao.txt_forma_disponibilizacao">
                     </textarea>
                 </div>
             </div>
@@ -192,7 +187,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Procedimento de Cálculo do Indicador</label>
-                    <textarea disabled class="input-medium" id="dsc_procedimento_calculo_nova" name="dsc_procedimento_calculo_nova" rows="5">
+                    <textarea disabled class="input-medium" id="dsc_procedimento_calculo_nova" name="dsc_procedimento_calculo_nova" rows="5"
+                    v-model="dadosIndicadorRevisao.dsc_procedimento_calculo">
                     </textarea>
                 </div>
             </div>
@@ -208,24 +204,22 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Denominação da Meta</label>
-                    <textarea disabled class="input-medium" id="txt_dsc_meta_nova" name="txt_dsc_meta_nova" rows="2">
+                    <textarea disabled class="input-medium" id="txt_dsc_meta_nova" name="txt_dsc_meta_nova" rows="2" v-model="dadosMetaRevisao.txt_dsc_meta">
                     </textarea>
                 </div>
             </div>
                         
             <div class="row mt-3">
                 <div class="column col-6 col-xs-12">
-                    <label disabled for="bln_meta_cumulativa">Cumulatividade da Meta</label>
+                    <label for="bln_meta_cumulativa">Cumulatividade da Meta</label>
                     <p v-text="dadosIndicador.bln_meta_cumulativa ? 'Sim': 'Não'"></p>
                 </div>
         
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Cumulatividade da Meta</label>
-                    <select disabled id="bln_meta_cumulativa_nova" class="form-select br-select" name="bln_meta_cumulativa_nova">
-                    <option value="">Selecione se a meta é ou não cumulativa</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
-                    </select>
+                    <textarea disabled id="bln_meta_cumulativa_nova" class="input-medium" name="bln_meta_cumulativa_nova" rows="1"
+                    v-model="dadosMetaRevisao.bln_meta_cumulativa">
+                    </textarea>
                 </div>
             </div>
 
@@ -242,6 +236,7 @@
                     type="number" 
                     name="vlr_esperado_ano_2_nova"
                     step="0.01"
+                    v-model="dadosMetaRevisao.vlr_esperado_ano_2"
                     >
                 </div>
             </div>    
@@ -259,6 +254,7 @@
                     type="number" 
                     name="vlr_esperado_ano_3_nova"
                     step="0.01"
+                    v-model="dadosMetaRevisao.vlr_esperado_ano_3"
                     >
                 </div>
             </div>
@@ -276,6 +272,7 @@
                     type="number" 
                     name="vlr_esperado_ano_4_nova"
                     step="0.01"
+                    v-model="dadosMetaRevisao.vlr_esperado_ano_4"
                     >
                 </div>
             </div>
@@ -288,11 +285,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>A meta será regionalizada?</label>
-                    <select disabled id="bln_meta_regionalizada_nova" class="form-select br-select" name="bln_meta_regionalizada_nova">
-                    <option value="">Selecione se a meta é ou não regionalizada</option>
-                    <option value="true">Sim</option>
-                    <option value="false">Não</option>
-                    </select>
+                    <textarea disabled id="bln_meta_regionalizada_nova" class="input-medium" name="bln_meta_regionalizada_nova" rows="1" v-model="dadosMetaRevisao.bln_meta_regionalizada">
+                    </textarea>
                 </div>
             </div>
 
@@ -304,7 +298,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Justificativa para não regionalização</label>
-                    <textarea disabled class="input-medium" id="dsc_justificativa_ausencia_regionalizacao_nova" name="dsc_justificativa_ausencia_regionalizacao_nova" rows="5">
+                    <textarea disabled class="input-medium" id="dsc_justificativa_ausencia_regionalizacao_nova" name="dsc_justificativa_ausencia_regionalizacao_nova" rows="5"
+                    v-model="dadosMetaRevisao.dsc_justificativa_ausencia_regionalizacao">
                     </textarea>
                 </div>
             </div>
@@ -380,7 +375,7 @@
 
 <script>
 export default {
-    props: ['url', 'dadosIndicador', 'dadosRegionalizacao'],
+    props: ['url', 'dadosIndicador', 'dadosRegionalizacao','dadosIndicadorRevisao', 'dadosMetaRevisao'],
     data() {
         return {
         //----Campos Select

@@ -537,6 +537,10 @@ Vue.component(
   require("./components/mod_plancidades/revisao/projeto/EditarRevisaoProjeto.vue")
 );
 
+Vue.component(
+  "cadastro-revisao-projeto",
+  require("./components/mod_plancidades/revisao/projeto/CadastroRevisaoProjeto.vue")
+);
 
 
 

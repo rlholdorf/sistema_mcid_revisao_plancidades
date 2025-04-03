@@ -101,7 +101,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Periodicidade</label>
                         <select id="periodicidades_id_nova" class="form-select br-select" name="periodicidades_id_nova"
-                        v-model="dadosIndicadorRevisao.dsc_periodicidades">
+                        v-model="dadosIndicadorRevisao.periodicidades_id">
                             <option value="" v-text="textoEscolhaPeriodicidade"></option>
                             <option v-for="item in periodicidades" v-text="item.dsc_periodicidades" :value="item.id"
                                 :key="item.id"></option>
@@ -118,7 +118,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Polaridade do Indicador</label>
                     <select id="polaridades_id_nova" class="form-select br-select" name="polaridades_id_nova"
-                    v-model="dadosIndicadorRevisao.txt_polaridade"> <!-- Não funcionou-->
+                    v-model="dadosIndicadorRevisao.polaridades_id"> <!-- Não funcionou-->
                         <option value="" v-text="textoEscolhaPolaridade"></option>
                         <option v-for="item in polaridades" v-text="item.txt_polaridade" :value="item.id"
                             :key="item.id"></option>
@@ -147,7 +147,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Fonte de Dados das Variáveis do Indicador</label>
-                    <textarea class="input-medium" id="txt_fonte_dados_variaveis_calculo_nova" name="txt_fonte_dados_variaveis_calculo_nova" rows="5" v-model="dadosIndicadorRevisao.txt_fonte_dados_variaveis_calculo">
+                    <textarea class="input-medium" id="txt_fonte_dados_variaveis_calculo_nova" name="txt_fonte_dados_variaveis_calculo_nova" rows="5" 
+                    v-model="dadosIndicadorRevisao.txt_fonte_dados_variaveis_calculo">
                     </textarea>
                 </div>
             </div>
@@ -160,7 +161,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Forma de Disponibilização do Indicador</label>
-                    <textarea class="input-medium" id="txt_forma_disponibilizacao_nova" name="txt_forma_disponibilizacao_nova" rows="5" v-model="dadosIndicadorRevisao.txt_forma_disponibilizacao">
+                    <textarea class="input-medium" id="txt_forma_disponibilizacao_nova" name="txt_forma_disponibilizacao_nova" rows="5" 
+                    v-model="dadosIndicadorRevisao.txt_forma_disponibilizacao">
                     </textarea>
                 </div>
             </div>
@@ -173,7 +175,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Procedimento de Cálculo do Indicador</label>
-                    <textarea class="input-medium" id="dsc_procedimento_calculo_nova" name="dsc_procedimento_calculo_nova" rows="5" v-model="dadosIndicadorRevisao.dsc_procedimento_calculo">
+                    <textarea class="input-medium" id="dsc_procedimento_calculo_nova" name="dsc_procedimento_calculo_nova" rows="5" 
+                    v-model="dadosIndicadorRevisao.dsc_procedimento_calculo">
                     </textarea>
                 </div>
             </div>
@@ -288,7 +291,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Justificativa para não regionalização</label>
-                    <textarea class="input-medium" id="dsc_justificativa_ausencia_regionalizacao_nova" name="dsc_justificativa_ausencia_regionalizacao_nova" rows="5" v-model="dadosMetaRevisao.dsc_justificativa_ausencia_regionalizacao">
+                    <textarea class="input-medium" id="dsc_justificativa_ausencia_regionalizacao_nova" name="dsc_justificativa_ausencia_regionalizacao_nova" rows="5" 
+                    v-model="dadosMetaRevisao.dsc_justificativa_ausencia_regionalizacao">
                     </textarea>
                 </div>
             </div>

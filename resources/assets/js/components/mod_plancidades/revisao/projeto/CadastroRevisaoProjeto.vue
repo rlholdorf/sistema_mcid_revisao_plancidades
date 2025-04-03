@@ -4,49 +4,51 @@
             <div class="row mt-3">
 
                 <div class="column col-3 col-xs-12">
-                    <input type="hidden" id="orgaoResponsavel" name="orgaoResponsavel" :value="dadosIndicador.orgao_pei_id">
+                    <input type="hidden" id="orgaoResponsavel" name="orgaoResponsavel" :value="dadosProjeto.orgao_pei_id">
+                    <input type="hidden" id="objetivoEstrategico" name="objetivoEstrategico" :value="dadosProjeto.objetivo_estrategico_pei_id">
+                    <input type="hidden" id="projetoId" name="projetoId" :value="dadosProjeto.projeto_id">
                     <label>Órgão Responsável</label>
-                    <p v-text="dadosIndicador.dsc_orgao"></p>
+                    <p v-text="dadosProjeto.dsc_orgao"></p>
                 </div>
             
                 <div class="column col-9 col-xs-12">
-                    <input type="hidden" id="objetivoEstrategico" name="objetivoEstrategico" :value="dadosIndicador.objetivo_estrategico_pei_id">
-                    <input type="hidden" id="metaObjetivoEstrategico" name="metaObjetivoEstrategico" :value="dadosIndicador.objetivo_estrategico_meta_id">
                     <label>Objetivo Estratégico</label>
-                    <p v-text="dadosIndicador.txt_titulo_objetivo_estrategico_pei"></p>
+                    <p v-text="dadosProjeto.txt_titulo_objetivo_estrategico_pei"></p>
                 </div>
             </div><!--row-->
             
 
+            <div class="titulo">
+                <h4>Projeto: {{ dadosProjeto.txt_enunciado_projeto }} </h4>
+            </div>
+
+            <hr>
+                
             <div class="row mt-3">
                 <div class="column col-xs-12">
-                    <input type="hidden" id="indicador" name="indicador" :value="dadosIndicador.id">
-                    <label for="indicador">Indicador de Objetivo Estratégico</label>
-                    <p v-text="dadosIndicador.txt_denominacao_indicador"></p>
+                    <label>Objetivo do Projeto</label>
+                    <p v-text="this.dadosProjeto.dsc_objetivo_projeto"></p>
                 </div>
             </div><!-- div row -->
 
-            
-            <div>
-                <div class="row mt-3">
-                    <div class="column col-xs-12">
-                        <label for="dscMeta">Descrição da Meta</label> <!-- Puxar descrição da tab_metas_objetivo_especifico -->
-                        <p v-text="dadosIndicador.txt_dsc_meta"></p>
-                    </div>
-                </div><!-- div row -->
+            <div v-if="this.dadosProjeto.bln_ppa" class="row mt-3">
+                <div class="column col-xs-12 col-sm-12">
+                    <label>Medida Institucional e Normativa PPA</label>
+                    <p v-text="this.dadosProjeto.dsc_min_ppa"></p>
+                </div>
+            </div><!-- div row -->
 
-                <div class="row mt-3">
-                    <div class="column col-xs-12 col-sm-4">
-                        <label for="bln_ppa">Consta no PPA:</label> <!-- Puxar meta da tab -->
-                        <p v-text="dadosIndicador.bln_ppa ? 'Sim':'Não'"></p>
-                    </div>
+            <div class="row mt-3">
+                <div class="column col-xs-12 col-sm-6">
+                    <label>Unidade Responsável</label>
+                    <p v-text="this.dadosProjeto.dsc_orgao"></p>
+                </div>
 
-                    <div class="column col-xs-12 col-sm-4">
-                        <label for="bln_meta_regionalizada">Possui Meta Regionalizada:</label> <!-- Puxar meta da tab -->
-                        <p v-text="dadosIndicador.bln_meta_regionalizada ? 'Sim':'Não'"></p>
-                    </div>
-                </div><!-- div row -->
-            </div><!--form-group-->
+                <div class="column col-xs-12 col-sm-6">
+                    <label>Gerente do Projeto</label>
+                    <p v-text="this.dadosProjeto.dsc_nome_gerente"></p>
+                </div>
+            </div><!-- div row -->
 
             <div class="row mt-3">
                 <!-- ************* CAMPO PERIODO DE REVISÃO ************* -->
@@ -100,18 +102,13 @@
                     </div>
                 </div>
             </div>
-        </div><!--form-group-->
+        </div>
     </div>
 </template>
 
-<slot>
-
-</slot>
-
 <script>
-
 export default {
-    props: ['url', 'dadosIndicador'],
+    props: ['url', 'dadosProjeto'],
     data() {
         return {
         //----Campos Select
@@ -140,7 +137,7 @@ export default {
         onChangeMesRevisao(){
             if (this.periodoRevisao != ''){
                 this.validandoPeriodo = true;
-                axios.get(this.url + '/api/plancidades/revisao/indicador/validar_periodo_revisao/'+ this.dadosIndicador.indicador_objetivo_estrategico_id +'/'+this.anoRevisao+'/'+this.periodoRevisao).then(resposta => {
+                axios.get(this.url + '/api/plancidades/revisao/projeto/validar_periodo_revisao/'+ this.dadosProjeto.projeto_id +'/'+this.anoRevisao+'/'+this.periodoRevisao).then(resposta => {
                     this.periodoValido = (resposta.data.length <= 0) ? true : false;
                     this.validandoPeriodo = false;
                 }).catch(error => {

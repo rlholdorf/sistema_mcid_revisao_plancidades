@@ -386,9 +386,7 @@ class MonitoramentoProjetoController extends Controller
 
     public function criarMonitoramento($projetoId)
     {
-        // return $indicadorId;
-
-        $dadosProjeto = ViewProjetos::find($projetoId);
+        $dadosProjeto = ViewProjetos::where('projeto_id', $projetoId)->first();
 
         $situacoes = array('5', '6', null); // 5 - Validado; 6 - Validado e registrado no SIOP; NULL - Nenhum monitoramento registrado;
 

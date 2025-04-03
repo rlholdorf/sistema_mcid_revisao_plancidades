@@ -144,6 +144,7 @@ use App\Mod_plancidades\RegionalizacaoMetaIniciativa;
 use App\Mod_plancidades\RestricoesAtingimentoMetas;
 use App\Mod_plancidades\RevisaoIndicadores;
 use App\Mod_plancidades\RevisaoIniciativas;
+use App\Mod_plancidades\RevisaoProjetos;
 use App\Mod_plancidades\RlcMonitoramentoEtapasProjetos;
 use App\Mod_plancidades\SituacoesEtapasProjetos;
 use App\Mod_plancidades\SituacoesMonitoramentos;
@@ -1113,6 +1114,15 @@ class ApiController extends Controller
         $where[] = ['num_ano_periodo_revisao', $anoRevisao];
         $where[] = ['periodo_revisao_id', $periodoRevisaoId];
         return RevisaoIniciativas::where($where)->get();
+    }
+
+    public function validarPeriodoRevisaoProjeto($projetoId, $anoRevisao, $periodoRevisaoId)
+    {
+        $where = [];
+        $where[] = ['projeto_id', $projetoId];
+        $where[] = ['num_ano_periodo_revisao', $anoRevisao];
+        $where[] = ['periodo_revisao_id', $periodoRevisaoId];
+        return RevisaoProjetos::where($where)->get();
     }
 
     public function buscarUnidadeMedidaId($unidadeMedidaId)
