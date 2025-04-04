@@ -34,13 +34,13 @@
         </p>
         
         <hr>
-        <!-- <form role="form" method="POST" action='{{ route("plancidades.revisao.objetivoEstrategico.salvar") }}'> -->
-            <!-- @csrf -->
+        <form role="form" method="POST" action='{{ route("plancidades.revisao.projeto.atualizar",['revisaoId'=> $dadosProjetoRevisao->revisao_projeto_id]) }}'>
+            @csrf
             <editar-revisao-projeto 
             :url="'{{ url('/') }}'"
             :dados-projeto="{{json_encode($dadosProjeto)}}"
-            :dados-etapas="{{json_encode($dadosEtapas)}}"
-            >
+            v-bind:dados-projeto-revisao="{{json_encode($dadosProjetoRevisao)}}"
+            ><!--  ADICIONAR DADOS ETAPAS  -->
 
             <button type="button" class="btn btn-warning btn-block"> <!-- Adicionar modal no estilo data-bs-toggle="modal" data-bs-target="#addRestricao" ?-->
                         Adicionar Etapa
@@ -49,6 +49,6 @@
 
             </editar-revisao-projeto>
             <span class="br-divider sm my-3"></span>
-        <!-- </form> -->
+        </form>
     </div>
 @endsection

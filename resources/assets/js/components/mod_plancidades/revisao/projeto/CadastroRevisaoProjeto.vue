@@ -6,7 +6,7 @@
                 <div class="column col-3 col-xs-12">
                     <input type="hidden" id="orgaoResponsavel" name="orgaoResponsavel" :value="dadosProjeto.orgao_pei_id">
                     <input type="hidden" id="objetivoEstrategico" name="objetivoEstrategico" :value="dadosProjeto.objetivo_estrategico_pei_id">
-                    <input type="hidden" id="projetoId" name="projetoId" :value="dadosProjeto.projeto_id">
+                    <input type="hidden" id="projeto_id" name="projeto_id" :value="dadosProjeto.projeto_id">
                     <label>Órgão Responsável</label>
                     <p v-text="dadosProjeto.dsc_orgao"></p>
                 </div>
@@ -96,9 +96,9 @@
                             <i class="fa fa-spinner fa-spin"></i> Aguarde
                         </button>
 
-                        <button class="br-button danger mr-3" type="button"
-                            href="javascript:window.history.go(-1)">Voltar
-                        </button>
+                        <a class="br-button danger mr-3"
+                            :href="'/plancidades/revisao/projeto/consulta/'">Voltar
+                        </a>
                     </div>
                 </div>
             </div>

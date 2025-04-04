@@ -104,8 +104,8 @@
                         <i class="fa fa-spinner fa-spin"></i> Aguarde
                     </button>
 
-                    <a class="br-button danger mr-3" type="button"
-                        href="javascript:window.history.go(-1)">Voltar
+                    <a class="br-button danger mr-3"
+                        :href="'/plancidades/revisao/projeto/consulta/'">Voltar
                     </a>
                 </div>
             </div>

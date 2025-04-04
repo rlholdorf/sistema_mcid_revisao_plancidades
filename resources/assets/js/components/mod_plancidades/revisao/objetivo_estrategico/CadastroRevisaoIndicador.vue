@@ -94,9 +94,9 @@
                             <i class="fa fa-spinner fa-spin"></i> Aguarde
                         </button>
 
-                        <button class="br-button danger mr-3" type="button"
-                            href="javascript:window.history.go(-1)">Voltar
-                        </button>
+                        <a class="br-button danger mr-3"
+                            :href="'/plancidades/revisao/indicador/consulta/'">Voltar
+                        </a>
                     </div>
                 </div>
             </div>

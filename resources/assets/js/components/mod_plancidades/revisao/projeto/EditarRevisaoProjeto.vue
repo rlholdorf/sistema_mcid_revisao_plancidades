@@ -4,13 +4,17 @@
             <p class="text-center"><b>Detalhamento do Projeto</b></p>
             <div class="row mt-3">
                 <div class="column col-6 col-xs-12">
+                    <input type="hidden" id="projeto_id" name="projeto_id" :value="dadosProjeto.projeto_id">
+                    <input type="hidden" id="objetivoEstrategico" name="objetivoEstrategico" :value="dadosProjeto.objetivo_estrategico_pei_id">
+                    <input type="hidden" id="revisao_projeto_id" name="revisao_projeto_id" :value="dadosProjetoRevisao.revisao_projeto_id">
                     <label for="txt_enunciado_projeto">Enunciado do Projeto</label>
                     <p v-text="dadosProjeto.txt_enunciado_projeto"></p>
                 </div>
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Novo Enunciado do Projeto</label>
-                        <textarea class="input-medium" id="txt_enunciado_projeto_nova" name="txt_enunciado_projeto_nova" rows="2">
+                        <textarea class="input-medium" id="txt_enunciado_projeto_nova" name="txt_enunciado_projeto_nova" rows="2"
+                        v-model="dadosProjetoRevisao.txt_enunciado_projeto">
                         </textarea>
                 </div>
             </div>
@@ -23,7 +27,8 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Novo Objetivo do Projeto</label>
-                    <textarea class="input-medium" id="dsc_objetivo_projeto_nova" name="dsc_objetivo_projeto_nova" rows="5">
+                    <textarea class="input-medium" id="dsc_objetivo_projeto_nova" name="dsc_objetivo_projeto_nova" rows="5"
+                        v-model="dadosProjetoRevisao.dsc_objetivo_projeto">
                     </textarea>
                 </div>
             </div>
@@ -36,7 +41,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Objetivo Estratégico Vinculado</label>
-                    <select id="txt_titulo_objetivo_estrategico_pei_nova" class="form-select br-select" name="txt_titulo_objetivo_estrategico_pei_nova" v-model="objetivoEstrategico">
+                    <select id="txt_titulo_objetivo_estrategico_pei_nova" class="form-select br-select" name="txt_titulo_objetivo_estrategico_pei_nova" v-model="dadosProjetoRevisao.txt_titulo_objetivo_estrategico_pei">
                         <option value="" v-text="textoEscolhaObjetivoEstrategico"></option>
                         <option v-for="item in objetivosEstrategicos" v-text="item.txt_titulo_objetivo_estrategico_pei" :value="item.txt_titulo_objetivo_estrategico_pei" 
                         :key="item.id"></option>
@@ -52,7 +57,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Unidade Responsável</label>
-                    <select id="txt_unidade_responsavel_nova" class="form-select br-select" name="txt_unidade_responsavel_nova" v-model="unidadeResponsavel">
+                    <select id="txt_unidade_responsavel_nova" class="form-select br-select" name="txt_unidade_responsavel_nova" v-model="dadosProjetoRevisao.txt_unidade_responsavel">
                         <option value="" v-text="textoEscolhaUnidadeResponsavel"></option>
                         <option v-for="item in unidadesResponsaveis" v-text="item.txt_unidade_responsavel" :value="item.txt_unidade_responsavel" 
                         :key="item.id"></option>
@@ -68,15 +73,14 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova identificação de Medida Institucional e Normativa do PPA</label>
-                    <select id="bln_ppa_nova" class="form-select br-select" name="bln_ppa_nova"
-                    v-model="boleanoppa"> <!-- É necessário esse v-model? -->
+                    <select id="bln_ppa_nova" class="form-select br-select" name="bln_ppa_nova" v-model="dadosProjetoRevisao.bln_ppa">
                     <option>Sim</option>
                     <option>Não</option>
                     </select>
                 </div>
             </div>
             
-            <div class="row mt-3" v-if="dadosProjeto.bln_ppa">
+            <div class="row mt-3"> <!-- Fazer um v-if computado para verificar se ele é MIN ou será MIN -->
                 <div class="column col-6 col-xs-12">
                     <label for="dsc_min_ppa">Descrição da MIN PPA</label>
                     <p v-text="dadosProjeto.dsc_min_ppa"></p>
@@ -84,7 +88,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Descrição da MIN PPA</label>
-                    <textarea class="input-medium" id="dsc_min_ppa_nova" name="dsc_min_ppa_nova" rows="2">
+                    <textarea class="input-medium" id="dsc_min_ppa_nova" name="dsc_min_ppa_nova" rows="2" v-model="dadosProjetoRevisao.dsc_min_ppa">
                     </textarea>
                 </div>
             </div>
@@ -97,7 +101,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Descrição de Benefícios do Projeto</label>
-                    <textarea class="input-medium" id="dsc_beneficios_nova" name="dsc_beneficios_nova" rows="5">
+                    <textarea class="input-medium" id="dsc_beneficios_nova" name="dsc_beneficios_nova" rows="5" v-model="dadosProjetoRevisao.dsc_beneficios">
                     </textarea>
                 </div>
             </div>            
@@ -110,7 +114,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Descrição de Premissas do Projeto</label>
-                    <textarea class="input-medium" id="dsc_premissas_nova" name="dsc_premissas_nova" rows="2">
+                    <textarea class="input-medium" id="dsc_premissas_nova" name="dsc_premissas_nova" rows="2" v-model="dadosProjetoRevisao.dsc_premissas">
                     </textarea>
                 </div>
             </div>
@@ -123,24 +127,24 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Descrição de Restrições do Projeto</label>
-                    <textarea class="input-medium" id="dsc_restricoes_nova" name="dsc_restricoes_nova" rows="2">
+                    <textarea class="input-medium" id="dsc_restricoes_nova" name="dsc_restricoes_nova" rows="2" v-model="dadosProjetoRevisao.dsc_restricoes">
                     </textarea>
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class="column col-6 col-xs-12">
-                    <label>Patrocinador(a) do Projeto</label>
+                    <label>Patrocinador(a) do Projeto</label> 
                     <p class="mt-2" v-text="'Nome: '+dadosProjeto.dsc_nome_patrocinador"></p>
-                    <p class="mt-4" v-text="'Cargo: '+dadosProjeto.dsc_cargo"></p>
+                    <p class="mt-4" v-text="'Cargo: '+dadosProjeto.dsc_cargo"></p> <!-- Ajustar aqui e no Controller -->
                     <p class="mt-4" v-text="'Unidade: '+dadosProjeto.txt_unidade_responsavel_patrocinador"></p>
                 </div>
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Novo(a) Patrocinador(a) do Projeto</label>
-                    <textarea class="input-medium" id="dsc_nome_patrocinador_nova" name="dsc_nome_patrocinador_nova" placeholder="Escreva o novo nome..." rows="1"></textarea>
-                    <textarea class="input-medium" id="dsc_cargo_nova" name="dsc_cargo_nova" placeholder="Escreva o cargo do novo patrocinador..." rows="1"></textarea>
-                    <textarea class="input-medium" id="txt_unidade_responsavel_patrocinador_nova" name="txt_unidade_responsavel_patrocinador_nova" rows="1"></textarea> <!-- Mudar para Select -->
+                    <textarea class="input-medium" id="dsc_nome_patrocinador_nova" name="dsc_nome_patrocinador_nova" placeholder="Escreva o novo nome..." rows="1" v-model="dadosProjetoRevisao.dsc_nome_patrocinador"></textarea>
+                    <textarea class="input-medium" id="dsc_cargo_nova" name="dsc_cargo_nova" placeholder="Escreva o cargo do novo patrocinador..." rows="1" v-model="dadosProjetoRevisao.dsc_cargo"></textarea>
+                    <textarea class="input-medium" id="txt_unidade_responsavel_patrocinador_nova" name="txt_unidade_responsavel_patrocinador_nova" rows="1" v-model="dadosProjetoRevisao.dsc_cargo"></textarea> <!-- Mudar para Select -->
                 </div>
             </div>
 <!-- Repetir para os demais, caso fique assim -->
@@ -207,7 +211,7 @@
 
 <script>
 export default {
-    props: ['url', 'dadosProjeto', 'dadosEtapas'],
+    props: ['url', 'dadosProjeto', 'dadosProjetoRevisao'],
     data() {
         return {
         //----Campos Select
