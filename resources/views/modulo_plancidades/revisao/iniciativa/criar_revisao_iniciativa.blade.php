@@ -35,17 +35,16 @@
         
         <hr>
 
-        <form role="form" method="POST" action='{{ route("plancidades.revisao.iniciativa.atualizar",['revisaoId'=> $revisaoCadastrada->revisao_iniciativa_id]) }}'>
+        <form role="form" method="POST" action='{{ route("plancidades.revisao.iniciativa.salvar",['revisaoId'=> $revisaoCadastrada->revisao_iniciativa_id]) }}'>
             @csrf
-            <editar-revisao-iniciativa 
+            <criar-revisao-iniciativa 
             :url="'{{ url('/') }}'"
             :dados-iniciativa="{{json_encode($dadosIniciativa)}}"
-            :revisao-cadastrada="{{json_encode($revisaoCadastrada)}}"
             :dados-revisao="{{json_encode($dadosRevisao)}}"
             :dados-meta-revisao="{{json_encode($dadosMetaRevisao)}}"
-            v-bind:dados-iniciativa-revisao="{{json_encode($dadosIniciativaRevisao)}}"
+            :revisao-cadastrada="{{json_encode($revisaoCadastrada)}}"
             >
-            </editar-revisao-iniciativa>
+            </criar-revisao-iniciativa>
             <span class="br-divider sm my-3"></span>
         </form>
     </div>

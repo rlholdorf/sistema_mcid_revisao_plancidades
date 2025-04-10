@@ -480,13 +480,19 @@ Vue.component(
 
 // Revisão
 
-// Revisão Objetivo Estrategico
 
+
+Vue.component(
+  "progresso-revisao-iniciativa",
+  require("./components/mod_plancidades/revisao/componentes/ProgressoRevisaoIniciativa.vue")
+);
+
+
+// Revisão Objetivo Estrategico
 Vue.component(
   "consulta-indicador-revisao",
   require("./components/mod_plancidades/revisao/objetivo_estrategico/ConsultaIndicadorRevisao.vue")
 );
-
 
 Vue.component(
   "cadastro-revisao-indicador",
@@ -503,6 +509,7 @@ Vue.component(
   require("./components/mod_plancidades/revisao/objetivo_estrategico/ShowRevisaoIndicador.vue")
 );
 
+
 // Revisão Iniciativas
 Vue.component(
   "consulta-iniciativa-revisao",
@@ -515,13 +522,48 @@ Vue.component(
 );
 
 Vue.component(
+  "criar-revisao-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/CriarRevisaoIniciativa.vue")
+);
+
+Vue.component(
   "editar-revisao-iniciativa",
   require("./components/mod_plancidades/revisao/iniciativa/EditarRevisaoIniciativa.vue")
 );
 
 Vue.component(
-  "show-revisao-iniciativa",
-  require("./components/mod_plancidades/revisao/iniciativa/ShowRevisaoIniciativa.vue")
+  "show-finalizar-revisao-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/ShowFinalizarRevisaoIniciativa.vue")
+);
+
+Vue.component(
+  "criar-revisao-indicador-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/indicador/CriarRevisaoIndicadorIniciativa.vue")
+);
+
+Vue.component(
+  "editar-revisao-indicador-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/indicador/EditarRevisaoIndicadorIniciativa.vue")
+);
+
+Vue.component(
+  "criar-revisao-meta-indicador-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/metas/CriarRevisaoMetaIndicadorIniciativa.vue")
+);
+
+Vue.component(
+  "editar-revisao-meta-indicador-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/metas/EditarRevisaoMetaIndicadorIniciativa.vue")
+);
+
+Vue.component(
+  "criar-revisao-regionalizacao-meta-indicador-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/regionalizacao/CriarRevisaoRegionalizacaoMetaIndicadorIniciativa.vue")
+);
+
+Vue.component(
+  "editar-revisao-regionalizacao-meta-indicador-iniciativa",
+  require("./components/mod_plancidades/revisao/iniciativa/regionalizacao/EditarRevisaoRegionalizacaoMetaIndicadorIniciativa.vue")
 );
 
 

@@ -295,7 +295,7 @@
             
             <hr>
             
-            <!-- <div class="mt-5">
+            <div class="mt-5">
                 <div class="text-center">
                     <span class="fs-5 fw-bold">Metas Regionalizadas</span>
                 </div>
@@ -342,7 +342,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div> -->
+            </div>
 
 
     <!-- Botões Formulário -->

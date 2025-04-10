@@ -14,20 +14,13 @@
             <p class="text-center"><b>Detalhamento da Iniciativa</b></p>
             <div class="row mt-3">
                 <div class="column col-6 col-xs-12">
-                    <input type="hidden" id="iniciativa" name="iniciativa" :value="dadosIniciativa.iniciativa_id">
-                    <input type="hidden" id="orgaoResponsavel" name="orgaoResponsavel" :value="dadosIniciativa.orgao_pei_id">
-                    <input type="hidden" id="objetivo_estrategico_pei_id" name="objetivo_estrategico_pei_id" :value="dadosIniciativa.objetivo_estrategico_pei_id">
-                    <input type="hidden" id="indicadorIniciativa" name="indicadorIniciativa" :value="dadosIniciativa.id">
-                    <input type="hidden" id="meta_iniciativa_id" name="meta_iniciativa_id" :value="dadosIniciativa.meta_iniciativa_id">
-                    <input type="hidden" id="revisao_iniciativa_id" name="revisao_iniciativa_id" :value="revisaoCadastrada.revisao_iniciativa_id">
                     <label for="txt_enunciado_iniciativa">Denominação da Iniciativa</label>
                     <p v-text="dadosIniciativa.txt_enunciado_iniciativa"></p>
                 </div>
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Denominação da Iniciativa</label>
-                        <textarea class="input-medium" id="txt_enunciado_iniciativa_nova" name="txt_enunciado_iniciativa_nova" rows="2"
-                            v-model="dadosIniciativaRevisao.txt_enunciado_iniciativa">
+                        <textarea class="input-medium" id="txt_enunciado_iniciativa_nova" name="txt_enunciado_iniciativa_nova" rows="2" >
                         </textarea>
                 </div>
             </div>
@@ -40,8 +33,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Descrição da Iniciativa</label>
-                        <textarea class="input-medium" id="dsc_iniciativa_nova" name="dsc_iniciativa_nova" rows="5"
-                            v-model="dadosIniciativaRevisao.dsc_iniciativa">
+                        <textarea class="input-medium" id="dsc_iniciativa_nova" name="dsc_iniciativa_nova" rows="5" >
                         </textarea>
                 </div>
             </div>
@@ -54,7 +46,7 @@
         
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Novo enquadramento de entrega/iniciativa do PAC</label>
-                    <select id="bln_pac_nova" class="form-select br-select" name="bln_pac_nova" v-model="dadosIniciativaRevisao.bln_pac">
+                    <select id="bln_pac_nova" class="form-select br-select" name="bln_pac_nova" >
                     <option value="">Selecione se a meta é ou não do PAC</option>
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
@@ -66,7 +58,7 @@
             <div class="row">
                 <div class="col col-xs-12 col-sm-12">
                     <div class="p-3 text-right">
-                        <button class="br-button primary mr-3" type="submit" name="botao_salvar" :value="true">Avançar
+                        <button class="br-button primary mr-3" type="submit" :value="true">Avançar
                         </button>
 
                         <a class="br-button danger mr-3" type="button" :href='this.url+"/plancidades/revisao/objetivo_estrategico/consulta"'>Voltar
@@ -79,8 +71,9 @@
 </template>
 
 <script>
+
 export default {
-    props: ['url', 'dadosRevisao', 'dadosIniciativa', 'revisaoCadastrada', 'dadosIniciativaRevisao', 'dadosMetaRevisao'],
+    props: ['url', 'dadosRevisao', 'dadosIniciativa', 'revisaoCadastrada', 'dadosMetaRevisao'],
     data() {
         return {
         //----Campos Select
@@ -102,25 +95,25 @@ export default {
     methods: {
         onChangeUnidadeMedida(){
             this.novaUnidadeMedida = this.unidadeMedida;
-                switch (this.novaUnidadeMedida){
-                case 1:
-                    this.novaUnidadeMedida = '(R$)';
-                    break;
-                case 2:
-                    this.novaUnidadeMedida = '(%)';
-                    break;
-                case 3:
-                    this.novaUnidadeMedida = '(ADI)';
-                    break;
-                case 4:
-                    this.novaUnidadeMedida = '(m²)';
-                    break;
-                case 5:
-                    this.novaUnidadeMedida = '(UN)';
-                    break;
-                default:
-                    this.novaUnidadeMedida = '';
-            }
+            switch (this.novaUnidadeMedida){
+            case 1:
+                this.novaUnidadeMedida = '(R$)';
+                break;
+            case 2:
+                this.novaUnidadeMedida = '(%)';
+                break;
+            case 3:
+                this.novaUnidadeMedida = '(ADI)';
+                break;
+            case 4:
+                this.novaUnidadeMedida = '(m²)';
+                break;
+            case 5:
+                this.novaUnidadeMedida = '(UN)';
+                break;
+            default:
+                this.novaUnidadeMedida = '';
+        }
 
         },
 
@@ -147,8 +140,6 @@ export default {
         }).catch(error=>{
             console.log(error);
         });
-
-        console.log(this.dadosIniciativaRevisao)
 
     }
 }

@@ -13,5 +13,4 @@ class RevisaoIniciativas extends Model
 
    public $timestamps = true; // tabela possui coluna de data de criação/atualização
 
-
 }

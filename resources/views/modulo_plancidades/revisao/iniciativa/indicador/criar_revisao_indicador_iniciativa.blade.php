@@ -26,7 +26,7 @@
             :barracompartilhar="false">
         </cabecalho-relatorios>
         <p>
-           Nesta página, você poderá visualizar todas as informações da iniciativa, suas metas e regionalizações (caso houver).
+           Nesta página, você poderá visualizar as informações do indicador da iniciativa, suas metas e regionalizações (caso houver).
            <br>
            Ao lado de cada atributo, existe um campo para informar alterações que devam ser feitas na iniciativa.
            <br>
@@ -35,17 +35,16 @@
         
         <hr>
 
-        <form role="form" method="POST" action='{{ route("plancidades.revisao.iniciativa.atualizar",['revisaoId'=> $revisaoCadastrada->revisao_iniciativa_id]) }}'>
+        <form role="form" method="POST" action='{{ route("plancidades.revisao.indicador.iniciativa.salvar",['revisaoId'=> $revisaoCadastrada->revisao_iniciativa_id]) }}'>
             @csrf
-            <editar-revisao-iniciativa 
+            <criar-revisao-indicador-iniciativa 
             :url="'{{ url('/') }}'"
             :dados-iniciativa="{{json_encode($dadosIniciativa)}}"
-            :revisao-cadastrada="{{json_encode($revisaoCadastrada)}}"
             :dados-revisao="{{json_encode($dadosRevisao)}}"
             :dados-meta-revisao="{{json_encode($dadosMetaRevisao)}}"
-            v-bind:dados-iniciativa-revisao="{{json_encode($dadosIniciativaRevisao)}}"
+            :revisao-cadastrada="{{json_encode($revisaoCadastrada)}}"
             >
-            </editar-revisao-iniciativa>
+            </criar-revisao-indicador-iniciativa>
             <span class="br-divider sm my-3"></span>
         </form>
     </div>

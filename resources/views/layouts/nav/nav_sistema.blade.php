@@ -244,19 +244,19 @@
         <li><a class="menu-item" href="#" title="Revisão"><span class="icon">
           <i class="fas fa-regular fa-route"></i></span><span class="content">Revisão</span></a>
             <ul>
-              <a class="menu-item" href="{{ route('plancidades.monitoramentos.objetivoEstrategico.consultar') }}"><span class="icon">
+              <a class="menu-item" href="{{ route('plancidades.revisao.objetivoEstrategico.consultar') }}"><span class="icon">
                 <i class="fas fa-window-restore"></i></span><span class="content">Revisão de Objetivo Estratégico</span>
               </a>
               
-              <a class="menu-item" href="{{ route('plancidades.monitoramentos.iniciativa.consultar') }}"><span class="icon">
+              <a class="menu-item" href="{{ route('plancidades.revisao.iniciativa.consultar') }}"><span class="icon">
                 <i class="fas fa-window-restore"></i></span><span class="content">Revisão de Iniciativa/Entrega</span>
               </a>
               
-              <a class="menu-item" href="{{ route('plancidades.monitoramentos.projeto.consultar') }}"><span class="icon">
+              <a class="menu-item" href="{{ route('plancidades.revisao.projeto.consultar') }}"><span class="icon">
                 <i class="fas fa-window-restore"></i></span><span class="content">Revisão de Projetos</span>
               </a>
               
-              <a class="menu-item" href="{{ route('plancidades.monitoramentos.validacao.consultar') }}"><span class="icon">
+              <a class="menu-item" href="#"><span class="icon">
                 <i class="fas fa-window-restore"></i></span><span class="content">Análise de Revisão CGPI</span>
               </a>
               

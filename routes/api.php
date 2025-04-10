@@ -233,6 +233,7 @@ Route::get('/plancidades/regionalizacaoMetaIniciativa/regionalizacao/{regionaliz
 
 
 
+
 //Projetos
 Route::get('/plancidades/projetos', 'ApiController@buscarProjetos');
 Route::get('/plancidades/projeto/{projetoId}', 'ApiController@buscarDadosProjeto');

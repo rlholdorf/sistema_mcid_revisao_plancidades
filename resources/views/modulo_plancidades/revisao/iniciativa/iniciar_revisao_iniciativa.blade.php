@@ -23,7 +23,7 @@
         Confira se a iniciativa abaixo é a mesma que deseja revisar. A seguir, selecione o ano e o mês de referência da revisão e clique em salvar para começar a revisar.
     </p>
 
-    <form role="form" method="POST" action='{{ route('plancidades.revisao.iniciativa.salvar') }}'>
+    <form role="form" method="POST" action='{{ route('plancidades.revisao.iniciativa.salvarRevisao') }}'>
         @csrf
         <cadastro-revisao-iniciativa
             :dados-iniciativa="{{json_encode($dadosIniciativa)}} "

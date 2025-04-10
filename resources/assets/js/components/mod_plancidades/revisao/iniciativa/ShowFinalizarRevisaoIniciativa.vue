@@ -1,5 +1,15 @@
 <template>
     <div>
+        <progresso-revisao-iniciativa
+        :url="url"
+        :dados-revisao="dadosRevisao"
+        :active="'finalizar'"
+        :dados-meta-revisao="dadosMetaRevisao"
+        >
+        </progresso-revisao-iniciativa>
+        
+        <hr>
+
         <div class="form-group">
             <p class="text-center"><b>Informações da Revisão</b></p>
             <div class="row mt-3">
@@ -71,6 +81,16 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col col-xs-12 col-sm-12">
+                    <div class="p-3 text-right">
+                        <button class="br-button primary mr-3" @click="IrParaPagina('/plancidades/revisao/iniciativa/' + dadosRevisao.id + '/criar')">
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <hr>
 
             <p class="text-center"><b>Detalhamento do Indicador da Iniciativa</b></p>
@@ -83,7 +103,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Denominação do Indicador da Iniciativa</label>
                         <textarea class="input-medium" id="txt_denominacao_indicador_nova" name="txt_denominacao_indicador_nova" rows="1" disabled
-                        v-model="dadosIndicadorIniciativaRevisao.txt_denominacao_indicador">
+                        v-model="dadosIndicadorRevisao.txt_denominacao_indicador">
                         </textarea>
                 </div>
             </div>
@@ -97,7 +117,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Descrição do Indicador da Iniciativa</label>
                         <textarea class="input-medium" id="dsc_indicador_nova" name="dsc_indicador_nova" rows="5" disabled
-                        v-model="dadosIndicadorIniciativaRevisao.dsc_indicador">
+                        v-model="dadosIndicadorRevisao.dsc_indicador">
                         </textarea>
                 </div>
             </div>
@@ -111,7 +131,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Sigla do Indicador da Iniciativa</label>
                         <textarea class="input-medium" id="txt_sigla_indicador_nova" name="txt_sigla_indicador_nova" rows="1" disabled
-                        v-model="dadosIndicadorIniciativaRevisao.txt_sigla_indicador">
+                        v-model="dadosIndicadorRevisao.txt_sigla_indicador">
                         </textarea>
                 </div>
             </div>
@@ -125,7 +145,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Novo Valor de Referência</label>
                         <textarea class="input-medium" id="vlr_indice_referencia_nova" name="vlr_indice_referencia_nova" rows="1" disabled
-                            v-model="dadosIndicadorIniciativaRevisao.vlr_indice_referencia">
+                            v-model="dadosIndicadorRevisao.vlr_indice_referencia">
                         </textarea>
                 </div>
             </div>
@@ -139,7 +159,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Unidade de Medida</label>
                         <select id="txt_unidade_medida_nova" class="form-select br-select" name="txt_unidade_medida_nova" disabled
-                        @change="onChangeUnidadeMedida" v-model="dadosIndicadorIniciativaRevisao.txt_unidade_medida">
+                        @change="onChangeUnidadeMedida" v-model="dadosIndicadorRevisao.txt_unidade_medida">
                             <option value="" v-text="textoEscolhaUnidadeMedida"></option>
                             <option v-for="item in unidadesMedida" v-text="item.txt_unidade_medida" :value="item.id"
                                 :key="item.id"></option>
@@ -156,7 +176,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Novo Data de Divulgação ou Disponibilidade</label>
                         <textarea class="input-medium" id="txt_data_divulgacao_ou_disponibilizacao_nova" name="txt_data_divulgacao_ou_disponibilizacao_nova" rows="1" disabled
-                        v-model="dadosIndicadorIniciativaRevisao.txt_data_divulgacao_ou_disponibilizacao">
+                        v-model="dadosIndicadorRevisao.txt_data_divulgacao_ou_disponibilizacao">
                         </textarea>
                 </div>
             </div>
@@ -170,7 +190,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Periodicidade</label>
                         <select id="periodicidade_id_nova" class="form-select br-select" name="periodicidade_id_nova" disabled
-                        v-model="dadosIndicadorIniciativaRevisao.dsc_periodicidades">
+                        v-model="dadosIndicadorRevisao.dsc_periodicidades">
                             <option value="" v-text="textoEscolhaPeriodicidade"></option>
                             <option v-for="item in periodicidades" v-text="item.dsc_periodicidades" :value="item.id"
                                 :key="item.id"></option>
@@ -187,7 +207,7 @@
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Polaridade do Indicador</label>
                     <select id="polaridade_id_nova" class="form-select br-select" name="polaridade_id_nova" disabled
-                    v-model="dadosIndicadorIniciativaRevisao.txt_polaridade"> <!-- Não funcionou-->
+                    v-model="dadosIndicadorRevisao.txt_polaridade"> <!-- Não funcionou-->
                         <option value="" v-text="textoEscolhaPolaridade"></option>
                         <option v-for="item in polaridades" v-text="item.txt_polaridade" :value="item.id"
                             :key="item.id"></option>
@@ -203,7 +223,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Fórmula de Cálculo do Indicador</label>
-                    <textarea class="input-medium" id="txt_formula_calculo_nova" name="txt_formula_calculo_nova" rows="5" disabled v-model="dadosIndicadorIniciativaRevisao.txt_formula_calculo">
+                    <textarea class="input-medium" id="txt_formula_calculo_nova" name="txt_formula_calculo_nova" rows="5" disabled v-model="dadosIndicadorRevisao.txt_formula_calculo">
                     </textarea>
                 </div>
             </div>
@@ -216,7 +236,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Fonte de Dados das Variáveis do Indicador</label>
-                    <textarea class="input-medium" id="txt_fonte_dados_variaveis_calculo_nova" name="txt_fonte_dados_variaveis_calculo_nova" rows="5" disabled v-model="dadosIndicadorIniciativaRevisao.txt_fonte_dados_variaveis_calculo">
+                    <textarea class="input-medium" id="txt_fonte_dados_variaveis_calculo_nova" name="txt_fonte_dados_variaveis_calculo_nova" rows="5" disabled v-model="dadosIndicadorRevisao.txt_fonte_dados_variaveis_calculo">
                     </textarea>
                 </div>
             </div>
@@ -229,7 +249,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Forma de Disponibilização do Indicador</label>
-                    <textarea class="input-medium" id="txt_forma_disponibilizacao_nova" name="txt_forma_disponibilizacao_nova" rows="5" disabled v-model="dadosIndicadorIniciativaRevisao.txt_forma_disponibilizacao">
+                    <textarea class="input-medium" id="txt_forma_disponibilizacao_nova" name="txt_forma_disponibilizacao_nova" rows="5" disabled v-model="dadosIndicadorRevisao.txt_forma_disponibilizacao">
                     </textarea>
                 </div>
             </div>
@@ -242,11 +262,20 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Procedimento de Cálculo do Indicador</label>
-                    <textarea class="input-medium" id="dsc_procedimento_calculo_nova" name="dsc_procedimento_calculo_nova" rows="5" disabled v-model="dadosIndicadorIniciativaRevisao.dsc_procedimento_calculo">
+                    <textarea class="input-medium" id="dsc_procedimento_calculo_nova" name="dsc_procedimento_calculo_nova" rows="5" disabled v-model="dadosIndicadorRevisao.dsc_procedimento_calculo">
                     </textarea>
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col col-xs-12 col-sm-12">
+                    <div class="p-3 text-right">
+                        <button class="br-button primary mr-3" @click="IrParaPagina('/plancidades/revisao/indicador/iniciativa/' + dadosRevisao.id + '/criar')">
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            </div>
             <hr>
 
             <p class="text-center"><b>Detalhamento da Meta do Indicador da Iniciativa</b></p>
@@ -258,7 +287,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Denominação da Meta</label>
-                    <textarea class="input-medium" id="txt_dsc_meta_nova" name="txt_dsc_meta_nova" rows="2" disabled v-model="dadosMetaIniciativaRevisao.txt_dsc_meta">
+                    <textarea class="input-medium" id="txt_dsc_meta_nova" name="txt_dsc_meta_nova" rows="2" disabled v-model="dadosMetaRevisao.txt_dsc_meta">
                     </textarea>
                 </div>
             </div>
@@ -271,7 +300,7 @@
         
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Cumulatividade da Meta</label>
-                    <select id="bln_meta_cumulativa_nova" class="form-select br-select" name="bln_meta_cumulativa_nova" disabled v-model="dadosMetaIniciativaRevisao.bln_meta_cumulativa">
+                    <select id="bln_meta_cumulativa_nova" class="form-select br-select" name="bln_meta_cumulativa_nova" disabled v-model="dadosMetaRevisao.bln_meta_cumulativa">
                     <option value="">Selecione se a meta é ou não cumulativa</option>
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
@@ -292,7 +321,7 @@
                     type="number" 
                     name="vlr_esperado_ano_2_nova"
                     step="0.01"
-                    v-model="dadosMetaIniciativaRevisao.vlr_esperado_ano_2"
+                    v-model="dadosMetaRevisao.vlr_esperado_ano_2"
                     >
                 </div>
             </div>    
@@ -310,7 +339,7 @@
                     type="number" 
                     name="vlr_esperado_ano_3_nova"
                     step="0.01"
-                    v-model="dadosMetaIniciativaRevisao.vlr_esperado_ano_3"
+                    v-model="dadosMetaRevisao.vlr_esperado_ano_3"
                     >
                 </div>
             </div>
@@ -328,7 +357,7 @@
                     type="number" 
                     name="vlr_esperado_ano_4_nova"
                     step="0.01"
-                    v-model="dadosMetaIniciativaRevisao.vlr_esperado_ano_4"
+                    v-model="dadosMetaRevisao.vlr_esperado_ano_4"
                     >
                 </div>
             </div>
@@ -341,7 +370,7 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>A meta será regionalizada?</label>
-                    <select id="bln_meta_regionalizada_nova" class="form-select br-select" name="bln_meta_regionalizada_nova" disabled v-model="dadosMetaIniciativaRevisao.bln_meta_regionalizada">
+                    <select id="bln_meta_regionalizada_nova" class="form-select br-select" name="bln_meta_regionalizada_nova" disabled v-model="dadosMetaRevisao.bln_meta_regionalizada">
                     <option value="">Selecione se a meta é ou não regionalizada</option>
                     <option value="true">Sim</option>
                     <option value="false">Não</option>
@@ -357,14 +386,24 @@
             
                 <div class="column col-6 col-xs-12 br-textarea">
                     <label>Nova Justificativa para não regionalização</label>
-                    <textarea class="input-medium" id="dsc_justificativa_ausencia_regionalizacao_nova" name="dsc_justificativa_ausencia_regionalizacao_nova" rows="5" disabled v-model="dadosMetaIniciativaRevisao.dsc_justificativa_ausencia_regionalizacao">
+                    <textarea class="input-medium" id="dsc_justificativa_ausencia_regionalizacao_nova" name="dsc_justificativa_ausencia_regionalizacao_nova" rows="5" disabled v-model="dadosMetaRevisao.dsc_justificativa_ausencia_regionalizacao">
                     </textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-xs-12 col-sm-12">
+                    <div class="p-3 text-right">
+                        <button class="br-button primary mr-3" @click="IrParaPagina('/plancidades/revisao/meta/iniciativa/' + dadosRevisao.id + '/criar')">
+                            Editar
+                        </button>
+                    </div>
                 </div>
             </div>
             
             <hr>
             
-            <!-- <div class="mt-5">
+            <div class="mt-5">
                 <div class="text-center">
                     <span class="fs-5 fw-bold">Metas Regionalizadas</span>
                 </div>
@@ -411,7 +450,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div> -->
+            </div>
 
 
     <!-- Botões Formulário -->
@@ -419,7 +458,7 @@
                 <div class="col col-xs-12 col-sm-12">
                     <div class="p-3 text-right">
                         <button class="br-button primary mr-3" :disabled="this.situacao_revisao_id == '3' || this.situacao_revisao_id == '5' || this.situacao_revisao_id == '6'" @click="IrParaEdicao(dadosIniciativa.revisao_iniciativa_id)">
-                        Editar
+                        Finalizar
                         </button>
 
                         <a class="br-button danger mr-3" type="button" :href='this.url+"/plancidades/revisao/iniciativa/listar/"+ this.dadosIniciativa.iniciativa_id'>Voltar
@@ -433,7 +472,7 @@
 
 <script>
 export default {
-    props: ['url', 'dadosIniciativa', 'dadosRegionalizacao','dadosIniciativaRevisao', 'dadosIndicadorIniciativaRevisao', 'dadosMetaIniciativaRevisao'],
+    props: ['url', 'dadosIniciativa', 'dadosRevisao','dadosIniciativaRevisao', 'dadosIndicadorRevisao', 'dadosMetaRevisao', 'dadosRegionalizacao'],
     data() {
         return {
         //----Campos Select
@@ -481,29 +520,17 @@ export default {
             }
         },
 
+        IrParaPagina(destino){
+            console.log('entrou');
+            window.location.href = this.url + destino;
+        },
+
         IrParaEdicao(revisaoId){
             window.location.href = "/plancidades/revisao/iniciativa/"+revisaoId+"/editar";
         }
         
     },
     mounted() {
-        axios.get(this.url + '/api/plancidades/unidadesMedida').then(resposta=>{
-            this.unidadesMedida = resposta.data;
-        }).catch(error=>{
-            console.log(error);
-        });
-
-        axios.get(this.url + '/api/plancidades/periodicidades').then(resposta=>{
-            this.periodicidades = resposta.data;
-        }).catch(error=>{
-            console.log(error);
-        });
-
-        axios.get(this.url + '/api/plancidades/polaridades').then(resposta=>{
-            this.polaridades = resposta.data;
-        }).catch(error=>{
-            console.log(error);
-        });
 
         if (this.situacaoRevisao != null){
             this.situacao_revisao_id = this.situacaoRevisao.situacao_revisao_id;

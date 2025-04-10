@@ -612,17 +612,42 @@ Route::post('/plancidades/revisao/objetivo_estrategico/{revisaoId}/atualizar', '
 //--------Iniciativas---------//
 
 //--Informações Básicas (indicadores e metas)--//
+//Revisão Base
 Route::get('/plancidades/revisao/iniciativa/consulta', 'Mod_plancidades\RevisaoIniciativaController@consultarIniciativas')->name('plancidades.revisao.iniciativa.consultar');
 Route::get('/plancidades/revisao/iniciativa/listar', 'Mod_plancidades\RevisaoController@listarIniciativas')->name('plancidades.revisao.iniciativa.listarIniciativas');
-Route::get('/plancidades/revisao/iniciativa/{iniciativaId}/criar', 'Mod_plancidades\RevisaoIniciativaController@create')->name('plancidades.revisao.iniciativa.iniciarRevisao');
-Route::post('/plancidades/revisao/iniciativa/salvar', 'Mod_plancidades\RevisaoIniciativaController@store')->name('plancidades.revisao.iniciativa.salvar');
+Route::get('/plancidades/revisao/iniciativa/{iniciativaId}/iniciarRevisao', 'Mod_plancidades\RevisaoIniciativaController@iniciarRevisao')->name('plancidades.revisao.iniciativa.iniciarRevisao');
+Route::post('/plancidades/revisao/iniciativa/salvarRevisao', 'Mod_plancidades\RevisaoIniciativaController@salvarRevisao')->name('plancidades.revisao.iniciativa.salvarRevisao');
 Route::get('/plancidades/revisao/iniciativa/listar/{iniciativaId}', 'Mod_plancidades\RevisaoIniciativaController@index')->name('plancidades.revisao.iniciativa.listarRevisoes');
-Route::get('/plancidades/revisao/iniciativa/exibir/{revisaoId}', 'Mod_plancidades\RevisaoIniciativaController@show')->name('plancidades.revisao.iniciativa.show');
 
+
+//Revisão da Iniciativa
+Route::get('/plancidades/revisao/iniciativa/{revisaoId}/criar', 'Mod_plancidades\RevisaoIniciativaController@create')->name('plancidades.revisao.iniciativa.criar');
+Route::post('/plancidades/revisao/iniciativa/{revisaoId}/salvar', 'Mod_plancidades\RevisaoIniciativaController@store')->name('plancidades.revisao.iniciativa.salvar');
 Route::get('/plancidades/revisao/iniciativa/{revisaoId}/editar', 'Mod_plancidades\RevisaoIniciativaController@edit')->name('plancidades.revisao.iniciativa.editar');
 Route::post('/plancidades/revisao/iniciativa/{revisaoId}/atualizar', 'Mod_plancidades\RevisaoIniciativaController@update')->name('plancidades.revisao.iniciativa.atualizar');
 
+//Revisão do Indicador (Iniciativa)
+Route::get('/plancidades/revisao/indicador/iniciativa/{revisaoId}/criar', 'Mod_plancidades\RevisaoIndicadorIniciativaController@create')->name('plancidades.revisao.indicador.iniciativa.criar');
+Route::post('/plancidades/revisao/indicador/iniciativa/{revisaoId}/salvar', 'Mod_plancidades\RevisaoIndicadorIniciativaController@store')->name('plancidades.revisao.indicador.iniciativa.salvar');
+Route::get('/plancidades/revisao/indicador/iniciativa/{revisaoId}/editar', 'Mod_plancidades\RevisaoIndicadorIniciativaController@edit')->name('plancidades.revisao.indicador.iniciativa.editar');
+Route::post('/plancidades/revisao/indicador/iniciativa/{revisaoId}/atualizar', 'Mod_plancidades\RevisaoIndicadorIniciativaController@update')->name('plancidades.revisao.indicador.iniciativa.atualizar');
 
+//Revisão da Meta (Iniciativa)
+Route::get('/plancidades/revisao/meta/iniciativa/{revisaoId}/criar', 'Mod_plancidades\RevisaoMetaIndicadorIniciativaController@create')->name('plancidades.revisao.meta.iniciativa.criar');
+Route::post('/plancidades/revisao/meta/iniciativa/{revisaoId}/salvar', 'Mod_plancidades\RevisaoMetaIndicadorIniciativaController@store')->name('plancidades.revisao.meta.iniciativa.salvar');
+Route::get('/plancidades/revisao/meta/iniciativa/{revisaoId}/editar', 'Mod_plancidades\RevisaoMetaIndicadorIniciativaController@edit')->name('plancidades.revisao.meta.iniciativa.editar');
+Route::post('/plancidades/revisao/meta/iniciativa/{revisaoId}/atualizar', 'Mod_plancidades\RevisaoMetaIndicadorIniciativaController@update')->name('plancidades.revisao.meta.iniciativa.atualizar');
+
+//Revisão da Regionalização (Iniciativa)
+Route::get('/plancidades/revisao/regionalizacao/iniciativa/{revisaoId}/criar', 'Mod_plancidades\RevisaoRegionalizacaoMetaIndicadorIniciativaController@create')->name('plancidades.revisao.regionalizacao.iniciativa.criar');
+Route::post('/plancidades/revisao/regionalizacao/iniciativa/{revisaoId}/salvar', 'Mod_plancidades\RevisaoRegionalizacaoMetaIndicadorIniciativaController@store')->name('plancidades.revisao.regionalizacao.iniciativa.salvar');
+Route::get('/plancidades/revisao/regionalizacao/iniciativa/{revisaoId}/editar', 'Mod_plancidades\RevisaoRegionalizacaoMetaIndicadorIniciativaController@edit')->name('plancidades.revisao.regionalizacao.iniciativa.editar');
+Route::post('/plancidades/revisao/regionalizacao/iniciativa/{revisaoId}/atualizar', 'Mod_plancidades\RevisaoRegionalizacaoMetaIndicadorIniciativaController@update')->name('plancidades.revisao.regionalizacao.iniciativa.atualizar');
+
+
+//Revisão da Regionalização (Finalizar)
+Route::get('/plancidades/revisao/iniciativa/exibir/{revisaoId}', 'Mod_plancidades\RevisaoIniciativaController@show')->name('plancidades.revisao.iniciativa.show');
+Route::post('/plancidades/revisao/iniciativa/finalizar/{revisaoId}', 'Mod_plancidades\RevisaoIniciativaController@finalizar')->name('plancidades.revisao.iniciativa.finalizar');
 
 
 

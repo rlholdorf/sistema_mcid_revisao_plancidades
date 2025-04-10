@@ -32,15 +32,16 @@
         </p>
         
         <hr>
-        <show-revisao-iniciativa 
+        <show-finalizar-revisao-iniciativa 
         :url="'{{ url('/') }}'"
+        :dados-revisao="{{json_encode($dadosRevisao)}}"
         :dados-iniciativa="{{json_encode($dadosIniciativa)}}"
-        :dados-regionalizacao="{{json_encode($dadosRegionalizacao)}}"
-        v-bind:dados-iniciativa-revisao="{{json_encode($dadosIniciativaRevisao)}}"
-        v-bind:dados-indicador-iniciativa-revisao="{{json_encode($dadosIndicadorIniciativaRevisao)}}"
-        v-bind:dados-meta-iniciativa-revisao="{{json_encode($dadosMetaIniciativaRevisao)}}"
+        :dados-iniciativa-revisao="{{json_encode($dadosIniciativaRevisao)}}"
+        :dados-indicador-revisao="{{json_encode($dadosIndicadorIniciativaRevisao)}}"
+        :dados-meta-revisao="{{json_encode($dadosMetaRevisao)}}"
+        :dados-regionalizacao-revisao="{{json_encode($dadosRegionalizacaoRevisao)}}"
         >
-        </show-revisao-iniciativa>
+        </show-finalizar-revisao-iniciativa>
         <span class="br-divider sm my-3"></span>
     </div>
 @endsection
